@@ -1,0 +1,118 @@
+# Lights On — Autonomous Open Source Maintenance Configuration
+# Zero-required-configuration defaults. Any setting below can be overridden here
+# or via GitHub Repository Variables (e.g. LIGHTS_ON_ENABLED, LIGHTS_ON_PROVIDER,
+# LIGHTS_ON_MODEL, LIGHTS_ON_ALLOW_EXTERNAL_PR_AUTOMERGE).
+
+version: 1
+
+# Global kill switch (can also be set via GitHub Repository Variable LIGHTS_ON_ENABLED=false)
+enabled: true
+
+events:
+  # Public issue/comment/PR activity needs maintainer authorization before paid
+  # inference. Explicit opt-in restores unattended external-triggered inference.
+  allow_external_triggers: false
+
+engine:
+  # Opt in to the pinned SDK-managed stdio backend; cli remains the rollout default.
+  copilot_backend: cli
+  # 'auto' detects available credentials in order: copilot -> claude -> codex -> openrouter
+  provider: auto
+  # Leave blank ("") to use provider-specific defaults:
+  #   default:   copilot=claude-sonnet-5.5 | claude=claude-sonnet-5-5 | codex=gpt-6.1-sol | openrouter=anthropic/claude-sonnet-5.5
+  #   reasoning: copilot=claude-opus-5.5   | claude=claude-opus-5-5   | codex=gpt-6-astra | openrouter=anthropic/claude-opus-5.5
+  models:
+    default: ""
+    reasoning: ""
+  fallback_providers: []
+
+threat_model:
+  path: THREAT_MODEL.md
+  generator_repo: https://github.com/alpha-omega-security/threat-model
+  triage_policy: relaxed
+
+upstream:
+  # Upstream repository ('owner/repo' or 'auto' to auto-detect GitHub fork parent; '' or 'none' to disable).
+  # IMPORTANT: Upstream access is strictly READ-ONLY. Lights On never writes to any repository other than the one it is installed in.
+  repo: auto
+  sync_issues: true
+  sync_prs: false
+  sync_threat_model_context: true
+  max_items_per_run: 3
+
+autonomy:
+  # 'lights-on' (full autonomy within policy boundaries) or 'review-only' (never auto-merges)
+  mode: lights-on
+  # External contributor PRs require human merge by default; agent-authored PRs can auto-merge
+  allow_external_pr_automerge: false
+  allow_agent_pr_automerge: true
+  merge_method: squash
+  require_ci_pass: true
+  # Set the exact required CI contexts and their GitHub App IDs.
+  # Empty means review-only until configured; a lone successful workflow is not sufficient.
+  # Example: [{ context: "build", app_id: 15368 }]
+  # For a legacy commit status use app_id: null.
+  required_checks: []
+  require_independent_agent_review: true
+
+policies:
+  block_automerge_on:
+    - breaking_public_api
+    - workflow_or_runner_modification
+    - new_unapproved_runtime_dependency
+    - threat_model_boundary_weakening
+  dependency_health:
+    stale_release_months: 24
+    min_maintainers: 1
+    auto_migrate_deprecated_or_archived: true
+    auto_migrate_unpatched_cve: true
+
+dependencies:
+  # Separate per-task budgets, also capped by limits.max_turns_per_run.
+  update_max_turns: 8
+  migration_plan_max_turns: 12
+  migration_max_turns: 20
+  # Optional extra verification commands from trusted configuration, run offline.
+  validation_commands: []
+  # Reviewed migration plans, executed only by a separate manual task: migration.
+  approved_migrations: []
+
+toolchains:
+  # Opt in to separate, review-required CI/build runtime maintenance PRs.
+  enabled: false
+  node:
+    # supported: retire only end-of-life releases; active-lts: also retire maintenance/current releases.
+    support_policy: supported
+    update_ci: true
+    update_runtime_files: true
+    # Explicit paths to .sh/.ps1 build scripts or Dockerfiles with major-only Node selectors.
+    build_files: []
+
+limits:
+  max_prs_per_run: 2
+  max_attempts_per_issue: 2
+  max_issue_responses_per_hour: 10
+  max_agent_runs_per_day: 25
+  max_turns_per_run: 25
+  max_tokens_per_run: 100000
+  # USD caps use reported/estimated dollar costs. Copilot CLI billing is not USD;
+  # its cost remains unknown. Also use provider-side budgets and run/turn limits.
+  max_cost_per_run_usd: 2.0
+  max_daily_budget_usd: 10.0
+  max_input_bytes: 262144
+  max_output_tokens: 8192
+  # Shared across provider fallbacks and Copilot format retries.
+  max_model_calls_per_run: 30
+
+release:
+  enabled: true
+  auto_publish: true
+  # Maximum semver bump Lights On may release autonomously ('patch' or 'minor'; never 'major')
+  max_auto_bump: minor
+  min_commits_for_release: 1
+  immediate_on_security: true
+  create_github_release: true
+  provenance: true
+  # Optional explicit expected package names for dynamic package definitions.
+  # Derived from trusted static manifests otherwise; never from build output.
+  package_names: {}

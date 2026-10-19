@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "repository": "owner/project",
+  "provider": "codex",
+  "credentials": {
+    "OPENAI_API_KEY": { "env": "OPENAI_API_KEY" }
+  },
+  "capabilities": [],
+  "rules": [
+    {
+      "id": "repository",
+      "host": "api.github.com",
+      "path": "/repos/owner/project",
+      "methods": ["GET"],
+      "roles": ["fetch"]
+    },
+    {
+      "id": "repository-context",
+      "host": "api.github.com",
+      "path": "/repos/owner/project/",
+      "methods": ["GET"],
+      "roles": ["fetch"]
+    },
+    {
+      "id": "git-fetch",
+      "host": "github.com",
+      "path": "/owner/project.git/",
+      "methods": ["GET", "POST"],
+      "roles": ["fetch"]
+    },
+    {
+      "id": "inference",
+      "host": "api.openai.com",
+      "path": "/v1/responses",
+      "methods": ["POST"],
+      "roles": ["analysis"],
+      "credential": "OPENAI_API_KEY",
+      "header": "Authorization",
+      "prefix": "Bearer "
+    },
+    {
+      "id": "advisories",
+      "host": "api.osv.dev",
+      "path": "/v1/",
+      "methods": ["POST"],
+      "roles": ["analysis"]
+    },
+    {
+      "id": "package-context",
+      "host": "packages.ecosyste.ms",
+      "path": "/api/v1/",
+      "methods": ["GET"],
+      "roles": ["analysis"]
+    }
+  ],
+  "profiles": [],
+  "bundles": []
+}

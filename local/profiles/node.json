@@ -1,0 +1,10 @@
+{
+  "id": "node24",
+  "image": "node@sha256:14078204b6bb268c107ceff6d3c43f45a888105e5c2b18b14c32b3409d93a1b0",
+  "platform": "linux/amd64",
+  "commands": [
+    "npm ci --offline --ignore-scripts --no-audit --no-fund && npm test"
+  ],
+  "timeoutSeconds": 300,
+  "resources": { "memory": 2048, "cpus": 2, "pids": 128 }
+}

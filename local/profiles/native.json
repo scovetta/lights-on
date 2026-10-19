@@ -1,0 +1,7 @@
+{
+  "id": "native",
+  "image": "node@sha256:14078204b6bb268c107ceff6d3c43f45a888105e5c2b18b14c32b3409d93a1b0",
+  "platform": "linux/amd64",
+  "commands": ["cc main.c -o /tmp/program && /tmp/program"],
+  "timeoutSeconds": 300
+}

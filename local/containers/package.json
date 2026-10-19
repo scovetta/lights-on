@@ -1,0 +1,9 @@
+{
+  "name": "lights-on-local-controller-tools",
+  "private": true,
+  "version": "1.0.0",
+  "dependencies": {
+    "@github/copilot": "1.0.98",
+    "@github/copilot-sdk": "1.0.22"
+  }
+}

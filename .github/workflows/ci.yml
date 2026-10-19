@@ -1,0 +1,64 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request: {}
+  workflow_dispatch: {}
+
+concurrency:
+  group: lights-on-ci-${{ github.repository }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions: {}
+
+jobs:
+  test:
+    name: Lights On Self-Test (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    permissions:
+      contents: read # Check out the source under test; tests never publish.
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Setup Node.js 24
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+          package-manager-cache: false
+
+      - name: Run Lights On test suite
+        run: node --test
+      - name: Prepare locked Copilot CLI for offline smoke test
+        if: runner.os == 'Linux'
+        env:
+          LIGHTS_ON_COPILOT_CLI_DIR: ${{ runner.temp }}/lights-on-cli-test
+        run: node .github/lights-on/runner/install-copilot-tools.mjs --backend cli --directory "$LIGHTS_ON_COPILOT_CLI_DIR"
+      - name: Exercise inference-only Copilot against a local mock provider
+        if: runner.os == 'Linux'
+        env:
+          LIGHTS_ON_TEST_COPILOT: 'true'
+          LIGHTS_ON_COPILOT_CLI_DIR: ${{ runner.temp }}/lights-on-cli-test
+        run: node --test --test-name-pattern='actual inference-only Copilot' tests/security-boundaries.test.mjs
+      - name: Exercise the actual isolated worker
+        if: runner.os == 'Linux'
+        env:
+          LIGHTS_ON_TEST_DOCKER: 'true'
+        run: node --test tests/security-boundaries.test.mjs tests/dependency-work.test.mjs
+      - name: Prepare pinned Copilot SDK for offline smoke test
+        shell: bash
+        env:
+          LIGHTS_ON_COPILOT_SDK_DIR: ${{ runner.temp }}/lights-on-sdk-test
+        run: node .github/lights-on/runner/install-copilot-sdk.mjs --directory "$LIGHTS_ON_COPILOT_SDK_DIR"
+      - name: Exercise SDK-managed inference against a local mock provider
+        env:
+          LIGHTS_ON_TEST_COPILOT_SDK: 'true'
+          LIGHTS_ON_COPILOT_SDK_DIR: ${{ runner.temp }}/lights-on-sdk-test
+        run: node --test tests/copilot-sdk.test.mjs

@@ -1,0 +1,320 @@
+name: Lights On - Issue & Comment Responder
+
+on:
+  issues:
+    types: [opened, reopened, labeled]
+  # Default-branch controller; comments are data, admission is checked, and model commands stay in offline workers.
+  issue_comment: # zizmor: ignore[dangerous-triggers]
+    types: [created]
+
+concurrency:
+  group: lights-on-maintenance-budget-${{ github.repository }}
+  cancel-in-progress: false
+
+permissions: {}
+
+jobs:
+  respond:
+    name: Triage & Respond to Issue or Comment
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Push generated fix branches through the scoped Git helper.
+      issues: write # Apply issue controls, labels and responses.
+      pull-requests: write # Open candidate PRs and apply PR-comment controls.
+    timeout-minutes: 25
+    if: >-
+      vars.LIGHTS_ON_ENABLED != 'false' &&
+      (
+        github.actor != 'github-actions[bot]' &&
+        !endsWith(github.actor, '[bot]') &&
+        (
+          github.event_name != 'issues' ||
+          github.event.action != 'labeled' ||
+          github.event.label.name == 'lights-on:actionable' ||
+          github.event.label.name == 'lights-on:migrate-dep'
+        )
+      )
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Setup Node.js 24
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+          package-manager-cache: false
+
+      - name: Load Lights On configuration
+        id: config
+        env:
+          LIGHTS_ON_ENABLED: ${{ vars.LIGHTS_ON_ENABLED }}
+          LIGHTS_ON_ALLOW_EXTERNAL_PR_AUTOMERGE: ${{ vars.LIGHTS_ON_ALLOW_EXTERNAL_PR_AUTOMERGE }}
+          LIGHTS_ON_UPSTREAM_REPO: ${{ vars.LIGHTS_ON_UPSTREAM_REPO }}
+        run: node .github/lights-on/runner/load-config.mjs --github-output
+
+      - name: Serialize GitHub event and enforce slash-command & author authorization
+        id: authorize
+        if: steps.config.outputs.enabled != 'false'
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_JSON: ${{ toJson(github.event) }}
+        run: |
+          node --input-type=module << 'EOF'
+          import fs from 'node:fs';
+          import { parseSlashCommand, isMaintainerAssociation } from './.github/lights-on/runner/state-store.mjs';
+          import { sanitizeGitHubOutputValue } from './.github/lights-on/runner/load-config.mjs';
+          import { loadConfig } from './.github/lights-on/runner/load-config.mjs';
+          import { allowAgentEvent } from './.github/lights-on/runner/event-policy.mjs';
+          import { reportWorkflowEvent } from './.github/lights-on/runner/workflow-report.mjs';
+
+          const eventName = process.env.EVENT_NAME || '';
+          const parsed = JSON.parse(process.env.EVENT_JSON || '{}');
+          fs.writeFileSync('/tmp/lights-on-event.json', JSON.stringify(parsed, null, 2), 'utf8');
+
+          let shouldRunAgent = true;
+          let allowCodePr = false;
+          let readOnlyMode = true;
+          let slashCommand = '';
+          const isPullRequestComment = Boolean(parsed.issue?.pull_request);
+          const DETERMINISTIC_CONTROL_COMMANDS = new Set([
+            'ignore',
+            'hold',
+            'pause',
+            'automerge',
+            'review',
+            're-review',
+            'merge'
+          ]);
+
+          if (eventName === 'issues') {
+            allowCodePr = true;
+            readOnlyMode = false;
+          } else if (eventName === 'issue_comment') {
+            const commentBody = String(parsed.comment?.body || '');
+            const authorAssociation = String(parsed.comment?.author_association || '');
+            const isMaintainer = isMaintainerAssociation(authorAssociation);
+            const cmd = parseSlashCommand(commentBody);
+
+            if (cmd) {
+              if (!isMaintainer) {
+                console.warn(`Ignoring /lights-on ${cmd.command} slash command from non-maintainer (${authorAssociation}).`);
+                shouldRunAgent = false;
+              } else {
+                slashCommand = cmd.command;
+                if (DETERMINISTIC_CONTROL_COMMANDS.has(slashCommand)) {
+                  shouldRunAgent = false;
+                  allowCodePr = false;
+                  readOnlyMode = true;
+                } else {
+                  allowCodePr = !isPullRequestComment || slashCommand === 'update-threat-model';
+                  readOnlyMode = false;
+                }
+              }
+            } else if (isMaintainer && !isPullRequestComment) {
+              allowCodePr = true;
+              readOnlyMode = false;
+            } else {
+              // Untrusted external comment or non-command PR comment: read-only response only, never code push
+              allowCodePr = false;
+              readOnlyMode = true;
+            }
+          }
+
+          const access = allowAgentEvent({ eventName, event: parsed, config: loadConfig() });
+          if (!access.allowed) {
+            shouldRunAgent = false;
+            allowCodePr = false;
+            reportWorkflowEvent({ title: 'Agent event gated', message: access.reason });
+          }
+          const out = [
+            `should_run_agent=${shouldRunAgent ? 'true' : 'false'}`,
+            `allow_code_pr=${allowCodePr ? 'true' : 'false'}`,
+            `read_only_mode=${readOnlyMode ? 'true' : 'false'}`,
+            `slash_command=${sanitizeGitHubOutputValue(slashCommand)}`
+          ];
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, out.join('\n') + '\n', 'utf8');
+          EOF
+
+      - name: Ensure standard lights-on labels exist
+        if: steps.config.outputs.enabled != 'false' && (steps.authorize.outputs.should_run_agent == 'true' || steps.authorize.outputs.slash_command != '')
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node .github/lights-on/runner/ensure-labels.mjs
+
+      - name: Execute deterministic maintainer slash commands
+        if: steps.config.outputs.enabled != 'false' && steps.authorize.outputs.slash_command != '' && steps.authorize.outputs.should_run_agent == 'false'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          SLASH_COMMAND: ${{ steps.authorize.outputs.slash_command }}
+          MERGE_METHOD: ${{ steps.config.outputs.merge_method || 'squash' }}
+        run: |
+          case "$SLASH_COMMAND" in
+            ignore)
+              node .github/lights-on/runner/github-io.mjs issue edit "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --add-label "lights-on:ignore"
+              ;;
+            hold)
+              node .github/lights-on/runner/github-io.mjs issue edit "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --add-label "lights-on:hold"
+              ;;
+            pause)
+              node .github/lights-on/runner/github-io.mjs issue edit "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --add-label "lights-on:pause"
+              ;;
+            automerge)
+              node .github/lights-on/runner/github-io.mjs issue edit "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --add-label "lights-on:automerge"
+              ;;
+            review|re-review)
+              node .github/lights-on/runner/github-io.mjs issue edit "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --add-label "lights-on:re-review"
+              ;;
+            merge)
+              node .github/lights-on/runner/github-io.mjs issue edit "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --add-label "lights-on:approved-override,lights-on:automerge,lights-on:re-review"
+              ;;
+          esac
+
+      - name: Run Lights On Agent
+        id: agent
+        if: steps.config.outputs.enabled != 'false' && steps.authorize.outputs.should_run_agent == 'true'
+        uses: $/.github/actions/lights-on-agent
+        env:
+          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          LIGHTS_ON_READ_ONLY: ${{ steps.authorize.outputs.read_only_mode }}
+          ALLOW_WORKFLOW_EDIT: ${{ steps.authorize.outputs.slash_command == 'update-threat-model' && 'true' || 'false' }}
+        with:
+          sandbox_image: ${{ vars.LIGHTS_ON_SANDBOX_IMAGE }}
+          task: ${{ (github.event.label.name == 'lights-on:migrate-dep' || steps.authorize.outputs.slash_command == 'migrate-dep') && 'dependency-migration-planner' || (steps.authorize.outputs.slash_command == 'release' && 'release-manager' || (steps.authorize.outputs.slash_command == 'update-threat-model' && 'bootstrap-threat-model' || 'issue-responder')) }}
+          tier: ${{ (github.event.label.name == 'lights-on:migrate-dep' || steps.authorize.outputs.slash_command == 'migrate-dep' || steps.authorize.outputs.slash_command == 'release' || steps.authorize.outputs.slash_command == 'update-threat-model') && 'reasoning' || 'default' }}
+          event_file: /tmp/lights-on-event.json
+          output_file: /tmp/lights-on-result.json
+
+      - name: Apply Triage, Comment, or Fix PR
+        if: steps.config.outputs.enabled != 'false' && steps.authorize.outputs.should_run_agent == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          REPO_FULL_NAME: ${{ github.repository }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch || 'main' }}
+          ALLOW_CODE_PR: ${{ steps.authorize.outputs.allow_code_pr }}
+          READ_ONLY_MODE: ${{ steps.authorize.outputs.read_only_mode }}
+          SLASH_COMMAND: ${{ steps.authorize.outputs.slash_command }}
+        run: |
+          node --input-type=module << 'EOF'
+          import fs from 'node:fs';
+          import { execFileSync } from './.github/lights-on/runner/github-io.mjs';
+          import { plainPublicationText } from './.github/lights-on/runner/publication-text.mjs';
+          import * as stateStore from './.github/lights-on/runner/state-store.mjs';
+          import { publishPr } from './.github/lights-on/runner/publish-pr.mjs';
+          import { reportWorkflowEvent, githubItemUrl } from './.github/lights-on/runner/workflow-report.mjs';
+          import { assertWriteTargetIsInstalledRepo, neutralizeCrossRepoAutoLinks } from './.github/lights-on/runner/sync-upstream.mjs';
+
+          const installedRepo = assertWriteTargetIsInstalledRepo(
+            process.env.REPO_FULL_NAME || process.env.GITHUB_REPOSITORY,
+            process.env.GITHUB_REPOSITORY
+          );
+          const upstreamRepo = process.env.LIGHTS_ON_UPSTREAM_REPO || '';
+
+          const resultPath = '/tmp/lights-on-result.json';
+          if (!fs.existsSync(resultPath)) {
+            console.log('No agent result file found at /tmp/lights-on-result.json; skipping post-processing.');
+            process.exit(0);
+          }
+
+          const result = JSON.parse(fs.readFileSync(resultPath, 'utf8'));
+          if (result.status !== 'completed' || result.dry_run) {
+            reportWorkflowEvent({ title: 'Issue publication skipped', message: 'No completed live agent result is available.' });
+            process.exit(0);
+          }
+          const issueNumber = String(process.env.ISSUE_NUMBER || '').trim();
+          if (!issueNumber || !/^\d+$/.test(issueNumber)) {
+            console.log('No valid issue number present in environment; skipping.');
+            process.exit(0);
+          }
+
+          const { labelsToAdd, labelsToRemove } = stateStore.sanitizeAgentLabelChanges(
+            result.labels_to_add,
+            result.labels_to_remove,
+            { readOnly: process.env.READ_ONLY_MODE === 'true' }
+          );
+
+          if (labelsToAdd.length > 0) {
+            try {
+              execFileSync('gh', ['issue', 'edit', issueNumber, '--repo', installedRepo, '--add-label', labelsToAdd.join(',')], { stdio: 'inherit' });
+            } catch (err) {
+              reportWorkflowEvent({ level: 'error', title: 'Issue label update failed', message: err.message });
+              throw err;
+            }
+          }
+
+          if (labelsToRemove.length > 0) {
+            try {
+              execFileSync('gh', ['issue', 'edit', issueNumber, '--repo', installedRepo, '--remove-label', labelsToRemove.join(',')], { stdio: 'inherit' });
+            } catch (err) {
+              reportWorkflowEvent({ level: 'error', title: 'Issue label cleanup failed', message: err.message });
+              throw err;
+            }
+          }
+
+          const statePayload = {
+            issue_number: Number(issueNumber),
+            action_taken: String(result.action_taken || 'commented').slice(0, 64),
+            disposition: result.disposition ? String(result.disposition).slice(0, 64) : null,
+            updated_at: new Date().toISOString()
+          };
+
+          const rawComment = typeof result.comment_body === 'string'
+            ? neutralizeCrossRepoAutoLinks(result.comment_body.trim(), upstreamRepo, { installedRepo })
+            : '';
+          if (rawComment) {
+            const finalComment = stateStore.formatStateComment(rawComment, statePayload);
+
+            fs.writeFileSync('/tmp/lights-on-comment.md', finalComment, 'utf8');
+            execFileSync('gh', ['issue', 'comment', issueNumber, '--repo', installedRepo, '--body-file', '/tmp/lights-on-comment.md'], { stdio: 'inherit' });
+            reportWorkflowEvent({ title: 'Issue response posted', message: `Posted a response on #${issueNumber}.`,
+              url: githubItemUrl(installedRepo, 'issues', issueNumber) });
+          }
+
+          const statusOut = execFileSync('git', ['status', '--porcelain'], { encoding: 'utf8' }).trim();
+          const actionTaken = String(result.action_taken || '').toLowerCase();
+          const wantsPr = actionTaken.includes('pr') || actionTaken.includes('fix') || actionTaken.includes('migrate') || actionTaken.includes('threat_model') || Boolean(result.pr_title);
+
+          if (statusOut && wantsPr && process.env.ALLOW_CODE_PR === 'true') {
+            const branchName = stateStore.sanitizeBranchName(
+              result.branch_name,
+              `lights-on/issue-${issueNumber}-${Date.now()}`
+            );
+            const prTitle = plainPublicationText(result.pr_title || `fix: resolve issue #${issueNumber}`);
+            const rawPrBody = neutralizeCrossRepoAutoLinks(
+              result.pr_body || result.summary || `Automated fix for #${issueNumber}.`,
+              upstreamRepo
+            );
+            const prBody = stateStore.formatStateComment(`${rawPrBody}\n\nCloses #${issueNumber}`, { issue_number: Number(issueNumber), automated: true });
+
+            execFileSync('git', ['config', 'user.name', 'github-actions[bot]'], { stdio: 'inherit' });
+            execFileSync('git', ['config', 'user.email', '41898282+github-actions[bot]@users.noreply.github.com'], { stdio: 'inherit' });
+            execFileSync('git', ['checkout', '-B', branchName], { stdio: 'inherit' });
+            execFileSync('git', ['add', '-A'], { stdio: 'inherit' });
+            execFileSync('git', ['commit', '-m', prTitle], { stdio: 'inherit' });
+            execFileSync('git', ['push', '-u', 'origin', branchName, '--force'], { stdio: 'inherit' });
+
+            fs.writeFileSync('/tmp/lights-on-pr-body.md', prBody, 'utf8');
+            publishPr({ repo: installedRepo, head: branchName, base: process.env.DEFAULT_BRANCH || 'main',
+              title: prTitle, bodyFile: '/tmp/lights-on-pr-body.md', labels: ['lights-on:agent-pr'], closesIssue: Number(issueNumber) });
+          } else {
+            reportWorkflowEvent({ title: 'Issue-fix publication skipped',
+              message: process.env.ALLOW_CODE_PR !== 'true' ? 'This event does not authorize a code PR.' :
+                'No requested code fix was available to publish.' });
+          }
+          EOF
+
+      - name: Persist shared budget even after failed inference
+        if: always() && steps.agent.outcome != '' && steps.agent.outcome != 'skipped'
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: |
+            /tmp/lights-on-cache
+            /tmp/lights-on-threat-model
+          key: lights-on-state-v2-${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt }}

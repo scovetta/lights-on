@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Lights On runs routine open-source maintenance through GitHub Actions. Get started with issue responses, dependency updates, security fixes and reviewed pull requests.">
+  <meta name="theme-color" content="#f6f5ef">
+  <title>Lights On &mdash; Keep good projects working</title>
+  <link rel="icon" href="./assets/light.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="./index.html" aria-label="Lights On home">
+        <img src="./assets/light.svg" width="36" height="36" alt="">
+        <span>lights on<span class="brand-dot">.</span></span>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="#maintenance">What it does</a>
+        <a href="#get-started">Get started</a>
+        <a href="#docs">Docs</a>
+        <a class="nav-source" href="https://github.com/scovetta/lights-on">GitHub <span aria-hidden="true">&nearr;</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="hero container" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Open-source maintenance, on GitHub Actions</p>
+        <h1 id="hero-title">Keep good<br>projects <span class="highlight">working.</span></h1>
+        <p class="hero-description">The project is useful. Your time is limited. Lights On handles routine maintenance within the scope, tests and permissions you set.</p>
+        <p class="hero-detail">Issue responses, dependency updates, security fixes and pull request reviews. Not a new product direction.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#get-started">Set up Lights On <span aria-hidden="true">&rarr;</span></a>
+          <a class="text-link" href="#how-it-works">See how it works <span aria-hidden="true">&darr;</span></a>
+        </div>
+        <p class="hero-footnote">For maintained repositories and authorized maintenance forks.</p>
+      </div>
+      <figure class="workflow-preview">
+        <div class="preview-header">
+          <span class="preview-label"><span class="status-dot" aria-hidden="true"></span> lights-on / maintenance</span>
+          <span class="preview-tag">Example flow</span>
+        </div>
+        <div class="preview-body">
+          <p class="preview-kicker">From a report to a reviewed change</p>
+          <ol class="flow">
+            <li>
+              <span class="flow-number" aria-hidden="true">01</span>
+              <div><strong>Pick up routine work</strong><p>An issue, an advisory, a scheduled check.</p></div>
+            </li>
+            <li>
+              <span class="flow-number" aria-hidden="true">02</span>
+              <div><strong>Prepare a candidate</strong><p>Work in a temporary copy. Run commands offline.</p></div>
+            </li>
+            <li>
+              <span class="flow-number" aria-hidden="true">03</span>
+              <div><strong>Review against your rules</strong><p>Check the scope, independent review and CI.</p></div>
+            </li>
+            <li>
+              <span class="flow-number flow-number-last" aria-hidden="true">04</span>
+              <div><strong>Merge only when permitted</strong><p>Missing evidence or permission blocks the path.</p></div>
+            </li>
+          </ol>
+        </div>
+        <figcaption><span aria-hidden="true">&#8627;</span> The controller checks the gates. The model cannot waive them.</figcaption>
+      </figure>
+    </section>
+
+    <div class="provider-strip">
+      <div class="container provider-strip-inner">
+        <p>Your choice of inference provider</p>
+        <ul aria-label="Supported providers">
+          <li>GitHub Copilot</li><li>Claude</li><li>Codex</li><li>OpenRouter</li>
+        </ul>
+        <a href="#providers">Provider setup <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </div>
+
+    <section class="section container" id="maintenance" aria-labelledby="maintenance-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">The work that keeps coming back</p>
+          <h2 id="maintenance-title">Maintenance, not reinvention.</h2>
+        </div>
+        <p>Lights On is built for stable projects that still need care. You define what belongs in the project; the automation works within that purpose.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <span class="card-index" aria-hidden="true">01 / ISSUES</span>
+          <h3>Keep the conversation moving</h3>
+          <p>Classify reports, answer usage questions, ask for reproductions and propose fixes using repository context and the threat model.</p>
+        </article>
+        <article class="feature-card">
+          <span class="card-index" aria-hidden="true">02 / DEPENDENCIES</span>
+          <h3>Handle the next update</h3>
+          <p>Scan advisories and maintenance health. Prepare eligible npm patch/minor updates, or plan migrations that need your approval before execution.</p>
+        </article>
+        <article class="feature-card">
+          <span class="card-index" aria-hidden="true">03 / SECURITY</span>
+          <h3>Work through security findings</h3>
+          <p>Assess OSV findings against the project's security contract and propose fixes. Verification depends on the tools and offline cache you provide.</p>
+        </article>
+        <article class="feature-card">
+          <span class="card-index" aria-hidden="true">04 / DOCUMENTATION</span>
+          <h3>Make the answers easier to find</h3>
+          <p>Turn usage questions and repository context into documentation changes, and address instructions that have drifted from the code.</p>
+        </article>
+        <article class="feature-card">
+          <span class="card-index" aria-hidden="true">05 / PULL REQUESTS</span>
+          <h3>Review before anything merges</h3>
+          <p>Review intended use, compatibility and tests. Controller checks enforce the configured author, file, review and current-CI requirements.</p>
+        </article>
+        <article class="feature-card">
+          <span class="card-index" aria-hidden="true">06 / RELEASES</span>
+          <h3>Prepare the next patch or minor</h3>
+          <p>Propose release PRs, then build and publish through separate jobs. Releases have their own controls and registry setup; enable them deliberately.</p>
+        </article>
+      </div>
+      <aside class="scope-note">
+        <strong>Scanning is not the same as update support.</strong>
+        <p>Scans cover several ecosystems. Routine updates currently need an eligible npm <code>package-lock.json</code> v2/v3 project, an existing test script and an offline cache. Workspaces and competing lockfiles block that path. <a href="https://github.com/scovetta/lights-on/blob/main/docs/maintenance.md">Read the maintenance guide <span aria-hidden="true">&rarr;</span></a></p>
+      </aside>
+    </section>
+
+    <section class="boundary-section" id="how-it-works" aria-labelledby="boundary-title">
+      <div class="container boundary-grid">
+        <div>
+          <p class="eyebrow">How it works</p>
+          <h2 id="boundary-title">The model proposes.<br>Your policy decides.</h2>
+          <p>GitHub Actions is the primary home for Lights On. Trusted controller code calls a provider, dispatches tools and checks the result before publication.</p>
+          <p>Model-requested commands run in a restricted Docker worker without network access or credentials. The publisher writes to the installed repository; upstream repositories remain read-only.</p>
+          <a class="text-link" href="https://github.com/scovetta/lights-on/blob/main/docs/architecture.md">Read the architecture and boundaries <span aria-hidden="true">&rarr;</span></a>
+        </div>
+        <div class="boundary-details">
+          <div>
+            <span class="boundary-symbol" aria-hidden="true">/</span>
+            <h3>A separate place to work</h3>
+            <p>Candidate file tools operate on a temporary copy. Commands stay in the offline worker, not the controller's host shell.</p>
+          </div>
+          <div>
+            <span class="boundary-symbol" aria-hidden="true">?</span>
+            <h3>Evidence before a merge</h3>
+            <p>Independent review and explicitly configured CI checks are required by default. An empty required-check list blocks ordinary auto-merge.</p>
+          </div>
+          <div>
+            <span class="boundary-symbol" aria-hidden="true">!</span>
+            <h3>Still needs an owner</h3>
+            <p>Tests and model reviews can miss defects. Keep source checkouts free of secrets: source and task context may be sent to the selected provider.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="get-started" aria-labelledby="start-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Start small. Read the results.</p>
+          <h2 id="start-title">Give it a project, not a blank check.</h2>
+        </div>
+        <p>Use a repository you maintain or your own maintenance fork on GitHub.com. Start with merges and releases disabled while you check the work.</p>
+      </div>
+      <ol class="setup-steps">
+        <li class="setup-step">
+          <div class="step-copy">
+            <span class="step-number" aria-hidden="true">01</span>
+            <h3>Review and install the files</h3>
+            <p>Check that the target's <code>origin</code> points to the repository you intend to maintain. Run the installer from a reviewed Lights On source checkout; replace the example paths.</p>
+            <p>The target directory must exist. Preview first, then remove the dry-run flag to install. The installer does not commit or push.</p>
+          </div>
+          <div class="step-content">
+            <div class="code-panel">
+              <div class="code-label">Shell <span>Linux / macOS</span></div>
+              <pre tabindex="0" aria-label="Shell installation preview"><code>sh /path/to/lights-on/install.sh /path/to/my-project --dry-run</code></pre>
+            </div>
+            <div class="code-panel">
+              <div class="code-label">PowerShell <span>Windows</span></div>
+              <pre tabindex="0" aria-label="PowerShell installation preview"><code>&amp; C:\src\lights-on\install.ps1 -TargetDir C:\src\my-project -DryRun</code></pre>
+            </div>
+            <p class="small-note">Existing <code>.github/lights-on.yml</code> is preserved unless forced; bundled automation files are replaced. <a href="https://github.com/scovetta/lights-on/blob/main/docs/getting-started.md#installation-side-effects">Installation side effects</a></p>
+          </div>
+        </li>
+        <li class="setup-step">
+          <div class="step-copy">
+            <span class="step-number" aria-hidden="true">02</span>
+            <h3>Choose a provider and limits</h3>
+            <p>Add one <a href="#providers">provider secret</a> in <strong>Settings &gt; Secrets and variables &gt; Actions</strong>. Confirm your account has access to the selected model.</p>
+            <p>Under <strong>Settings &gt; Actions &gt; General</strong>, allow the installed workflows to write repository content and create pull requests. Organization policy may restrict this.</p>
+          </div>
+          <div class="step-content setup-callout">
+            <h4>Before paying for unattended work</h4>
+            <p>Leave <code>events.allow_external_triggers: false</code>. External issue, comment and PR activity then needs maintainer authorization before paid inference; scheduled and manual work still runs.</p>
+            <p>The default is <strong>25 tool-loop turns per provider attempt</strong>, with additional token and model-call limits. Use provider-side spending caps too: recorded quotas are not a hard global bill, and Copilot dollar cost is unknown.</p>
+            <a href="https://github.com/scovetta/lights-on/blob/main/docs/configuration.md#usage-and-rate-limits">Limits and accounting <span aria-hidden="true">&rarr;</span></a>
+          </div>
+        </li>
+        <li class="setup-step">
+          <div class="step-copy">
+            <span class="step-number" aria-hidden="true">03</span>
+            <h3>Start in review-only mode</h3>
+            <p>Edit the existing keys in <code>.github/lights-on.yml</code>; do not append duplicate sections. These are recommended rollout settings, not all shipped defaults.</p>
+            <p><strong>Review-only still allows comments, branches and PRs.</strong> It prevents automatic merging, but does not disable releases. Set the separate release switch to <code>false</code>.</p>
+          </div>
+          <div class="step-content">
+            <div class="code-panel">
+              <div class="code-label">.github/lights-on.yml <span>Initial rollout</span></div>
+              <pre tabindex="0" aria-label="Recommended initial rollout configuration"><code>autonomy:
+  mode: review-only
+  require_ci_pass: true
+  require_independent_agent_review: true
+  required_checks: []
+
+release:
+  enabled: false
+
+toolchains:
+  enabled: false</code></pre>
+            </div>
+          </div>
+        </li>
+        <li class="setup-step">
+          <div class="step-copy">
+            <span class="step-number" aria-hidden="true">04</span>
+            <h3>Prepare the worker, then run</h3>
+            <p>The supplied Actions workflows use Ubuntu runners and Docker. The default worker provides Node.js; supply other tools and the offline dependencies your tests need.</p>
+            <p>Review and commit the installed <code>.github</code> files, then push. Open <strong>Actions &gt; Lights On - Scheduled Maintenance &gt; Run workflow</strong> and select <code>bootstrap</code>.</p>
+          </div>
+          <div class="step-content setup-callout">
+            <h4>Inspect a complete proposal and review cycle</h4>
+            <p>Read the run summary and any threat-model PR. Confirm your normal CI and the independent review jobs actually ran: GitHub can suppress follow-on events caused by <code>GITHUB_TOKEN</code>. Use manual dispatches when needed.</p>
+            <p>Before enabling merges, set exact required check names and App IDs, match the PR gate's CI workflow names, and configure branch protection. The empty check list above deliberately blocks ordinary auto-merge.</p>
+            <a href="https://github.com/scovetta/lights-on/blob/main/docs/getting-started.md">Follow the complete getting-started guide <span aria-hidden="true">&rarr;</span></a>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="providers-section" id="providers" aria-labelledby="providers-title">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">One controller, four providers</p>
+            <h2 id="providers-title">Use the account you choose.</h2>
+          </div>
+          <p>With <code>engine.provider: auto</code>, credentials are checked in the order below. You can select a provider and model explicitly in the configuration.</p>
+        </div>
+        <div class="provider-grid">
+          <article class="provider-card">
+            <span class="card-index">01 / <code>copilot</code></span>
+            <h3>GitHub Copilot</h3>
+            <p>Pinned, inference-only CLI by default. The SDK backend is opt-in.</p>
+            <span class="secret-label">Actions secret</span>
+            <code class="secret">COPILOT_GITHUB_TOKEN</code>
+          </article>
+          <article class="provider-card">
+            <span class="card-index">02 / <code>claude</code></span>
+            <h3>Claude</h3>
+            <p>Anthropic Messages API, with tools dispatched by the controller.</p>
+            <span class="secret-label">Actions secret</span>
+            <code class="secret">ANTHROPIC_API_KEY</code>
+          </article>
+          <article class="provider-card">
+            <span class="card-index">03 / <code>codex</code></span>
+            <h3>Codex</h3>
+            <p>OpenAI Responses API, not an unrestricted coding CLI.</p>
+            <span class="secret-label">Actions secret</span>
+            <code class="secret">OPENAI_API_KEY</code>
+          </article>
+          <article class="provider-card">
+            <span class="card-index">04 / <code>openrouter</code></span>
+            <h3>OpenRouter</h3>
+            <p>Choose a model that supports the required tool-calling interface.</p>
+            <span class="secret-label">Actions secret</span>
+            <code class="secret">OPENROUTER_API_KEY</code>
+          </article>
+        </div>
+        <p class="small-note">The ordinary repository <code>GITHUB_TOKEN</code> is not a Copilot credential. Verify account and model access before enabling unattended runs. <a href="https://github.com/scovetta/lights-on/blob/main/docs/configuration.md#provider-routing">Model defaults and routing</a> &middot; <a href="https://github.com/scovetta/lights-on/blob/main/docs/configuration.md#copilot-sdk-backend">SDK opt-in</a></p>
+      </div>
+    </section>
+
+    <section class="section container" id="controls" aria-labelledby="controls-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Decisions that stay with you</p>
+          <h2 id="controls-title">Choose what can happen next.</h2>
+        </div>
+        <p>Proposing a change, merging it and publishing a package are different permissions. Configure each before leaving work unattended.</p>
+      </div>
+      <div class="controls-grid">
+        <article>
+          <h3>Make CI requirements explicit</h3>
+          <p>Use individual check names and their publishing App IDs, not just workflow names. Discovery can propose a list from enforced GitHub rules; review it before writing configuration.</p>
+          <a href="https://github.com/scovetta/lights-on/blob/main/docs/configuration.md#discover-required-checks">Discover required checks <span aria-hidden="true">&rarr;</span></a>
+        </article>
+        <article>
+          <h3>Authorize wider changes separately</h3>
+          <p>External PR auto-merge is off by default. Dependency migrations need an approved plan and a manual execution task. Optional Node toolchain proposals carry a review hold.</p>
+          <a href="https://github.com/scovetta/lights-on/blob/main/docs/maintenance.md">Task-specific controls <span aria-hidden="true">&rarr;</span></a>
+        </article>
+        <article>
+          <h3>Keep releases off until ready</h3>
+          <p>Set <code>release.enabled: false</code> during rollout. Before enabling it, check package identity, registry authentication and the separate build/upload path.</p>
+          <a href="https://github.com/scovetta/lights-on/blob/main/docs/releases.md">Release setup <span aria-hidden="true">&rarr;</span></a>
+        </article>
+        <article>
+          <h3>Know how to stop new jobs</h3>
+          <p>Set the repository variable <code>LIGHTS_ON_ENABLED</code> to the literal <code>false</code> to stop new Lights On jobs. Inspect any in-flight runs and already-published changes separately.</p>
+          <a href="https://github.com/scovetta/lights-on/blob/main/docs/operations.md">Operations and recovery <span aria-hidden="true">&rarr;</span></a>
+        </article>
+      </div>
+      <aside class="local-callout">
+        <div>
+          <p class="eyebrow">Optional / Linux and WSL</p>
+          <h3>Need a protected local run?</h3>
+          <p>The local launcher uses an operator-owned policy, audited default-deny network access and offline workers. It does not execute Actions YAML, and publication needs explicit grants. Unsupported tests remain blockers.</p>
+        </div>
+        <a class="button button-secondary" href="https://github.com/scovetta/lights-on/blob/main/docs/local-container.md">Local execution guide <span aria-hidden="true">&rarr;</span></a>
+      </aside>
+    </section>
+
+    <section class="docs-section" id="docs" aria-labelledby="docs-title">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">The details are in the repository</p>
+            <h2 id="docs-title">Read before you enable.</h2>
+          </div>
+          <p>This page is the introduction. The guides cover prerequisites, configuration details and known limits.</p>
+        </div>
+        <div class="docs-grid">
+          <a class="doc-link" href="https://github.com/scovetta/lights-on/blob/main/docs/getting-started.md"><span><strong>Getting started</strong><span>Install, configure and inspect the first run.</span></span><span aria-hidden="true">&nearr;</span></a>
+          <a class="doc-link" href="https://github.com/scovetta/lights-on/blob/main/docs/configuration.md"><span><strong>Configuration</strong><span>Providers, exact checks, limits and defaults.</span></span><span aria-hidden="true">&nearr;</span></a>
+          <a class="doc-link" href="https://github.com/scovetta/lights-on/blob/main/docs/maintenance.md"><span><strong>Maintenance guide</strong><span>Tasks, dependency validation and migrations.</span></span><span aria-hidden="true">&nearr;</span></a>
+          <a class="doc-link" href="https://github.com/scovetta/lights-on/blob/main/docs/architecture.md"><span><strong>Architecture</strong><span>Controllers, workers and publication boundaries.</span></span><span aria-hidden="true">&nearr;</span></a>
+          <a class="doc-link" href="https://github.com/scovetta/lights-on/blob/main/THREAT_MODEL.md"><span><strong>Threat model</strong><span>The project's security contract and assumptions.</span></span><span aria-hidden="true">&nearr;</span></a>
+          <a class="doc-link" href="https://github.com/scovetta/lights-on/blob/main/docs/releases.md"><span><strong>Releases</strong><span>Version proposals, packages and registry identity.</span></span><span aria-hidden="true">&nearr;</span></a>
+          <a class="doc-link" href="https://github.com/scovetta/lights-on/blob/main/docs/operations.md"><span><strong>Operations</strong><span>Diagnose failures, stop runs and recover.</span></span><span aria-hidden="true">&nearr;</span></a>
+          <a class="doc-link" href="https://github.com/scovetta/lights-on/blob/main/docs/mission-vision-strategy-roadmap.md"><span><strong>Direction and roadmap</strong><span>What exists now, and what still needs evidence.</span></span><span aria-hidden="true">&nearr;</span></a>
+        </div>
+        <p class="evaluation-note"><strong>A note on evidence.</strong> The proposed 100-project evaluation has not run. Current capabilities are documented, but effectiveness across a representative set of projects has not yet been measured.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div><a class="brand" href="./index.html"><img src="./assets/light.svg" width="32" height="32" alt=""><span>lights on<span class="brand-dot">.</span></span></a><p>Less routine work. Still your project.</p></div>
+      <nav aria-label="Footer navigation">
+        <a href="https://github.com/scovetta/lights-on">Source on GitHub</a>
+        <a href="https://github.com/scovetta/lights-on/blob/main/docs/README.md">All documentation</a>
+        <a href="#main">Back to top <span aria-hidden="true">&uarr;</span></a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
