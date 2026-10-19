@@ -1,5 +1,7 @@
 # Lights On
 
+**HIGHLY EXPERIMENTAL:** Lights On is an experiment and not ready for use in anything that matters. It may contain serious security flaws, including susceptibility to prompt injection and similar. Be extremely careful.
+
 Lights On runs routine maintenance for open-source projects through GitHub
 Actions. It uses Copilot, Claude, Codex or OpenRouter to respond to issues,
 update dependencies, propose security fixes and review pull requests.
