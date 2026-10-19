@@ -12,7 +12,9 @@ permissions: {}
 jobs:
   discover:
     name: Discover Required CI Checks
-    if: github.ref_name == github.event.repository.default_branch && vars.LIGHTS_ON_ENABLED != 'false'
+    if: >-
+      github.repository != 'scovetta/lights-on' &&
+      github.ref_name == github.event.repository.default_branch && vars.LIGHTS_ON_ENABLED != 'false'
     runs-on: ubuntu-latest
     permissions:
       contents: read # Read the trusted configuration and target-branch commits.

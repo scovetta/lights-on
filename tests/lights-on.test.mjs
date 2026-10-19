@@ -708,6 +708,8 @@ describe('6. Multi-Engine Runner & OpenRouter Tool Loop (run-agent.mjs & openrou
         outputPath: outPath,
         provider: 'claude',
         model: 'claude-opus-5-5',
+        env: {},
+        stateFile: path.join(tmpDir, 'state.json'),
         dryRun: true
       });
 
@@ -718,7 +720,6 @@ describe('6. Multi-Engine Runner & OpenRouter Tool Loop (run-agent.mjs & openrou
       assert.equal(fs.existsSync(outPath), true);
     } finally {
       fs.rmSync(tmpDir, { recursive: true, force: true });
-      fs.rmSync(path.join(REPO_ROOT, '.github', 'lights-on', 'tmp'), { recursive: true, force: true });
     }
   });
 

@@ -48,6 +48,7 @@ jobs:
       pull-requests: write # Inspect existing PRs and publish maintenance proposals.
     timeout-minutes: 45
     if: >-
+      github.repository != 'scovetta/lights-on' &&
       vars.LIGHTS_ON_ENABLED != 'false' &&
       (inputs.task != 'migration' || github.ref_name == github.event.repository.default_branch)
     steps:

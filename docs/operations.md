@@ -25,7 +25,11 @@ in GitHub Actions. The runner reads YAML `enabled: false` after checkout and
 configuration loading, so that setting cannot prevent startup.
 There is no separate global `LIGHTS_ON_PAUSED` variable.
 
-The Lights On self-test `ci.yml` is independent of this switch.
+The Lights On self-test `ci.yml` and website deployment `pages.yml` are independent
+of this switch. All `lights-on-*.yml` jobs also exclude `scovetta/lights-on`
+unconditionally: they are templates for other repositories, not self-maintenance
+for the Lights On source repository. Matching events can still appear as skipped
+workflow runs; no Lights On job starts.
 
 ## Read run outcomes
 

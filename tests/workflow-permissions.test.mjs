@@ -54,6 +54,21 @@ test('read-only workflows cancel obsolete runs without changing the shared maint
   }
 });
 
+test('every Lights On job excludes the source repository without disabling adopters, CI or Pages', () => {
+  for (const file of Object.keys(expected).filter((name) => name.startsWith('lights-on-'))) {
+    const source = read(file);
+    for (const job of Object.keys(parseSimpleYaml(source).jobs)) {
+      const block = source.split(`\n  ${job}:\n`)[1].split(/\n  [\w-]+:\n/)[0];
+      assert.match(block, /^    if: >-\n      github\.repository != 'scovetta\/lights-on' &&\n/m, `${file}/${job}`);
+    }
+  }
+  const template = parseSimpleYaml(fs.readFileSync(path.join(ROOT, '.github', 'lights-on.yml'), 'utf8'));
+  assert.equal(template.enabled, true);
+  for (const file of ['ci.yml', 'pages.yml']) {
+    assert.doesNotMatch(read(file), /github\.repository != 'scovetta\/lights-on'|LIGHTS_ON_ENABLED/, file);
+  }
+});
+
 test('inference action calls do not explicitly receive repository-write tokens', () => {
   let count = 0;
   for (const file of Object.keys(expected)) {
@@ -125,7 +140,8 @@ test('the actual release planner wires secret presence, immutable source and emp
   }
   const workflow = parseSimpleYaml(source);
   for (const [job, kind] of [['upload-oidc', 'oidc'], ['upload-token', 'token']]) {
-    assert.match(workflow.jobs[job].if, new RegExp(`has_${kind}_packages == 'true'`));
+    const block = source.split(`\n  ${job}:\n`)[1].split(/\n  [\w-]+:\n/)[0];
+    assert.match(block, new RegExp(`has_${kind}_packages == 'true'`));
     assert.deepEqual(workflow.jobs[job].needs, ['metadata', 'build', 'tag']);
   }
   const oidc = source.split('\n  upload-oidc:\n')[1].split('\n  upload-token:\n')[0];

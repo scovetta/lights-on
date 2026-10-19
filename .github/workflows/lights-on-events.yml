@@ -23,6 +23,7 @@ jobs:
       pull-requests: write # Open candidate PRs and apply PR-comment controls.
     timeout-minutes: 25
     if: >-
+      github.repository != 'scovetta/lights-on' &&
       vars.LIGHTS_ON_ENABLED != 'false' &&
       (
         github.actor != 'github-actions[bot]' &&

@@ -9,6 +9,11 @@ Use [protected local execution](local-container.md) to restrict outgoing network
 access. Its dependencies and tool images are separate from the core controllers.
 The opt-in Copilot SDK backend has its own isolated dependency installation.
 
+The `lights-on-*.yml` workflows are installation templates. Every job excludes
+`scovetta/lights-on`, including manual dispatches, so the source repository does
+not maintain or publish itself. Self-test CI and website deployment remain
+available. The configuration template stays enabled for adopting repositories.
+
 ## Prerequisites
 
 | Work | Requirements |
@@ -36,6 +41,10 @@ node --test
 The tests mock external provider/GitHub requests and skip some platform-specific
 or opt-in cases. Check live credentials, registry setup and target CI in your
 deployment; the mock suite cannot establish those.
+
+Runner fixtures should pass an explicit environment and a temporary state file.
+Otherwise the CI event name, configuration overrides or a local budget ledger
+can change the result. Do not bypass production event checks to make tests pass.
 
 Protected-mode container tests use controlled TLS/Git/provider fixtures, with no
 real remote mutations:

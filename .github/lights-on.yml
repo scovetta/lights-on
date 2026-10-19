@@ -6,6 +6,7 @@
 version: 1
 
 # Global kill switch (can also be set via GitHub Repository Variable LIGHTS_ON_ENABLED=false)
+# Keep this template enabled for adopters; workflow guards exclude scovetta/lights-on itself.
 enabled: true
 
 events:
