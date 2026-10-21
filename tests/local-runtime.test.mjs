@@ -139,6 +139,13 @@ test('actual scoped egress runs real Node and Git against controlled TLS, withou
     assert.ok(mutations.every((item) => item.path.startsWith('/repos/scovetta/test-aw1/')));
     const proposal = mutations.find((item) => item.path.endsWith('/pulls'));
     assert.match(proposal.body.body, /^```text/);
+    assert.match(proposal.body.body, /Changed files\n\n- README\.md/);
+    assert.match(proposal.body.body, /Local validation: passed/);
+    assert.match(proposal.body.body, /Command: node test\.js/);
+    const publishedCommit = mutations.find((item) => item.path.endsWith('/git/commits'));
+    assert.match(publishedCommit.body.message, /\n\nSummary\n\nfixture/);
+    assert.match(publishedCommit.body.message, /Local validation: passed/);
+    assert.doesNotMatch(publishedCommit.body.message, /upstream\/repo#123/);
     assert.doesNotMatch(proposal.body.title, /upstream\/repo#123/);
     assert.match(mutations.find((item) => item.path.endsWith('/git/refs')).body.ref, /^refs\/heads\/lights-on\/local-/);
     await assert.rejects(main({ command: 'publish', policy: policyFile, run: runPath,

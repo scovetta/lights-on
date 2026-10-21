@@ -2,7 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { assert, digestObject } from './policy.mjs';
 import { github, pages, proxyFetch, writeJson } from './network/fetch.mjs';
-import { literalPublicationBody, plainPublicationText } from '../.github/lights-on/runner/publication-text.mjs';
+import { literalPublicationBody, plainPublicationText, commitPublicationText } from '../.github/lights-on/runner/publication-text.mjs';
+import { describeChange } from '../.github/lights-on/runner/describe-change.mjs';
 import { evaluatePrSafety } from '../.github/lights-on/runner/verify-pr-safety.mjs';
 import { evaluateCi } from '../.github/lights-on/runner/verify-ci.mjs';
 import { loadConfig } from '../.github/lights-on/runner/load-config.mjs';
@@ -73,6 +74,10 @@ if (capabilities.includes('publish')) {
       if (['dependencies', 'migration'].includes(request.task)) {
         assert(result.dependency_validation?.status === 'passed', 'Dependency publication requires controller validation.');
       }
+      const title = plainPublicationText(result.pr_title || result.prTitle || `chore: local Lights On ${request.task}`);
+      const description = describeChange({ result, files: changes, validation,
+        notes: result.hold ? ['Maintainer review required; created as a draft.'] : [],
+        env: { GITHUB_REPOSITORY: repo } });
       const branch = `lights-on/local-${run.id}`;
       const commit = await github(`${prefix}/git/commits/${snapshot.sourceSha}`);
       const tree = [];
@@ -83,14 +88,13 @@ if (capabilities.includes('publish')) {
         tree.push({ path: name, mode: file && file.mode & 0o111 ? '100755' : '100644', type: 'blob', sha: blob?.sha || null });
       }
       const createdTree = await github(`${prefix}/git/trees`, { method: 'POST', body: { base_tree: commit.tree.sha, tree } });
-      const title = plainPublicationText(result.pr_title || result.prTitle || `chore: local Lights On ${request.task}`);
       const createdCommit = await github(`${prefix}/git/commits`, { method: 'POST',
-        body: { message: title, tree: createdTree.sha, parents: [snapshot.sourceSha] } });
+        body: { message: `${title}\n\n${commitPublicationText(description)}`, tree: createdTree.sha, parents: [snapshot.sourceSha] } });
       await github(`${prefix}/git/refs`, { method: 'POST', body: { ref: `refs/heads/${branch}`, sha: createdCommit.sha } });
       record({ operation: 'branch', branch, sha: createdCommit.sha });
       const pr = await github(`${prefix}/pulls`, { method: 'POST', body: {
         head: branch, base: snapshot.defaultBranch, title, draft: Boolean(result.hold),
-        body: literalPublicationBody(`${result.pr_body || result.prBody || result.summary || title}\n\nOffline validation passed. Independent review and trusted GitHub CI remain required.${result.hold ? '\nMaintainer review required; created as a draft.' : ''}`)
+        body: literalPublicationBody(description)
       } });
       assert(pr.head?.sha === createdCommit.sha && pr.base?.repo?.full_name?.toLowerCase() === repo, 'Published PR identity not confirmed.');
       record({ operation: 'proposal', url: pr.html_url, number: pr.number, sha: createdCommit.sha });
@@ -120,8 +124,8 @@ if (capabilities.includes('merge')) {
   assert(safety.allowAutoMerge, `Merge blocked: ${safety.reasons.join(', ')}`);
   const merged = await github(`${prefix}/pulls/${request.item}/merge`, { method: 'PUT', body: {
     sha: snapshot.headSha, merge_method: safety.mergeMethod,
-    commit_title: plainPublicationText(`Merge PR ${request.item}`),
-    commit_message: 'Merged by Lights On after independent review and trusted CI verification.'
+    commit_title: plainPublicationText(pr.title || `Merge PR ${request.item}`),
+    commit_message: `${commitPublicationText(pr.body || result.summary)}\n\nReviewed head: ${snapshot.headSha}`
   } });
   assert(merged.merged === true, 'GitHub did not confirm the merge.');
   record({ operation: 'merge', sha: merged.sha });
