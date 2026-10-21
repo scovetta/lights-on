@@ -12,6 +12,11 @@ The launcher uses the existing task runners, validators and publication checks.
 It does not execute Actions workflow YAML. Missing tools or unsupported tests
 block the affected work.
 
+For a runnable npm walkthrough, see the
+[protected local npm demo](../local/demos/npm/README.md). Its setup/run scripts
+prepare the existing lockfile's cache and demonstrate offline validation,
+dependency scanning and opt-in documentation inference without GitHub writes.
+
 ## Quick start
 
 You need Node.js 24 or later on the launcher host, a Linux Docker daemon, and a

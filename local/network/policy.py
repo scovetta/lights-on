@@ -188,6 +188,9 @@ class Gateway:
                 value = rule.get("prefix", "") + value
             request.headers[rule["header"]] = value
         request.headers.pop("accept-encoding", None)
+        if self.role == "prepare":
+            # Avoid stalled registry keep-alive sessions during long metadata walks.
+            request.headers["connection"] = "close"
         flow.metadata["rule"] = rule["id"]
         self.bytes += len(request.content or b"")
         self.audit(flow, "allowed", rule["id"], len(request.content or b""))

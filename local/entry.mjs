@@ -4,7 +4,7 @@ import { proxyEnvironment } from './network/fetch.mjs';
 import { assert } from './policy.mjs';
 
 const script = process.argv[2];
-assert(['fetch', 'controller', 'prepare', 'publisher', 'probe'].includes(script), 'Unknown trusted role entry point.');
+assert(['fetch', 'controller', 'prepare', 'prepare-npm-lock', 'publisher', 'probe'].includes(script), 'Unknown trusted role entry point.');
 const proxy = await forward();
 const tooling = ['controller', 'probe'].includes(script) && process.env.LIGHTS_ON_COPILOT_SDK_DIR
   ? { LIGHTS_ON_COPILOT_SDK_DIR: process.env.LIGHTS_ON_COPILOT_SDK_DIR } : {};

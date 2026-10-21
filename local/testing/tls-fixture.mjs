@@ -9,6 +9,12 @@ const git = (args, options = {}) => execFileSync('git', args, { encoding: 'utf8'
 git(['init', '-b', 'main', '/fixture/repository']);
 fs.writeFileSync('/fixture/repository/README.md', 'Controlled Lights On fixture.\n');
 fs.writeFileSync('/fixture/repository/test.js', 'console.log("fixture validation passed");\n');
+if (process.env.LIGHTS_ON_TEST_NPM === 'true') {
+  const pkg = { name: 'lights-on-fixture-project', version: '1.0.0', scripts: { test: 'node test.js' } };
+  fs.writeFileSync('/fixture/repository/package.json', JSON.stringify(pkg));
+  fs.writeFileSync('/fixture/repository/package-lock.json',
+    JSON.stringify({ name: pkg.name, version: pkg.version, lockfileVersion: 3, packages: { '': pkg } }));
+}
 git(['-C', '/fixture/repository', 'add', '.']);
 git(['-C', '/fixture/repository', '-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid', 'commit', '-m', 'fixture']);
 const sha = git(['-C', '/fixture/repository', 'rev-parse', 'HEAD']).trim();
@@ -27,6 +33,20 @@ https.createServer({ key: fs.readFileSync('/fixture/key.pem'), cert: fs.readFile
   const chunks = [];
   for await (const chunk of req) chunks.push(chunk);
   const body = Buffer.concat(chunks);
+  if (req.url === '/npm/fixture-lock-dep') {
+    fs.writeFileSync('/fixture/npm-connection.json', JSON.stringify(req.headers.connection));
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify({ name: 'fixture-lock-dep', 'dist-tags': { latest: '1.0.0' },
+      versions: { '1.0.0': { name: 'fixture-lock-dep', version: '1.0.0',
+        scripts: { prepare: 'exit 9', install: 'exit 9' },
+        dist: { tarball: 'https://packagefeedproxy.microsoft.io/npm/fixture-lock-dep/-/fixture-lock-dep-1.0.0.tgz',
+          integrity: `sha512-${Buffer.alloc(64).toString('base64')}` } } } }));
+    return;
+  }
+  if (req.url.startsWith('/npm/fixture-lock-dep/')) {
+    fs.writeFileSync('/fixture/tarball-requested', 'unexpected');
+    res.writeHead(404); res.end(); return;
+  }
   if (req.url === '/npm/offline.txt') {
     fs.appendFileSync('/fixture/bundle-downloads.txt', 'download\n');
     res.end('offline bundle fixture');
