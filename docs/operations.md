@@ -33,6 +33,16 @@ workflow runs; no Lights On job starts.
 
 ## Read run outcomes
 
+Generated code PRs retain the agent's explanation, source citations when supplied,
+changed files, risk assessment and available controller validation. Agent claims
+are labelled separately from independent checks; no recorded validation is
+reported as unknown, not passed. Commit bodies retain that context, and squash/
+merge commits preserve the PR description for the exact reviewed head.
+
+PR bodies remain fenced literal text so references cannot notify other
+repositories. Commit messages preserve paragraph breaks while neutralizing
+reference/mention syntax. Existing PR descriptions are not rewritten automatically.
+
 | Report | What it means |
 |---|---|
 | Agent task completed | Candidate generation finished. It does not mean a PR exists. |
@@ -152,6 +162,9 @@ already-open PR; it does not regenerate or test the branch.
 | `Invalid --deny-tool ... *` | Older adapter flags are incompatible with pinned Copilot 1.0.98. Update the adapter; do not enable all tools. |
 | `Unexpected token '<'` / XML `<invoke>` output | Copilot returned the wrong envelope. The current adapter performs bounded JSON format retries. Repeated failures remain errors. |
 | `Copilot inference failed (exit ...)` | Read the redacted diagnostic: authentication, model access, CLI version, or network may be the cause. |
+| `Context file is missing ... lights-on-upstream-context.json` | Update the installed scheduled workflow and upstream runner together. Callers use `steps.upstream-sync.outputs.context_file`; when no upstream is selected, sync also writes an explicit skipped snapshot for older fixed-path callers. Discovery/fetch failures still fail the step. |
+| `Threat-model skill cache is incomplete` | Inspect and rebuild the cached skill checkout. Bootstrap tasks, including `/lights-on update-threat-model`, prepare the skill automatically; an incomplete cache is rejected before inference. |
+| `Expected agent ... result file is missing` | A producing step did not deliver its promised result. Inspect that step and update the composite action and workflows together. Disabled runs write a structured skipped result; genuinely missing results are errors, not successful skips. |
 | `could not add label ... not found` | Update the label/publisher helpers and confirm the workflow has issue/PR write permission. |
 | `NativeCommandError` from PowerShell installer | Older Windows PowerShell handling treated native stderr as fatal. Use the current installer; exit codes still determine actual failure. |
 | Docker unavailable / offline install fails | Supply Docker and a suitable reviewed worker image/cache. There is no host-shell or online-worker fallback. |
@@ -163,6 +176,12 @@ already-open PR; it does not regenerate or test the branch.
 Copilot 1.0.98 treats an empty tool allowlist as no filter. The adapter uses an
 unmatched, nonempty name and tests the exposed tool list. Keep that filter and
 the other isolation flags in place when diagnosing startup failures.
+
+When updating an installation, refresh the workflows, composite action and runner
+scripts together. Start a new run from the updated commit: rerunning an old
+Actions run uses its original workflow revision. Scheduled source publishers
+require a completed result from their own agent; skipped work does not authorize
+publication of unrelated working-tree changes.
 
 ## Dependency work was blocked
 

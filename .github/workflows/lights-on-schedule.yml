@@ -130,6 +130,7 @@ jobs:
           fi
 
       - name: Step A — Bootstrap or Sync THREAT_MODEL.md
+        id: bootstrap-agent
         if: >-
           steps.config.outputs.enabled != 'false' &&
           (steps.threat-model-check.outputs.exists == 'false' || inputs.task == 'bootstrap')
@@ -145,12 +146,13 @@ jobs:
           task: bootstrap-threat-model
           tier: reasoning
           install_threat_model_skills: 'true'
-          context_file: /tmp/lights-on-upstream-context.json
+          context_file: ${{ steps.upstream-sync.outputs.context_file }}
           output_file: /tmp/lights-on-bootstrap-result.json
 
       - name: Open PR for THREAT_MODEL.md if updated
         if: >-
           steps.config.outputs.enabled != 'false' &&
+          steps.bootstrap-agent.outputs.status == 'completed' &&
           (steps.threat-model-check.outputs.exists == 'false' || inputs.task == 'bootstrap')
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -162,11 +164,15 @@ jobs:
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git checkout -B "$branch"
             git add THREAT_MODEL.md threat-model.yaml threat-model.json 2>/dev/null || git add THREAT_MODEL.md
-            git commit -m "docs(security): bootstrap and sync THREAT_MODEL.md"
+            node .github/lights-on/runner/describe-change.mjs \
+              --result /tmp/lights-on-bootstrap-result.json \
+              --title "docs(security): bootstrap and sync THREAT_MODEL.md" \
+              --output /tmp/lights-on-bootstrap-pr.md --commit-output /tmp/lights-on-bootstrap-commit.txt
+            git commit -F /tmp/lights-on-bootstrap-commit.txt
             node .github/lights-on/runner/github-io.mjs git-push -u origin "$branch" --force
             node .github/lights-on/runner/publish-pr.mjs \
               --title "docs(security): bootstrap and sync THREAT_MODEL.md" \
-              --body "Automated threat model generation grounded in \`alpha-omega-security/threat-model\` (§1.1–§1.19)." \
+              --body-file /tmp/lights-on-bootstrap-pr.md \
               --base "$DEFAULT_BRANCH" \
               --head "$branch"
             git checkout "$DEFAULT_BRANCH"
@@ -184,6 +190,7 @@ jobs:
 
       # Step C — Security Vulnerability Scanning & Remediation (security-remediator)
       - name: Step C — Security Vulnerability Scanning & Remediation
+        id: security-agent
         if: >-
           steps.config.outputs.enabled != 'false' &&
           (inputs.task == 'all' || inputs.task == 'security' || inputs.task == '')
@@ -203,6 +210,7 @@ jobs:
       - name: Open Security Remediation PR if fixes were produced
         if: >-
           steps.config.outputs.enabled != 'false' &&
+          steps.security-agent.outputs.status == 'completed' &&
           (inputs.task == 'all' || inputs.task == 'security' || inputs.task == '')
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -214,11 +222,15 @@ jobs:
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git checkout -B "$branch"
             git add -A
-            git commit -m "fix(security): automated vulnerability remediation"
+            node .github/lights-on/runner/describe-change.mjs \
+              --result /tmp/lights-on-security-result.json \
+              --title "fix(security): automated vulnerability remediation" \
+              --output /tmp/lights-on-security-pr.md --commit-output /tmp/lights-on-security-commit.txt
+            git commit -F /tmp/lights-on-security-commit.txt
             node .github/lights-on/runner/github-io.mjs git-push -u origin "$branch" --force
             node .github/lights-on/runner/publish-pr.mjs \
               --title "fix(security): automated vulnerability remediation" \
-              --body "Automated security vulnerability remediation verified against OSV.dev and \`THREAT_MODEL.md\`." \
+              --body-file /tmp/lights-on-security-pr.md \
               --label "lights-on:security" \
               --base "$DEFAULT_BRANCH" \
               --head "$branch"
@@ -277,6 +289,7 @@ jobs:
 
       # Step H — Documentation Clarification & Actionable Issue Fixes (docs-clarifier / issue-responder)
       - name: Step H — Clarify documentation (docs-clarifier)
+        id: docs-agent
         if: >-
           steps.config.outputs.enabled != 'false' &&
           (inputs.task == 'all' || inputs.task == 'docs' || inputs.task == 'issues' || inputs.task == '')
@@ -291,12 +304,13 @@ jobs:
           sandbox_image: ${{ vars.LIGHTS_ON_SANDBOX_IMAGE }}
           task: docs-clarifier
           tier: default
-          context_file: /tmp/lights-on-upstream-context.json
+          context_file: ${{ steps.upstream-sync.outputs.context_file }}
           output_file: /tmp/lights-on-docs-result.json
 
       - name: Open Documentation Clarification PR if changes were produced
         if: >-
           steps.config.outputs.enabled != 'false' &&
+          steps.docs-agent.outputs.status == 'completed' &&
           (inputs.task == 'all' || inputs.task == 'docs' || inputs.task == 'issues' || inputs.task == '')
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -308,11 +322,15 @@ jobs:
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git checkout -B "$branch"
             git add -A
-            git commit -m "docs: clarify recurring questions from issue tracker"
+            node .github/lights-on/runner/describe-change.mjs \
+              --result /tmp/lights-on-docs-result.json \
+              --title "docs: clarify documentation" \
+              --output /tmp/lights-on-docs-pr.md --commit-output /tmp/lights-on-docs-commit.txt
+            git commit -F /tmp/lights-on-docs-commit.txt
             node .github/lights-on/runner/github-io.mjs git-push -u origin "$branch" --force
             node .github/lights-on/runner/publish-pr.mjs \
-              --title "docs: clarify recurring questions from issue tracker" \
-              --body "Automated documentation improvements grounded in recent user questions." \
+              --title "docs: clarify documentation" \
+              --body-file /tmp/lights-on-docs-pr.md \
               --label "lights-on:docs" \
               --base "$DEFAULT_BRANCH" \
               --head "$branch"
@@ -334,9 +352,11 @@ jobs:
           echo "count=$count" >> "$GITHUB_OUTPUT"
 
       - name: Respond to open actionable issues (issue-responder)
+        id: issues-agent
         if: >-
           steps.config.outputs.enabled != 'false' &&
           (inputs.task == 'all' || inputs.task == 'docs' || inputs.task == 'issues' || inputs.task == 'upstream' || inputs.task == '') &&
+          steps.actionable-issues.outputs.count != '' &&
           steps.actionable-issues.outputs.count != '0'
         uses: $/.github/actions/lights-on-agent
         env:
@@ -350,12 +370,13 @@ jobs:
           task: issue-responder
           tier: reasoning
           event_file: /tmp/lights-on-actionable-issues.json
-          context_file: /tmp/lights-on-upstream-context.json
+          context_file: ${{ steps.upstream-sync.outputs.context_file }}
           output_file: /tmp/lights-on-issues-result.json
 
       - name: Open Actionable Issue Fix PR if changes were produced and clean working tree
         if: >-
           steps.config.outputs.enabled != 'false' &&
+          steps.issues-agent.outputs.status == 'completed' &&
           (inputs.task == 'all' || inputs.task == 'docs' || inputs.task == 'issues' || inputs.task == 'upstream' || inputs.task == '')
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -366,6 +387,7 @@ jobs:
           import fs from 'node:fs';
           import { execFileSync } from './.github/lights-on/runner/github-io.mjs';
           import { plainPublicationText } from './.github/lights-on/runner/publication-text.mjs';
+          import { describeChange } from './.github/lights-on/runner/describe-change.mjs';
           import { sanitizeBranchName } from './.github/lights-on/runner/state-store.mjs';
           import { publishPr } from './.github/lights-on/runner/publish-pr.mjs';
           import { reportWorkflowEvent } from './.github/lights-on/runner/workflow-report.mjs';
@@ -375,9 +397,11 @@ jobs:
           const upstreamRepo = process.env.LIGHTS_ON_UPSTREAM_REPO || '';
           const defaultBranch = process.env.DEFAULT_BRANCH || 'main';
           const resultFile = '/tmp/lights-on-issues-result.json';
-          const result = fs.existsSync(resultFile)
-            ? JSON.parse(fs.readFileSync(resultFile, 'utf8'))
-            : {};
+          const result = JSON.parse(fs.readFileSync(resultFile, 'utf8'));
+          if (result.status !== 'completed' || result.dry_run) {
+            reportWorkflowEvent({ title: 'Issue-fix publication skipped', message: 'No completed live agent result is available.' });
+            process.exit(0);
+          }
 
           const statusOut = execFileSync('git', ['status', '--porcelain'], { encoding: 'utf8' }).trim();
           if (statusOut) {
@@ -387,7 +411,7 @@ jobs:
             );
             const title = plainPublicationText(result.pr_title || 'fix: resolve open actionable issue');
             const body = neutralizeCrossRepoAutoLinks(
-              result.pr_body || result.summary || 'Automated fix for open actionable issue.',
+              describeChange({ result }),
               upstreamRepo
             );
 
@@ -395,7 +419,7 @@ jobs:
             execFileSync('git', ['config', 'user.email', '41898282+github-actions[bot]@users.noreply.github.com'], { stdio: 'inherit' });
             execFileSync('git', ['checkout', '-B', branch], { stdio: 'inherit' });
             execFileSync('git', ['add', '-A'], { stdio: 'inherit' });
-            execFileSync('git', ['commit', '-m', title], { stdio: 'inherit' });
+            execFileSync('git', ['commit', '-m', title, '-m', body], { stdio: 'inherit' });
             execFileSync('git', ['push', '-u', 'origin', branch, '--force'], { stdio: 'inherit' });
 
             fs.writeFileSync('/tmp/lights-on-issue-fix-pr.md', body, 'utf8');
@@ -451,7 +475,7 @@ jobs:
           } else {
             execFileSync('git', ['add', '--', 'CHANGELOG.md'], { stdio: 'inherit' });
           }
-          execFileSync('git', ['commit', '-m', res.prTitle], { stdio: 'inherit' });
+          execFileSync('git', ['commit', '-m', res.prTitle, '-m', res.prBody], { stdio: 'inherit' });
           execFileSync('git', ['push', '-u', 'origin', branch, '--force'], { stdio: 'inherit' });
 
           fs.writeFileSync('/tmp/lights-on-release-pr.md', res.prBody, 'utf8');
