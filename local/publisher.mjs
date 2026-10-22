@@ -2,8 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { assert, digestObject } from './policy.mjs';
 import { github, pages, proxyFetch, writeJson } from './network/fetch.mjs';
-import { literalPublicationBody, plainPublicationText, commitPublicationText } from '../.github/lights-on/runner/publication-text.mjs';
-import { describeChange } from '../.github/lights-on/runner/describe-change.mjs';
+import { markdownPublicationBody, plainPublicationText, conciseCommitText } from '../.github/lights-on/runner/publication-text.mjs';
+import { describeChange, describeCommit } from '../.github/lights-on/runner/describe-change.mjs';
 import { evaluatePrSafety } from '../.github/lights-on/runner/verify-pr-safety.mjs';
 import { evaluateCi } from '../.github/lights-on/runner/verify-ci.mjs';
 import { loadConfig } from '../.github/lights-on/runner/load-config.mjs';
@@ -60,7 +60,7 @@ if (capabilities.includes('publish')) {
     const current = await github(`${prefix}/pulls/${request.item}`);
     assert(current.state === 'open' && !current.merged && current.head.sha === snapshot.headSha, 'Review is stale.');
     const review = await github(`${prefix}/pulls/${request.item}/reviews`, { method: 'POST',
-      body: { commit_id: snapshot.headSha, event: 'COMMENT', body: literalPublicationBody(result.summary || 'Local review completed.') } });
+      body: { commit_id: snapshot.headSha, event: 'COMMENT', body: markdownPublicationBody(result.summary || 'Local review completed.') } });
     assert(review.commit_id === snapshot.headSha, 'Review commit was not confirmed.');
     record({ operation: 'review', url: review.html_url, sha: review.commit_id });
   } else {
@@ -89,23 +89,23 @@ if (capabilities.includes('publish')) {
       }
       const createdTree = await github(`${prefix}/git/trees`, { method: 'POST', body: { base_tree: commit.tree.sha, tree } });
       const createdCommit = await github(`${prefix}/git/commits`, { method: 'POST',
-        body: { message: `${title}\n\n${commitPublicationText(description)}`, tree: createdTree.sha, parents: [snapshot.sourceSha] } });
+        body: { message: `${title}\n\n${describeCommit({ result, files: changes, validation })}`, tree: createdTree.sha, parents: [snapshot.sourceSha] } });
       await github(`${prefix}/git/refs`, { method: 'POST', body: { ref: `refs/heads/${branch}`, sha: createdCommit.sha } });
       record({ operation: 'branch', branch, sha: createdCommit.sha });
       const pr = await github(`${prefix}/pulls`, { method: 'POST', body: {
         head: branch, base: snapshot.defaultBranch, title, draft: Boolean(result.hold),
-        body: literalPublicationBody(description)
+        body: markdownPublicationBody(description)
       } });
       assert(pr.head?.sha === createdCommit.sha && pr.base?.repo?.full_name?.toLowerCase() === repo, 'Published PR identity not confirmed.');
       record({ operation: 'proposal', url: pr.html_url, number: pr.number, sha: createdCommit.sha });
     } else if (request.item && result.comment_body) {
       const comment = await github(`${prefix}/issues/${request.item}/comments`, { method: 'POST',
-        body: { body: literalPublicationBody(result.comment_body) } });
+        body: { body: markdownPublicationBody(result.comment_body) } });
       record({ operation: 'comment', url: comment.html_url });
     } else {
       const issue = await github(`${prefix}/issues`, { method: 'POST', body: {
         title: plainPublicationText(`Lights On ${request.task} report`),
-        body: literalPublicationBody(result.comment_body || result.summary || JSON.stringify(result))
+        body: markdownPublicationBody(result.comment_body || result.summary || JSON.stringify(result))
       } });
       record({ operation: 'report', url: issue.html_url });
     }
@@ -125,7 +125,7 @@ if (capabilities.includes('merge')) {
   const merged = await github(`${prefix}/pulls/${request.item}/merge`, { method: 'PUT', body: {
     sha: snapshot.headSha, merge_method: safety.mergeMethod,
     commit_title: plainPublicationText(pr.title || `Merge PR ${request.item}`),
-    commit_message: `${commitPublicationText(pr.body || result.summary)}\n\nReviewed head: ${snapshot.headSha}`
+    commit_message: `${conciseCommitText(pr.body || result.summary)}\n\nFull details: PR ${request.item}.\nReviewed head: ${snapshot.headSha}`
   } });
   assert(merged.merged === true, 'GitHub did not confirm the merge.');
   record({ operation: 'merge', sha: merged.sha });
@@ -154,7 +154,7 @@ if (capabilities.includes('release') || capabilities.includes('registry-publish'
     const released = await github(`${prefix}/releases`, { method: 'POST', body: {
       tag_name: tagName, target_commitish: snapshot.sourceSha,
       name: plainPublicationText(`Release ${request.version}`),
-      body: literalPublicationBody(result.summary || `Release ${request.version}`), draft: false
+      body: markdownPublicationBody(result.summary || `Release ${request.version}`), draft: false
     } });
     record({ operation: 'release', url: released.html_url });
   }

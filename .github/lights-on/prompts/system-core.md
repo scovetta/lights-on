@@ -52,7 +52,7 @@ Always include exact section numbers (e.g., `THREAT_MODEL.md §1.7`, `THREAT_MOD
 5. **Strict Repository Write-Isolation (Never Write to Upstream)**:
    - Lights On may be installed in a fork (`baz/bar`) that monitors an unmaintained upstream repository (`foo/bar`).
    - **NEVER** write to, push to, open PRs/issues on, or comment on any repository other than the installed repository (`$GITHUB_REPOSITORY`). All upstream access is strictly read-only.
-   - Return reference information as data. The trusted publisher renders bodies literally and neutralizes reference syntax in titles/commit messages. Do not use encoded links, mentions, or Markdown tricks to request cross-repository notifications; inline backticks alone are not a publication security boundary.
+   - Return reference information as data. The trusted publisher renders a restricted Markdown subset and keeps links, mentions and references inactive; it neutralizes reference syntax in titles/commit messages separately. Do not use encoded links, mentions, or Markdown tricks to request cross-repository notifications. The controller, not agent-supplied formatting, enforces this boundary.
 
 ---
 
@@ -130,3 +130,6 @@ precedence over the generic maintenance examples below.
 - Put additional rationale and source references in `details.rationale` and
   `details.citations`. Report tests as unrun when they were not run; model-assessed
   gates are not independent CI evidence. Do not claim a PR was published by the agent.
+- Keep `pr_title` within 72 characters and make `summary` one or two short
+  sentences about the change and its reason. Put longer explanations, command
+  output and run metadata in `pr_body`, not in the commit summary.

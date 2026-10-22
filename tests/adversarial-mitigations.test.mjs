@@ -23,7 +23,7 @@ const config = loadConfig(ROOT, {});
 globalThis.fetch = async () => { throw new Error('Unexpected network request'); };
 
 describe('Commit-bound independent reviews', () => {
-  it('sends a literal review body and explicit commit_id even if a push races the POST', () => {
+  it('sends an inert-link review body and explicit commit_id even if a push races the POST', () => {
     const calls = [];
     const result = submitCommitReview({ prNumber: 17, headSha: sha, verdict: 'APPROVE',
       body: 'Review of A\n[link](https://github.com/upstream/repo/issues/1)', env,
@@ -36,7 +36,7 @@ describe('Commit-bound independent reviews', () => {
         const payload = JSON.parse(options.input);
         assert.equal(payload.commit_id, sha);
         assert.equal(payload.event, 'APPROVE');
-        assert.match(payload.body, /^```text/);
+        assert.equal(payload.body, 'Review of A\n`[link](https://github.com/upstream/repo/issues/1)`');
         // A new head exists at submission time; the request still names A.
         return JSON.stringify({ commit_id: payload.commit_id, html_url: 'https://github.com/owner/repo/pull/17#review' });
       } });

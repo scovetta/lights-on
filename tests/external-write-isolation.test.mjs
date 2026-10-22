@@ -6,7 +6,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import { runGitHub, githubEnvironment, prepareGitHubArgs } from '../.github/lights-on/runner/github-io.mjs';
-import { literalPublicationBody, plainPublicationText } from '../.github/lights-on/runner/publication-text.mjs';
+import { literalPublicationBody, markdownPublicationBody, plainPublicationText } from '../.github/lights-on/runner/publication-text.mjs';
 import { buildLocalUpstreamTrackingIssue, parseGitHubRepoFromRemoteUrl } from '../.github/lights-on/runner/sync-upstream.mjs';
 import { publishPr } from '../.github/lights-on/runner/publish-pr.mjs';
 import { prepareRelease } from '../.github/lights-on/runner/prepare-release.mjs';
@@ -63,7 +63,7 @@ describe('External repository publication boundary', () => {
     assert.throws(() => literalPublicationBody('x'.repeat(70000)), /too large/);
     const issue = buildLocalUpstreamTrackingIssue({ number: 42, title: 'Issue', body: payloads[0] },
       { upstreamRepo: 'upstream/project', installedRepo: 'fork/project' });
-    assert.ok(issue.body.includes(literalPublicationBody(payloads[0])));
+    assert.ok(issue.body.includes(markdownPublicationBody(payloads[0])));
   });
 
   it('renders bodyFile content at publication without changing the input file and cleans temporary files', () => {
@@ -75,7 +75,7 @@ describe('External repository publication boundary', () => {
       runGitHub(['issue', 'comment', '42', '--repo', 'fork/project', '--body-file', file], { env }, (_cmd, args) => {
         actualFile = args[args.indexOf('--body-file') + 1];
         assert.notEqual(actualFile, file);
-        assert.equal(fs.readFileSync(actualFile, 'utf8'), literalPublicationBody(payloads[0]));
+        assert.equal(fs.readFileSync(actualFile, 'utf8'), markdownPublicationBody(payloads[0]));
         return '';
       });
       assert.equal(fs.existsSync(actualFile), false);
@@ -94,7 +94,7 @@ describe('External repository publication boundary', () => {
         execFileImpl: (_cmd, args) => {
           if (args[0] === 'label') return '';
           if (args[1] === 'list') return '[]';
-          assert.equal(args[args.indexOf('--body') + 1], literalPublicationBody(release.prBody));
+          assert.equal(args[args.indexOf('--body') + 1], markdownPublicationBody(release.prBody));
           return 'https://github.com/fork/project/pull/1';
         } });
       assert.equal(result.created, true);
@@ -109,7 +109,7 @@ describe('External repository publication boundary', () => {
     assert.ok(!title.includes('https://'));
     runGitHub(['pr', 'create', '--repo', 'fork/project', '--title', 'fix: upstream/project#42',
       '--body', 'upstream/project#42'], { env, lightsOnClosesIssue: 17 }, (_cmd, args) => {
-      assert.equal(args[args.indexOf('--body') + 1], `${literalPublicationBody('upstream/project#42')}\n\nCloses #17`);
+      assert.equal(args[args.indexOf('--body') + 1], `${markdownPublicationBody('upstream/project#42')}\n\nCloses #17`);
       assert.equal(args[args.indexOf('--title') + 1], plainPublicationText('fix: upstream/project#42'));
       return '';
     });

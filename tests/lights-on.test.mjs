@@ -102,7 +102,7 @@ import {
   buildLocalUpstreamTrackingIssue,
   syncUpstream
 } from '../.github/lights-on/runner/sync-upstream.mjs';
-import { literalPublicationBody } from '../.github/lights-on/runner/publication-text.mjs';
+import { markdownPublicationBody } from '../.github/lights-on/runner/publication-text.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -1569,7 +1569,7 @@ describe('11. Upstream / Fork Takeover Maintenance & Strict Installed-Repo Write
       assert.ok(builtIssue.body.includes('`https://github.com/foo/bar/issues/42`'));
       assert.ok(builtIssue.body.includes('foo/bar#10'));
       assert.ok(builtIssue.body.includes('https://github.com/foo/bar/issues/10'));
-      assert.ok(builtIssue.body.includes('```text'));
+      assert.ok(builtIssue.body.includes('`<root/>`'));
       assert.ok(builtIssue.body.includes('"upstream_ref":"foo/bar#42"'));
 
       // Run syncUpstream a second time (Run #2) -> issue #42 is already recorded in state and must NOT be duplicated
@@ -1630,13 +1630,13 @@ describe('11. Upstream / Fork Takeover Maintenance & Strict Installed-Repo Write
       /REPO_WRITE_VIOLATION/
     );
 
-    // 3. External content is literal rather than interpreted as Markdown references.
+    // 3. References stay inactive while supported Markdown formatting is retained.
     const rawText =
       'Fixes issue reported in foo/bar#42 (see https://github.com/foo/bar/issues/42) while keeping `foo/bar#99` intact.';
     const safeText = neutralizeCrossRepoAutoLinks(rawText, 'foo/bar');
     assert.equal(
       safeText,
-      literalPublicationBody(rawText)
+      markdownPublicationBody(rawText)
     );
 
     // 4. validateCommandRepoIsolation and openrouter-agent executeToolCall block cross-repo writes
@@ -1859,7 +1859,7 @@ describe('12. Second Security Review Remediation Verification (Full-Project Audi
     const neutralized = neutralizeCrossRepoAutoLinks(crossText, '', { installedRepo: 'baz/bar' });
     assert.equal(
       neutralized,
-      literalPublicationBody(crossText)
+      markdownPublicationBody(crossText)
     );
 
     // fetchUpstreamContext filters closed issues in maintainerRulings to OWNER/MEMBER/COLLABORATOR only

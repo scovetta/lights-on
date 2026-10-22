@@ -5,8 +5,8 @@ import os from 'node:os';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import { describeChange, writeChangeDescription } from '../.github/lights-on/runner/describe-change.mjs';
-import { commitPublicationText, literalPublicationBody } from '../.github/lights-on/runner/publication-text.mjs';
+import { describeChange, describeCommit, writeChangeDescription } from '../.github/lights-on/runner/describe-change.mjs';
+import { commitPublicationText, conciseCommitText, literalPublicationBody } from '../.github/lights-on/runner/publication-text.mjs';
 import { runGitHub, execFileSync as scopedExecFileSync } from '../.github/lights-on/runner/github-io.mjs';
 import { executeToolCall } from '../.github/lights-on/runner/openrouter-agent.mjs';
 
@@ -62,6 +62,34 @@ test('finish_task preserves the explanation fields used by all publishers', () =
   assert.equal(output.result.summary, result.summary);
 });
 
+test('commit bodies are concise and every body line fits 72 characters after sanitization', () => {
+  const verbose = { ...result, summary: `${result.summary} ${'More explanation. '.repeat(80)}`,
+    details: { ...result.details, rationale: 'Why this matters. '.repeat(60) } };
+  const full = describeChange({ result: verbose, files: ['README.md'], env: { GITHUB_RUN_ID: '12345' } });
+  const commit = describeCommit({ result: verbose, files: ['README.md'] });
+  assert.ok(commit.length < 1000, `Commit body is ${commit.length} characters`);
+  assert.ok(commit.length < full.length);
+  assert.match(commit, /CORS preflight/);
+  assert.match(commit, /Files: README\.md/);
+  assert.match(commit, /full details and evidence/);
+  assert.doesNotMatch(commit, /Run details|Model:|Workflow run:/);
+  for (const line of commit.split('\n')) assert.ok(line.length <= 72, `${line.length}: ${line}`);
+  for (const raw of [
+    'word '.repeat(120), `prefix ${'x'.repeat(200)}`, '😀'.repeat(100),
+    'upstream/project#42 @user & '.repeat(40), 'one\n\n' + 'long '.repeat(60)
+  ]) {
+    const wrapped = commitPublicationText(raw);
+    for (const line of wrapped.split('\n')) {
+      assert.ok(line.length <= 72, `${line.length}: ${line}`);
+      assert.ok(line.isWellFormed(), 'Wrapping must not split surrogate pairs');
+    }
+    assert.equal(commitPublicationText(wrapped), wrapped, 'Repeated sanitization is stable');
+  }
+  const compact = conciseCommitText(literalPublicationBody('word '.repeat(500)));
+  assert.ok(compact.length < 650);
+  assert.ok(compact.endsWith('...'));
+});
+
 test('staged-file descriptions and real commit bodies preserve detail without activating external references', () => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'lights-on-description-'));
   try {
@@ -80,12 +108,15 @@ test('staged-file descriptions and real commit bodies preserve detail without ac
     assert.match(fs.readFileSync(output, 'utf8'), /Changed files\n\n- README.md/);
     assert.doesNotMatch(fs.readFileSync(output, 'utf8'), /agent-invented-file/);
     const message = fs.readFileSync(commitOutput, 'utf8');
-    assert.match(message, /^docs: clarify callback behavior\n\nSummary\n\n/);
+    assert.match(message, /^docs: clarify callback behavior\n\nClarify CORS preflight/);
     assert.match(message, /CORS preflight/);
     assert.doesNotMatch(message, /upstream\/repo|https:\/\/|[#@&]/);
     git(['-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid',
       '-c', 'commit.gpgsign=false', 'commit', '-q', '-F', commitOutput]);
-    assert.match(git(['log', '-1', '--format=%B']), /Summary\n\nClarify CORS preflight/);
+    assert.match(git(['log', '-1', '--format=%B']), /clarify callback behavior\n\nClarify CORS preflight/);
+    for (const line of message.split('\n').slice(2)) assert.ok(line.length <= 72);
+    assert.match(fs.readFileSync(output, 'utf8'), /Run details/);
+    assert.doesNotMatch(message, /Run details/);
     fs.appendFileSync(path.join(repo, 'README.md'), '\nmore');
     git(['add', 'README.md']);
     scopedExecFileSync('git', ['-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid',
@@ -164,13 +195,13 @@ test('all generated proposal commits have description bodies and scheduled agent
     assert.ok(section.indexOf('describe-change.mjs') < section.indexOf('git commit'));
   }
   assert.doesNotMatch(workflow, /Automated documentation improvements grounded in recent user questions/);
-  assert.match(workflow, /'commit', '-m', title, '-m', body/);
-  assert.match(workflow, /'commit', '-m', res\.prTitle, '-m', res\.prBody/);
+  assert.match(workflow, /'commit', '-m', title, '-m', describeCommit\(\{ result \}\)/);
+  assert.match(workflow, /'commit', '-m', res\.prTitle, '-m', describeCommit/);
   for (const file of ['dependency-stage.mjs', 'maintain-toolchains.mjs']) {
     const source = fs.readFileSync(path.join(ROOT, '.github', 'lights-on', 'runner', file), 'utf8');
-    assert.match(source, /'commit', '-m', title, '-m', (?:description|body)/);
+    assert.match(source, /'commit', '-m', title, '-m', describeCommit/);
   }
   const local = fs.readFileSync(path.join(ROOT, 'local', 'publisher.mjs'), 'utf8');
-  assert.match(local, /body: literalPublicationBody\(description\)/);
-  assert.match(local, /commitPublicationText\(description\)/);
+  assert.match(local, /body: markdownPublicationBody\(description\)/);
+  assert.match(local, /describeCommit\(\{ result, files: changes, validation \}\)/);
 });

@@ -8,7 +8,7 @@ import { readPolicy, readSecrets, grantedCapabilities, operationCredentials, nor
 import { Runtime, docker, privateDirectory, writePrivate } from './runtime.mjs';
 import { validateCandidate, validateProfile } from './validation.mjs';
 import { inventory } from '../.github/lights-on/runner/agent-sandbox.mjs';
-import { literalPublicationBody } from '../.github/lights-on/runner/publication-text.mjs';
+import { markdownPublicationBody } from '../.github/lights-on/runner/publication-text.mjs';
 
 export function parseArgs(args) {
   const options = { command: args[0], capabilities: [] };
@@ -67,7 +67,7 @@ function reports(root, run) {
     if (result.usage) summary.push(`Provider usage: ${JSON.stringify(result.usage)}`);
   }
   if (fs.existsSync(path.join(root, 'publication.json'))) summary.push(JSON.stringify(json(path.join(root, 'publication.json'))));
-  writePrivate(path.join(root, 'summary.md'), literalPublicationBody(summary.filter(Boolean).join('\n')) + '\n');
+  writePrivate(path.join(root, 'summary.md'), markdownPublicationBody(summary.filter(Boolean).join('\n')) + '\n');
 }
 
 export async function main(options, { createRuntime = (settings) => new Runtime(settings) } = {}) {
