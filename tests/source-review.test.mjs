@@ -241,6 +241,8 @@ describe('Local routing and prerequisites', () => {
       assert.equal(fs.readFileSync(path.join(f.repo, '.github', 'lights-on.yml'), 'utf8'), 'enabled: false\n');
       assert.ok(fs.existsSync(path.join(f.repo, '.github', 'lights-on', 'runner', 'package-identity.py')));
       assert.ok(fs.existsSync(path.join(f.repo, '.github', 'workflows', 'lights-on-release.yml')));
+      assert.ok(fs.existsSync(path.join(f.repo, '.github', 'actions', 'lights-on-cache-access', 'action.yml')));
+      assert.ok(fs.existsSync(path.join(f.repo, '.github', 'actions', 'lights-on-cache-access', 'index.mjs')));
     } finally { f.cleanup(); }
   });
 

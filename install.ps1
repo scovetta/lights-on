@@ -159,6 +159,7 @@ try {
     # Ensure destination directories exist
     $DirsToCreate = @(
         (Join-Path $ResolvedTarget ".github\actions\lights-on-agent"),
+        (Join-Path $ResolvedTarget ".github\actions\lights-on-cache-access"),
         (Join-Path $ResolvedTarget ".github\lights-on\runner"),
         (Join-Path $ResolvedTarget ".github\lights-on\prompts"),
         (Join-Path $ResolvedTarget ".github\lights-on\ecosystems"),
@@ -185,6 +186,10 @@ try {
     $ActionSrc = Join-Path $SrcDir ".github\actions\lights-on-agent\action.yml"
     $ActionDst = Join-Path $ResolvedTarget ".github\actions\lights-on-agent\action.yml"
     Install-LightsOnFile $ActionSrc $ActionDst ".github\actions\lights-on-agent\action.yml"
+    foreach ($Name in @("action.yml", "index.mjs")) {
+        $Relative = ".github\actions\lights-on-cache-access\$Name"
+        Install-LightsOnFile (Join-Path $SrcDir $Relative) (Join-Path $ResolvedTarget $Relative) $Relative
+    }
 
     # 3. Copy Node controllers and the non-executing Python metadata inspector
     $RunnerSrcDir = Join-Path $SrcDir ".github\lights-on\runner"

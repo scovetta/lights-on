@@ -889,6 +889,9 @@ describe('7. Repository Structure & Installer Verification', () => {
 
       assert.equal(proc.status, 0, `install.ps1 failed: ${proc.stderr || proc.stdout}`);
       assert.equal(fs.existsSync(path.join(tmpTarget, '.github', 'lights-on.yml')), true);
+      for (const name of ['action.yml', 'index.mjs']) {
+        assert.equal(fs.existsSync(path.join(tmpTarget, '.github', 'actions', 'lights-on-cache-access', name)), true);
+      }
       assert.equal(fs.existsSync(path.join(tmpTarget, '.github', 'workflows', 'lights-on-events.yml')), true);
       assert.equal(fs.existsSync(path.join(tmpTarget, '.github', 'workflows', 'lights-on-schedule.yml')), true);
       assert.equal(fs.existsSync(path.join(tmpTarget, '.github', 'workflows', 'lights-on-pr.yml')), true);

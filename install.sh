@@ -197,6 +197,7 @@ fi
 if [ "$DRY_RUN" -ne 1 ]; then
   mkdir -p \
     "$TARGET_DIR/.github/actions/lights-on-agent" \
+    "$TARGET_DIR/.github/actions/lights-on-cache-access" \
     "$TARGET_DIR/.github/lights-on/runner" \
     "$TARGET_DIR/.github/lights-on/prompts" \
     "$TARGET_DIR/.github/lights-on/ecosystems" \
@@ -212,6 +213,9 @@ fi
 
 # 2. Copy composite action .github/actions/lights-on-agent/action.yml
 install_file "$SRC_DIR/.github/actions/lights-on-agent/action.yml" "$TARGET_DIR/.github/actions/lights-on-agent/action.yml" ".github/actions/lights-on-agent/action.yml"
+for name in action.yml index.mjs; do
+  install_file "$SRC_DIR/.github/actions/lights-on-cache-access/$name" "$TARGET_DIR/.github/actions/lights-on-cache-access/$name" ".github/actions/lights-on-cache-access/$name"
+done
 
 # Copy controllers and the non-executing package metadata inspector.
 for f in "$SRC_DIR/.github/lights-on/runner/"*.mjs "$SRC_DIR/.github/lights-on/runner/"*.py \

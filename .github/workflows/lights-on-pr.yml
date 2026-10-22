@@ -386,7 +386,7 @@ jobs:
           node .github/lights-on/runner/github-io.mjs pr edit "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --add-label "lights-on:automerge-disabled-external"
 
       - name: Persist shared budget even after failed inference
-        if: always() && steps.review-agent.outcome != '' && steps.review-agent.outcome != 'skipped'
+        if: always() && steps.review-agent.outputs.cache_writable == 'true' && steps.review-agent.outcome != '' && steps.review-agent.outcome != 'skipped'
         uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: |

@@ -36,6 +36,8 @@ function fixture({ empty = false } = {}) {
   const inputs = {
     '.github/lights-on.yml': 'enabled: true\n',
     '.github/actions/lights-on-agent/action.yml': 'new action\nnew caf\u00e9 \u03bb\u96ea\n',
+    '.github/actions/lights-on-cache-access/action.yml': 'cache access action\n',
+    '.github/actions/lights-on-cache-access/index.mjs': 'cache access probe\n',
     '.github/lights-on/runner/sample.mjs': 'new runner\n',
     '.github/lights-on/runner/inspector.py': 'new inspector\n',
     '.github/lights-on/runner/copilot-sdk.package.json': '{"private":true}\n',
