@@ -293,7 +293,7 @@ want to publish. Rerun after changing the policy, controller code, source ref
 or candidate; the publisher rejects mismatched records.
 
 Publication starts a fresh role, verifies immutable identities and sanitizes
-all public text through the existing literal-body boundary. Toolchain/release
+all public text through the shared restricted Markdown renderer. Toolchain/release
 proposals requiring maintainer review are drafts. The publisher records partial
 confirmed side effects in `publication.json` and refuses to retry a run that
 has that file.

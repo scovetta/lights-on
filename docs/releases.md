@@ -22,9 +22,9 @@ The merge-event path requires a merged PR into the default branch, a
 `lights-on:release` label, and a recognized trusted author. The publisher does
 not independently reconstruct the PR's complete review history.
 
-The publisher renders commit-derived PR descriptions and release notes as
-literal text to prevent external-repository backlinks. Links and other rich
-Markdown in those bodies stay inactive.
+The publisher renders commit-derived PR descriptions and release notes with
+safe headings, lists, emphasis and code. Links, mentions and references stay
+literal to prevent external-repository backlinks.
 
 GitHub event suppression can prevent a token-driven merge from triggering the
 publisher. Verify the chain or use manual dispatch after reviewing the release.

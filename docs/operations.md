@@ -36,12 +36,20 @@ workflow runs; no Lights On job starts.
 Generated code PRs retain the agent's explanation, source citations when supplied,
 changed files, risk assessment and available controller validation. Agent claims
 are labelled separately from independent checks; no recorded validation is
-reported as unknown, not passed. Commit bodies retain that context, and squash/
-merge commits preserve the PR description for the exact reviewed head.
+reported as unknown, not passed. Commit bodies contain a shorter summary,
+rationale, file list and validation status; the full report and run metadata
+stay in the PR. Automatic squash/merge messages retain a bounded excerpt of the
+PR description for the exact reviewed head.
 
-PR bodies remain fenced literal text so references cannot notify other
-repositories. Commit messages preserve paragraph breaks while neutralizing
-reference/mention syntax. Existing PR descriptions are not rewritten automatically.
+Issue comments, reviews, PR descriptions and release notes render a restricted
+Markdown subset: headings, lists, emphasis, blockquotes, and code. URLs, links,
+mentions, issue references, raw HTML and state markers remain literal code,
+not active references. Fenced code always uses `text`: Mermaid, math, maps and
+other GitHub enrichments are not enabled. Tables and other unsupported markup
+are displayed as text. Existing published bodies are not rewritten automatically.
+
+Commit bodies preserve paragraph breaks, neutralize reference/mention syntax,
+and wrap lines at 72 characters after sanitization, including long tokens.
 
 | Report | What it means |
 |---|---|
@@ -172,6 +180,7 @@ already-open PR; it does not regenerate or test the branch.
 | Distribution identity verification failed | Check Python 3.11+, Ruby/Psych for RubyGems, trusted names/version and archive metadata. Dynamic names need `release.package_names`. Do not bypass identity checking. |
 | `daily-budget-reservation-exceeded` | The next per-run allocation would exceed today's recorded/reserved budget. Inspect usage and outstanding reservations. |
 | Usage state locked/invalid | Inspect an interrupted process or corrupt state before clearing it. The controller blocks new reservations rather than resetting accounting. |
+| `cache write denied: token has no writable scopes` | The runtime cache token is read-only, independently of `GITHUB_TOKEN` permissions. Update the cache-access action, composite action and caller workflows together. Read-only runs restore state but skip saves; adding `actions: write` is not the fix. |
 
 Copilot 1.0.98 treats an empty tool allowlist as no filter. The adapter uses an
 unmatched, nonempty name and tests the exposed tool list. Keep that filter and
@@ -248,9 +257,29 @@ and `max_model_calls_per_run` also apply across fallback/format retries.
 The default state file is `/tmp/lights-on-cache/state.json`. Agent-bearing
 workflows share `lights-on-maintenance-budget-<repository>` concurrency and
 `lights-on-state-v2-*` caches keyed by run and attempt, saving after failures
-where Actions allows. The runner locks local reservation updates. Cache loss
+only where the runtime grants writes. Scheduled multi-agent runs restore the
+cache once; individual agents do not overwrite earlier stages' usage with a
+second restore. Restore/save operations use identical state and skill-cache paths.
+The runner locks local reservation updates. Cache loss
 and GitHub's pending-run queue still prevent durable cross-host accounting or
 lossless delivery.
+
+The native cache-access action reads `ACTIONS_CACHE_MODE`, which the runner
+supplies to JavaScript actions. On older runners without it, the action assumes
+write access only for GitHub's documented trusted default-branch triggers.
+Unknown explicit modes fail rather than enabling writes.
+
+GitHub defaults `issues`, `issue_comment`, `pull_request_target` and
+`workflow_run` events to read-only access in the default-branch cache scope.
+Lights On does not override that protection. The run summary reports whether
+restore/save is allowed. **Usage recorded by a read-only run cannot be carried
+forward through the cache**, and issue-marker recovery does not reconstruct it.
+Use provider-side spending limits; the cached daily ledger is not a hard global
+billing limit. See [GitHub's cache-access rules](https://docs.github.com/en/actions/reference/workflows-and-actions/dependency-caching#cache-access-for-low-trust-workflow-triggers).
+
+The cache action reports a denied save as a warning, not a failed job. If an
+agent also reports `daily-budget-exceeded`, that is a separate admission decision
+based on the restored ledger; changing cache permissions does not clear the cap.
 
 State saves write a temporary file and replace the ledger after the write
 finishes. A failed write leaves the previous ledger intact; this does not

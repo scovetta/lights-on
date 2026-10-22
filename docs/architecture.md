@@ -100,15 +100,23 @@ URL for `origin` is the installed HTTPS GitHub repository, rejects broad or
 foreign pushes, and does not persist the token or helper configuration.
 Manual callers of the Git publication helper need an explicit token too.
 
-The publisher fences issue, PR, review and release bodies as literal text,
-including body-file inputs. This disables Markdown links, HTML, mentions and
-encoded references. The fence exceeds the longest delimiter in the content;
-oversized content fails validation. Titles and generated commit messages use
-plain-text reference neutralization because backticks do not delimit those
-fields.
+The publisher reconstructs issue, PR, review and release bodies with a restricted
+Markdown grammar, including body-file inputs. Headings, lists, emphasis,
+blockquotes and code render normally. Reference-bearing tokens (URLs, mentions,
+issue references, entities and bare commit hashes) stay in code spans; raw HTML
+and unsupported link syntax are not passed through as active markup. Code
+delimiters exceed those in their content. Fences always use `text`, never
+attacker-supplied language identifiers: Mermaid, math and other GitHub
+enrichments are not allowed. Dollar-delimited math stays in inline code.
+State markers remain literal blocks
+so recovery can still read them. Oversized rendered content fails validation.
 
-You will see Markdown source in generated bodies. Confirmed PR links in run
-annotations and summaries remain clickable. The publisher appends an active
+This is an allowlisted output encoder, not regex removal of suspicious links
+from arbitrary Markdown. Tables and other unsupported constructs display as
+text. Titles and generated commit messages use separate plain-text reference
+neutralization because Markdown code delimiters do not protect those fields.
+
+Confirmed PR links in run annotations and summaries remain clickable. The publisher appends an active
 closing reference only for a controller-supplied local issue number. It fetches
 and renders release notes before publishing, rather than using server-side
 `--generate-notes`.
@@ -183,6 +191,10 @@ their checkout steps. The syntax requires GitHub.com runner 2.336.0 or newer.
 Operational state caches remain separate from dependency caches; they are
 needed for run/budget accounting and are not restored by the release uploader.
 Their existing cache-scope and durability limitations still apply.
+The cache-access action gates restores and saves using the runner's effective
+mode (or conservative trigger defaults on older runners). It does not grant
+cache-write access to low-trust events. Scheduled agents share one restored
+ledger; read-only runs cannot persist new usage through the cache.
 
 For PyPI, configure a Trusted Publisher and remove the token secret to use
 OIDC. If a legacy token remains necessary, limit it to the package being
@@ -327,7 +339,9 @@ file-locked state update reserves attempts and budget before inference. Failed
 or interrupted attempts remain in the current ledger.
 Provider-request byte limits and a shared model-call ceiling limit retry abuse.
 
-GitHub Actions can replace pending work with newer events. Cache eviction,
+GitHub Actions can replace pending work with newer events. Read-only cache
+tokens on issue/PR-related triggers prevent those runs from persisting new
+usage through the cache. Cache eviction,
 service failures, killed hosts and custom workflows can lose reservations or
 work. Enabling external triggers adds spending exposure. Investigate stale
 `.lock` files before clearing them; they block new reservations.
@@ -344,9 +358,9 @@ Keep provider-side spending limits and repository-scoped credentials in place.
 | [`dependency-work.mjs`](../.github/lights-on/runner/dependency-work.mjs) | Bounded dependency selection and validation |
 | [`verify-pr-safety.mjs`](../.github/lights-on/runner/verify-pr-safety.mjs) | PR metadata, path, review, and merge-policy checks |
 | [`verify-ci.mjs`](../.github/lights-on/runner/verify-ci.mjs) | Complete check/status collection and required identities |
-| [`publish-pr.mjs`](../.github/lights-on/runner/publish-pr.mjs) | Confirmed PR creation/reuse, required labels, and literal body preparation |
+| [`publish-pr.mjs`](../.github/lights-on/runner/publish-pr.mjs) | Confirmed PR creation/reuse, required labels, and safe Markdown body preparation |
 | [`github-io.mjs`](../.github/lights-on/runner/github-io.mjs) | Host/repository-bound GitHub calls and final body-file sanitization |
-| [`publication-text.mjs`](../.github/lights-on/runner/publication-text.mjs) | Literal Markdown bodies and plain-text reference neutralization |
+| [`publication-text.mjs`](../.github/lights-on/runner/publication-text.mjs) | Restricted Markdown rendering, literal excerpts and plain-text reference neutralization |
 | [`usage.mjs`](../.github/lights-on/runner/usage.mjs) | Usage normalization and incomplete-cost handling |
 | [`run-budget.mjs`](../.github/lights-on/runner/run-budget.mjs) | File-locked pre-inference reservations and settlement |
 | [`event-policy.mjs`](../.github/lights-on/runner/event-policy.mjs) | Admission of paid event-triggered work |
