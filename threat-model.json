@@ -1,0 +1,2831 @@
+{
+  "spec_version": 1,
+  "repository": "https://github.com/scovetta/lights-on",
+  "commit": "abf1125826227badca1977b8389efc9b599814d9",
+  "date": "2026-10-23",
+  "scope_subpath": null,
+  "description": "Lights On proposes maintenance, reviews PRs and publishes authorized changes across Actions/admission/state, inference/workers, maintenance/review, publication/releases, protected local execution, the npm demo, and adoption/site. All seven families and helpers remain in scope. Neither model judgment nor passing tests proves semantic safety. This unratified export is lossy and is never a triage input; THREAT_MODEL.md > YAML > JSON. Prior-promise conflicts remain non-closing; dependency-contract has no JSON label and falls through to model_gap. No new ratification or acceptance occurred.",
+  "confidence": {
+    "documented": 478,
+    "inferred": 79
+  },
+  "components": [
+    {
+      "name": "A",
+      "entry_points": [
+        "A01",
+        "A02",
+        "A03",
+        "A04",
+        "A05",
+        "A06",
+        "A07",
+        "A08",
+        "Shared-helpers-A"
+      ],
+      "touches": [
+        "filesystem",
+        "network",
+        "env"
+      ],
+      "in_scope": true,
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:33 — [Workflow map][maintenance]; [permissions]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#workflow-token-permissions"
+    },
+    {
+      "name": "B",
+      "entry_points": [
+        "B01",
+        "B02",
+        "B03",
+        "B04",
+        "B05",
+        "B06",
+        "B07",
+        "B08",
+        "B09",
+        "Shared-helpers-B"
+      ],
+      "touches": [
+        "filesystem",
+        "network",
+        "env",
+        "child_processes"
+      ],
+      "in_scope": true,
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:34 — [providers]; [candidate]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#provider-integration; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#candidate-and-command-isolation"
+    },
+    {
+      "name": "C",
+      "entry_points": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "Shared-helpers-C"
+      ],
+      "touches": [
+        "filesystem",
+        "network",
+        "child_processes"
+      ],
+      "in_scope": true,
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:35 — [Scheduled stages][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md"
+    },
+    {
+      "name": "D",
+      "entry_points": [
+        "D01",
+        "D02",
+        "D03",
+        "D04",
+        "D05",
+        "D06",
+        "D07",
+        "D08",
+        "D09",
+        "D10",
+        "Shared-helpers-D"
+      ],
+      "touches": [
+        "filesystem",
+        "network",
+        "child_processes"
+      ],
+      "in_scope": true,
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:36 — [publication]; [Release lifecycle][releases]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#github-publication-boundary; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/releases.md"
+    },
+    {
+      "name": "E",
+      "entry_points": [
+        "E01",
+        "E02",
+        "E03",
+        "E04",
+        "E05",
+        "E06",
+        "E07",
+        "E08",
+        "E09",
+        "E10",
+        "Shared-helpers-E"
+      ],
+      "touches": [
+        "filesystem",
+        "network",
+        "env",
+        "child_processes",
+        "signals"
+      ],
+      "in_scope": true,
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:37 — [Quick start][local]; [network]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#network-policy-and-audit"
+    },
+    {
+      "name": "F",
+      "entry_points": [
+        "F01",
+        "F02",
+        "F03",
+        "F04",
+        "F05",
+        "Shared-helpers-F"
+      ],
+      "touches": [
+        "filesystem",
+        "network",
+        "child_processes"
+      ],
+      "in_scope": true,
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:38 — [Requirements and limits][demo]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/local/demos/npm/README.md"
+    },
+    {
+      "name": "G",
+      "entry_points": [
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "Shared-helpers-G"
+      ],
+      "touches": [
+        "filesystem",
+        "network",
+        "child_processes"
+      ],
+      "in_scope": true,
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:39 — [Installation side effects][install]; [discovery]; [Static site][web]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/getting-started.md; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#discover-required-checks; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/web/README.md"
+    }
+  ],
+  "out_of_scope": [
+    {
+      "item": "S-PLATFORM",
+      "reason": "GitHub host/control-plane compromise; not project privilege misuse",
+      "provenance": "documented",
+      "source": "maintainer ruling, 2026-10"
+    },
+    {
+      "item": "S-SECRET-OPS",
+      "reason": "Other-cloud rotation/vaulting/audit; not project-caused disclosure",
+      "provenance": "documented",
+      "source": "maintainer ruling, 2026-10"
+    },
+    {
+      "item": "S-PROVIDER",
+      "reason": "Provider availability/rates/model mistakes; not admission/tools/publication",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:51 — [Prior §1.3][prior]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/THREAT_MODEL.md"
+    },
+    {
+      "item": "S-HOST",
+      "reason": "Malicious local administrator/kernel/Docker; hostile shared runners need stronger isolation",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:52 — [recovery]; [candidate]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#results-state-and-recovery; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#candidate-and-command-isolation"
+    },
+    {
+      "item": "S-LOCAL-EXPOSURE",
+      "reason": "Live cloud services, host devices, native non-Linux workers; synthetic loopback remains covered",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:53 — [validation]; [services]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#arbitrary-ci-tools-offline; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#databases-and-other-test-services"
+    },
+    {
+      "item": "S-GH-HOST",
+      "reason": "GitHub Enterprise publication unsupported; wrong-target acceptance remains covered",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:54 — [publication]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#github-publication-boundary"
+    }
+  ],
+  "trust_boundaries": [
+    {
+      "component": "A",
+      "boundary": "Actions analysis/mutation share job rights; withholding a step environment variable is not isolation. SDK client is controller TCB; empty mode restricts its child. Local roles and release jobs have separate boundaries. Reachability requires A admission, B tool selection, C lane selection, D authorized publication, E operator invocation, F prepared target or G adoption/deployment. Data-induced authority acquisition remains an attack.",
+      "reachability_precondition": "A admission",
+      "provenance": "inferred",
+      "source": "open question Q1; THREAT_MODEL.md §1.4"
+    },
+    {
+      "component": "B",
+      "boundary": "Actions analysis/mutation share job rights; withholding a step environment variable is not isolation. SDK client is controller TCB; empty mode restricts its child. Local roles and release jobs have separate boundaries. Reachability requires A admission, B tool selection, C lane selection, D authorized publication, E operator invocation, F prepared target or G adoption/deployment. Data-induced authority acquisition remains an attack.",
+      "reachability_precondition": "B tool selection",
+      "provenance": "inferred",
+      "source": "open question Q1; THREAT_MODEL.md §1.4"
+    },
+    {
+      "component": "C",
+      "boundary": "Actions analysis/mutation share job rights; withholding a step environment variable is not isolation. SDK client is controller TCB; empty mode restricts its child. Local roles and release jobs have separate boundaries. Reachability requires A admission, B tool selection, C lane selection, D authorized publication, E operator invocation, F prepared target or G adoption/deployment. Data-induced authority acquisition remains an attack.",
+      "reachability_precondition": "C lane selection",
+      "provenance": "inferred",
+      "source": "open question Q1; THREAT_MODEL.md §1.4"
+    },
+    {
+      "component": "D",
+      "boundary": "Actions analysis/mutation share job rights; withholding a step environment variable is not isolation. SDK client is controller TCB; empty mode restricts its child. Local roles and release jobs have separate boundaries. Reachability requires A admission, B tool selection, C lane selection, D authorized publication, E operator invocation, F prepared target or G adoption/deployment. Data-induced authority acquisition remains an attack.",
+      "reachability_precondition": "D authorized publication",
+      "provenance": "inferred",
+      "source": "open question Q1; THREAT_MODEL.md §1.4"
+    },
+    {
+      "component": "E",
+      "boundary": "Actions analysis/mutation share job rights; withholding a step environment variable is not isolation. SDK client is controller TCB; empty mode restricts its child. Local roles and release jobs have separate boundaries. Reachability requires A admission, B tool selection, C lane selection, D authorized publication, E operator invocation, F prepared target or G adoption/deployment. Data-induced authority acquisition remains an attack.",
+      "reachability_precondition": "E operator invocation",
+      "provenance": "inferred",
+      "source": "open question Q1; THREAT_MODEL.md §1.4"
+    },
+    {
+      "component": "F",
+      "boundary": "Actions analysis/mutation share job rights; withholding a step environment variable is not isolation. SDK client is controller TCB; empty mode restricts its child. Local roles and release jobs have separate boundaries. Reachability requires A admission, B tool selection, C lane selection, D authorized publication, E operator invocation, F prepared target or G adoption/deployment. Data-induced authority acquisition remains an attack.",
+      "reachability_precondition": "F prepared target",
+      "provenance": "inferred",
+      "source": "open question Q1; THREAT_MODEL.md §1.4"
+    },
+    {
+      "component": "G",
+      "boundary": "Actions analysis/mutation share job rights; withholding a step environment variable is not isolation. SDK client is controller TCB; empty mode restricts its child. Local roles and release jobs have separate boundaries. Reachability requires A admission, B tool selection, C lane selection, D authorized publication, E operator invocation, F prepared target or G adoption/deployment. Data-induced authority acquisition remains an attack.",
+      "reachability_precondition": "G adoption/deployment",
+      "provenance": "inferred",
+      "source": "open question Q1; THREAT_MODEL.md §1.4"
+    }
+  ],
+  "entry_points": [
+    {
+      "entry_point": "A01",
+      "parameter": "Event/action",
+      "attacker_controllable": "no",
+      "component": "A",
+      "caller_must_enforce": "Protect default-branch automation, prompts, policy, command files and overrides. Accept the association policy; never execute PR-head code in a privileged controller. Exact operand contract: O-CONTROL",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:119 — [Workflow map][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md"
+    },
+    {
+      "entry_point": "A01",
+      "parameter": "Issue title/body",
+      "attacker_controllable": "yes",
+      "component": "A",
+      "caller_must_enforce": "Set provider spending caps. Preserve concurrency, reservations and effective cache grants; inspect unknown usage and separate local/Actions ledgers. Exact operand contract: O-COST;PROP-SHELL-SAFE",
+      "provenance": "documented",
+      "source": "maintainer ruling, 2026-10"
+    },
+    {
+      "entry_point": "A01",
+      "parameter": "Comment/slash",
+      "attacker_controllable": "conditional",
+      "component": "A",
+      "caller_must_enforce": "Review hold/needs-human and security/compatibility changes. Distinguish author opt-in from protected/breaking overrides; keep sensitive external merge off unless coverage justifies it. Exact operand contract: O-OVERRIDE",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:121 — [state]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#state-and-authorization",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: U until association. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "A01",
+      "parameter": "Association/author/labels",
+      "attacker_controllable": "conditional",
+      "component": "A",
+      "caller_must_enforce": "Protect default-branch automation, prompts, policy, command files and overrides. Accept the association policy; never execute PR-head code in a privileged controller. Exact operand contract: O-CONTROL",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:122 — [admission]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#paid-event-admission",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: M platform/authorized mutation. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "A01",
+      "parameter": "Item number",
+      "attacker_controllable": "conditional",
+      "component": "A",
+      "caller_must_enforce": "Protect default-branch automation, prompts, policy, command files and overrides. Accept the association policy; never execute PR-head code in a privileged controller. Exact operand contract: O-CONTROL;installed-repo numeric ID",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:123 — [publication]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#github-publication-boundary",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: M platform. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "A02",
+      "parameter": "Task",
+      "attacker_controllable": "no",
+      "component": "A",
+      "caller_must_enforce": "Protect default-branch automation, prompts, policy, command files and overrides. Accept the association policy; never execute PR-head code in a privileged controller. Exact operand contract: O-CONTROL",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:124 — [Manual scheduled-maintenance tasks][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md"
+    },
+    {
+      "entry_point": "A02",
+      "parameter": "Migration plan ID",
+      "attacker_controllable": "no",
+      "component": "A",
+      "caller_must_enforce": "Approve the committed exact plan, files, replacement evidence and offline commands. Labels or planning issues cannot authorize execution. Exact operand contract: O-MIGRATE",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:125 — [Migration execution][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md"
+    },
+    {
+      "entry_point": "A02",
+      "parameter": "Force",
+      "attacker_controllable": "no",
+      "component": "A",
+      "caller_must_enforce": "Set provider spending caps. Preserve concurrency, reservations and effective cache grants; inspect unknown usage and separate local/Actions ledgers. Exact operand contract: O-COST;no cap bypass",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:126 — [Manual scheduled-maintenance tasks][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md"
+    },
+    {
+      "entry_point": "A03",
+      "parameter": "Task/tier",
+      "attacker_controllable": "no",
+      "component": "A",
+      "caller_must_enforce": "Protect default-branch automation, prompts, policy, command files and overrides. Accept the association policy; never execute PR-head code in a privileged controller. Exact operand contract: O-CONTROL;tier≠authority",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:127 — [Provider routing][config]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md"
+    },
+    {
+      "entry_point": "A03",
+      "parameter": "Sandbox image",
+      "attacker_controllable": "no",
+      "component": "A",
+      "caller_must_enforce": "Trust and review host, Docker, images, CLI/SDK and executable collaborators. Stronger support contracts remain Q2. Exact operand contract: O-HOST",
+      "provenance": "inferred",
+      "source": "open question Q2"
+    },
+    {
+      "entry_point": "A03",
+      "parameter": "Event path",
+      "attacker_controllable": "no",
+      "component": "A",
+      "caller_must_enforce": "Protect default-branch automation, prompts, policy, command files and overrides. Accept the association policy; never execute PR-head code in a privileged controller. Exact operand contract: O-CONTROL",
+      "provenance": "inferred",
+      "source": "open question Q2"
+    },
+    {
+      "entry_point": "A03",
+      "parameter": "Event bytes",
+      "attacker_controllable": "yes",
+      "component": "A",
+      "caller_must_enforce": "Set provider spending caps. Preserve concurrency, reservations and effective cache grants; inspect unknown usage and separate local/Actions ledgers. Exact operand contract: O-COST;byte cap",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:130 — [limits]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#usage-and-rate-limits"
+    },
+    {
+      "entry_point": "A03",
+      "parameter": "Context paths",
+      "attacker_controllable": "no",
+      "component": "A",
+      "caller_must_enforce": "Supply a clean, secret-free, provider-appropriate checkout. Inspect context paths before disclosure. Exact operand contract: O-SOURCE",
+      "provenance": "inferred",
+      "source": "open question Q2"
+    },
+    {
+      "entry_point": "A03",
+      "parameter": "Context bytes",
+      "attacker_controllable": "yes",
+      "component": "A",
+      "caller_must_enforce": "Supply a clean, secret-free, provider-appropriate checkout. Inspect context paths before disclosure. Exact operand contract: O-SOURCE;prompt cap",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:132 — [limits]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#usage-and-rate-limits"
+    },
+    {
+      "entry_point": "A03",
+      "parameter": "Selection file",
+      "attacker_controllable": "conditional",
+      "component": "A",
+      "caller_must_enforce": "Protect default-branch automation, prompts, policy, command files and overrides. Accept the association policy; never execute PR-head code in a privileged controller. Exact operand contract: O-CONTROL;independent validation",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:133 — [Selection; Independent validation][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: T record/U metadata. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "A03",
+      "parameter": "Output path",
+      "attacker_controllable": "no",
+      "component": "A",
+      "caller_must_enforce": "Protect default-branch automation, prompts, policy, command files and overrides. Accept the association policy; never execute PR-head code in a privileged controller. Exact operand contract: O-CONTROL",
+      "provenance": "inferred",
+      "source": "open question Q2"
+    },
+    {
+      "entry_point": "A03",
+      "parameter": "Install-skills",
+      "attacker_controllable": "no",
+      "component": "A",
+      "caller_must_enforce": "Protect default-branch automation, prompts, policy, command files and overrides. Accept the association policy; never execute PR-head code in a privileged controller. Exact operand contract: O-CONTROL;instruction trust",
+      "provenance": "inferred",
+      "source": "open question Q5"
+    },
+    {
+      "entry_point": "A03",
+      "parameter": "Restore-state",
+      "attacker_controllable": "no",
+      "component": "A",
+      "caller_must_enforce": "Set provider spending caps. Preserve concurrency, reservations and effective cache grants; inspect unknown usage and separate local/Actions ledgers. Exact operand contract: O-COST;one scheduled restore",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:136 — [audit]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#workflow-audit-decisions"
+    },
+    {
+      "entry_point": "A04",
+      "parameter": "Effective mode",
+      "attacker_controllable": "no",
+      "component": "A",
+      "caller_must_enforce": "Set provider spending caps. Preserve concurrency, reservations and effective cache grants; inspect unknown usage and separate local/Actions ledgers. Exact operand contract: O-COST;gate restores/saves;no grant enlargement",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:137 — [audit]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#workflow-audit-decisions"
+    },
+    {
+      "entry_point": "A04",
+      "parameter": "Trigger identity",
+      "attacker_controllable": "no",
+      "component": "A",
+      "caller_must_enforce": "Protect default-branch automation, prompts, policy, command files and overrides. Accept the association policy; never execute PR-head code in a privileged controller. Exact operand contract: O-CONTROL",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:138 — [audit]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#workflow-audit-decisions"
+    },
+    {
+      "entry_point": "A04",
+      "parameter": "Output/summary paths",
+      "attacker_controllable": "no",
+      "component": "A",
+      "caller_must_enforce": "Protect default-branch automation, prompts, policy, command files and overrides. Accept the association policy; never execute PR-head code in a privileged controller. Exact operand contract: O-CONTROL",
+      "provenance": "inferred",
+      "source": "open question Q3"
+    },
+    {
+      "entry_point": "A05",
+      "parameter": "Root/config path",
+      "attacker_controllable": "no",
+      "component": "A",
+      "caller_must_enforce": "Protect default-branch automation, prompts, policy, command files and overrides. Accept the association policy; never execute PR-head code in a privileged controller. Exact operand contract: O-CONTROL;explicit path exists",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:140 — [Loading and syntax][config]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md"
+    },
+    {
+      "entry_point": "A05",
+      "parameter": "YAML",
+      "attacker_controllable": "no",
+      "component": "A",
+      "caller_must_enforce": "Protect default-branch automation, prompts, policy, command files and overrides. Accept the association policy; never execute PR-head code in a privileged controller. Exact operand contract: O-CONTROL;P-CONFIG;size Q4",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:141 — [yaml]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#use-the-supported-yaml-subset"
+    },
+    {
+      "entry_point": "A05",
+      "parameter": "Environment overrides",
+      "attacker_controllable": "no",
+      "component": "A",
+      "caller_must_enforce": "Protect default-branch automation, prompts, policy, command files and overrides. Accept the association policy; never execute PR-head code in a privileged controller. Exact operand contract: O-CONTROL;mapped variables only",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:142 — [Repository variables versus environment overrides][config]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md"
+    },
+    {
+      "entry_point": "A06",
+      "parameter": "State path",
+      "attacker_controllable": "no",
+      "component": "A",
+      "caller_must_enforce": "Protect state/output/policy/snapshots. Rerun after code/policy/source/candidate changes; writable hashes are not signatures. Never delete publication records to bypass retry refusal. Exact operand contract: O-RECORDS",
+      "provenance": "inferred",
+      "source": "open question Q12"
+    },
+    {
+      "entry_point": "A06",
+      "parameter": "JSON/direct object",
+      "attacker_controllable": "conditional",
+      "component": "A",
+      "caller_must_enforce": "Protect state/output/policy/snapshots. Rerun after code/policy/source/candidate changes; writable hashes are not signatures. Never delete publication records to bypass retry refusal. Exact operand contract: O-RECORDS;normalization≠authentication",
+      "provenance": "inferred",
+      "source": "open question Q12",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: M provenance/U metadata. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "A07",
+      "parameter": "Author",
+      "attacker_controllable": "conditional",
+      "component": "A",
+      "caller_must_enforce": "Protect default-branch automation, prompts, policy, command files and overrides. Accept the association policy; never execute PR-head code in a privileged controller. Exact operand contract: O-CONTROL;recognized author",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:145 — [state]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#state-and-authorization",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: M platform identity. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "A07",
+      "parameter": "Marker",
+      "attacker_controllable": "yes",
+      "component": "A",
+      "caller_must_enforce": "Encode raw logs/JSON/paths/code/diffs for each consumer. Never execute/render them as instructions or reuse context-specific encoding elsewhere. Exact operand contract: O-OUTPUT;P-STATE",
+      "provenance": "inferred",
+      "source": "open question Q8"
+    },
+    {
+      "entry_point": "A07",
+      "parameter": "Labels",
+      "attacker_controllable": "conditional",
+      "component": "A",
+      "caller_must_enforce": "Review hold/needs-human and security/compatibility changes. Distinguish author opt-in from protected/breaking overrides; keep sensitive external merge off unless coverage justifies it. Exact operand contract: O-OVERRIDE;fields Q12",
+      "provenance": "inferred",
+      "source": "open question Q12",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: M maintainer. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "A08",
+      "parameter": "Path/task/item/reservation ID",
+      "attacker_controllable": "no",
+      "component": "A",
+      "caller_must_enforce": "Set provider spending caps. Preserve concurrency, reservations and effective cache grants; inspect unknown usage and separate local/Actions ledgers. Exact operand contract: O-COST;locked pre-inference reservation",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:148 — [limits]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#usage-and-rate-limits"
+    },
+    {
+      "entry_point": "A08",
+      "parameter": "Limits",
+      "attacker_controllable": "no",
+      "component": "A",
+      "caller_must_enforce": "Set provider spending caps. Preserve concurrency, reservations and effective cache grants; inspect unknown usage and separate local/Actions ledgers. Exact operand contract: O-COST;positive per-run bounds",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:149 — [limits]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#usage-and-rate-limits"
+    },
+    {
+      "entry_point": "A08",
+      "parameter": "Usage/outcome",
+      "attacker_controllable": "conditional",
+      "component": "A",
+      "caller_must_enforce": "Set provider spending caps. Preserve concurrency, reservations and effective cache grants; inspect unknown usage and separate local/Actions ledgers. Exact operand contract: O-COST;unknown≠zero",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:150 — [usage]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/operations.md#usage-and-cost",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: M telemetry. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "A08",
+      "parameter": "Clock/timestamps",
+      "attacker_controllable": "no",
+      "component": "A",
+      "caller_must_enforce": "Trust and review host, Docker, images, CLI/SDK and executable collaborators. Stronger support contracts remain Q2. Exact operand contract: O-HOST;skew Q11",
+      "provenance": "inferred",
+      "source": "open question Q11"
+    },
+    {
+      "entry_point": "B01",
+      "parameter": "Task/tier",
+      "attacker_controllable": "no",
+      "component": "B",
+      "caller_must_enforce": "Protect default-branch automation, prompts, policy, command files and overrides. Accept the association policy; never execute PR-head code in a privileged controller. Exact operand contract: O-CONTROL;P-READONLY",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:152 — [Migration planning][maintenance]; [gates]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#deterministic-pr-gates"
+    },
+    {
+      "entry_point": "B01",
+      "parameter": "Repository/working roots",
+      "attacker_controllable": "conditional",
+      "component": "B",
+      "caller_must_enforce": "Supply a clean, secret-free, provider-appropriate checkout. Inspect context paths before disclosure. Exact operand contract: O-SOURCE;candidate separation",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:153 — [candidate]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#candidate-and-command-isolation",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: T roots/U files. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "B01",
+      "parameter": "Prompt paths/instructions",
+      "attacker_controllable": "no",
+      "component": "B",
+      "caller_must_enforce": "Protect default-branch automation, prompts, policy, command files and overrides. Accept the association policy; never execute PR-head code in a privileged controller. Exact operand contract: O-CONTROL;no ratification",
+      "provenance": "inferred",
+      "source": "open question Q5"
+    },
+    {
+      "entry_point": "B01",
+      "parameter": "Context/event/extra context",
+      "attacker_controllable": "yes",
+      "component": "B",
+      "caller_must_enforce": "Supply a clean, secret-free, provider-appropriate checkout. Inspect context paths before disclosure. Exact operand contract: O-SOURCE;delimiters≠isolation",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:155 — [source-secrets]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#check-source-files-for-secrets"
+    },
+    {
+      "entry_point": "B01",
+      "parameter": "Provider/backend/model/fallback",
+      "attacker_controllable": "no",
+      "component": "B",
+      "caller_must_enforce": "Set provider spending caps. Preserve concurrency, reservations and effective cache grants; inspect unknown usage and separate local/Actions ledgers. Exact operand contract: O-COST;four providers",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:156 — [Provider routing][config]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md"
+    },
+    {
+      "entry_point": "B01",
+      "parameter": "Credentials",
+      "attacker_controllable": "no",
+      "component": "B",
+      "caller_must_enforce": "Scope provider/GitHub/registry identities separately. Configure package-scoped tokens or trusted publishers; workflow permissions do not limit PATs. Exact operand contract: O-CREDENTIALS;never worker",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:157 — [Execution zones][architecture]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md"
+    },
+    {
+      "entry_point": "B01",
+      "parameter": "Output/state paths",
+      "attacker_controllable": "no",
+      "component": "B",
+      "caller_must_enforce": "Protect state/output/policy/snapshots. Rerun after code/policy/source/candidate changes; writable hashes are not signatures. Never delete publication records to bypass retry refusal. Exact operand contract: O-RECORDS",
+      "provenance": "inferred",
+      "source": "open question Q2"
+    },
+    {
+      "entry_point": "B01",
+      "parameter": "Dry-run",
+      "attacker_controllable": "no",
+      "component": "B",
+      "caller_must_enforce": "Distinguish claims/facts, known/unknown usage, live/synthetic evidence and source/generated locks. Review model authority rather than accepting headings/counts. Exact operand contract: O-EVIDENCE;synthetic",
+      "provenance": "inferred",
+      "source": "open question Q5"
+    },
+    {
+      "entry_point": "B02",
+      "parameter": "Path",
+      "attacker_controllable": "yes",
+      "component": "B",
+      "caller_must_enforce": "Trust and review host, Docker, images, CLI/SDK and executable collaborators. Stronger support contracts remain Q2. Exact operand contract: O-HOST;P-PATH",
+      "provenance": "inferred",
+      "source": "open question Q2"
+    },
+    {
+      "entry_point": "B02",
+      "parameter": "Start/end lines",
+      "attacker_controllable": "yes",
+      "component": "B",
+      "caller_must_enforce": "Positive safe integers;edges Q11 Exact operand contract: Positive safe integers;edges Q11",
+      "provenance": "inferred",
+      "source": "open question Q11"
+    },
+    {
+      "entry_point": "B03",
+      "parameter": "Path",
+      "attacker_controllable": "yes",
+      "component": "B",
+      "caller_must_enforce": "Trust and review host, Docker, images, CLI/SDK and executable collaborators. Stronger support contracts remain Q2. Exact operand contract: O-HOST;readonly/protected checks",
+      "provenance": "inferred",
+      "source": "open question Q2"
+    },
+    {
+      "entry_point": "B03",
+      "parameter": "Content",
+      "attacker_controllable": "yes",
+      "component": "B",
+      "caller_must_enforce": "Encode raw logs/JSON/paths/code/diffs for each consumer. Never execute/render them as instructions or reuse context-specific encoding elsewhere. Exact operand contract: O-OUTPUT",
+      "provenance": "inferred",
+      "source": "open question Q8"
+    },
+    {
+      "entry_point": "B04",
+      "parameter": "Path",
+      "attacker_controllable": "yes",
+      "component": "B",
+      "caller_must_enforce": "Trust and review host, Docker, images, CLI/SDK and executable collaborators. Stronger support contracts remain Q2. Exact operand contract: O-HOST;P-PATH",
+      "provenance": "inferred",
+      "source": "open question Q2"
+    },
+    {
+      "entry_point": "B04",
+      "parameter": "Old string",
+      "attacker_controllable": "yes",
+      "component": "B",
+      "caller_must_enforce": "Literal nonempty first-match, not regex Exact operand contract: Literal nonempty first-match, not regex",
+      "provenance": "inferred",
+      "source": "open question Q11"
+    },
+    {
+      "entry_point": "B04",
+      "parameter": "New string",
+      "attacker_controllable": "yes",
+      "component": "B",
+      "caller_must_enforce": "Encode raw logs/JSON/paths/code/diffs for each consumer. Never execute/render them as instructions or reuse context-specific encoding elsewhere. Exact operand contract: O-OUTPUT",
+      "provenance": "inferred",
+      "source": "open question Q8"
+    },
+    {
+      "entry_point": "B05",
+      "parameter": "Command",
+      "attacker_controllable": "yes",
+      "component": "B",
+      "caller_must_enforce": "Trust and review host, Docker, images, CLI/SDK and executable collaborators. Stronger support contracts remain Q2. Exact operand contract: O-HOST;P-OFFLINE",
+      "provenance": "inferred",
+      "source": "open question Q2"
+    },
+    {
+      "entry_point": "B05",
+      "parameter": "Stdout/stderr/files",
+      "attacker_controllable": "yes",
+      "component": "B",
+      "caller_must_enforce": "Encode raw logs/JSON/paths/code/diffs for each consumer. Never execute/render them as instructions or reuse context-specific encoding elsewhere. Exact operand contract: O-OUTPUT;stop before export",
+      "provenance": "inferred",
+      "source": "open question Q8"
+    },
+    {
+      "entry_point": "B06",
+      "parameter": "Summary/comment/PR body",
+      "attacker_controllable": "yes",
+      "component": "B",
+      "caller_must_enforce": "Encode raw logs/JSON/paths/code/diffs for each consumer. Never execute/render them as instructions or reuse context-specific encoding elsewhere. Exact operand contract: O-OUTPUT;P-TEXT",
+      "provenance": "inferred",
+      "source": "open question Q8"
+    },
+    {
+      "entry_point": "B06",
+      "parameter": "Title",
+      "attacker_controllable": "yes",
+      "component": "B",
+      "caller_must_enforce": "Encode raw logs/JSON/paths/code/diffs for each consumer. Never execute/render them as instructions or reuse context-specific encoding elsewhere. Exact operand contract: O-OUTPUT;plain neutralizer",
+      "provenance": "inferred",
+      "source": "open question Q8"
+    },
+    {
+      "entry_point": "B06",
+      "parameter": "Action/disposition",
+      "attacker_controllable": "yes",
+      "component": "B",
+      "caller_must_enforce": "Distinguish claims/facts, known/unknown usage, live/synthetic evidence and source/generated locks. Review model authority rather than accepting headings/counts. Exact operand contract: O-EVIDENCE;not authority",
+      "provenance": "inferred",
+      "source": "open question Q5"
+    },
+    {
+      "entry_point": "B06",
+      "parameter": "Verdict/gates",
+      "attacker_controllable": "yes",
+      "component": "B",
+      "caller_must_enforce": "Protect the default branch; configure exact contexts/publishers/triggers. Retain review/CI gates, verify actual execution and inspect workflow definitions, not App ID alone. Exact operand contract: O-CI;complete live review",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:172 — [gates]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#deterministic-pr-gates"
+    },
+    {
+      "entry_point": "B06",
+      "parameter": "Risk/breaking/details",
+      "attacker_controllable": "yes",
+      "component": "B",
+      "caller_must_enforce": "Review hold/needs-human and security/compatibility changes. Distinguish author opt-in from protected/breaking overrides; keep sensitive external merge off unless coverage justifies it. Exact operand contract: O-OVERRIDE;false≠compatibility",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:173 — [risks]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#remaining-risks"
+    },
+    {
+      "entry_point": "B06",
+      "parameter": "Changed files",
+      "attacker_controllable": "yes",
+      "component": "B",
+      "caller_must_enforce": "Distinguish claims/facts, known/unknown usage, live/synthetic evidence and source/generated locks. Review model authority rather than accepting headings/counts. Exact operand contract: O-EVIDENCE;actual controller export",
+      "provenance": "inferred",
+      "source": "open question Q5"
+    },
+    {
+      "entry_point": "B06",
+      "parameter": "Branch",
+      "attacker_controllable": "yes",
+      "component": "B",
+      "caller_must_enforce": "Protect default-branch automation, prompts, policy, command files and overrides. Accept the association policy; never execute PR-head code in a privileged controller. Exact operand contract: O-CONTROL;automation refs",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:175 — [publication]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#github-publication-boundary"
+    },
+    {
+      "entry_point": "B06",
+      "parameter": "Added/removed labels",
+      "attacker_controllable": "yes",
+      "component": "B",
+      "caller_must_enforce": "Review hold/needs-human and security/compatibility changes. Distinguish author opt-in from protected/breaking overrides; keep sensitive external merge off unless coverage justifies it. Exact operand contract: O-OVERRIDE;delimiter/protected filtering",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:176 — [state]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#state-and-authorization"
+    },
+    {
+      "entry_point": "B07",
+      "parameter": "History/schema",
+      "attacker_controllable": "conditional",
+      "component": "B",
+      "caller_must_enforce": "Supply a clean, secret-free, provider-appropriate checkout. Inspect context paths before disclosure. Exact operand contract: O-SOURCE;bounded request",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:177 — [providers]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#provider-integration",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: M data/T schema. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "B07",
+      "parameter": "Response/tool/arguments",
+      "attacker_controllable": "yes",
+      "component": "B",
+      "caller_must_enforce": "Distinguish claims/facts, known/unknown usage, live/synthetic evidence and source/generated locks. Review model authority rather than accepting headings/counts. Exact operand contract: O-EVIDENCE;known schema",
+      "provenance": "inferred",
+      "source": "open question Q5"
+    },
+    {
+      "entry_point": "B07",
+      "parameter": "Native events",
+      "attacker_controllable": "conditional",
+      "component": "B",
+      "caller_must_enforce": "Trust and review host, Docker, images, CLI/SDK and executable collaborators. Stronger support contracts remain Q2. Exact operand contract: O-HOST;deny unexpected activity",
+      "provenance": "inferred",
+      "source": "open question Q2",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: M runtime/U-induced. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "B07",
+      "parameter": "Usage/metrics",
+      "attacker_controllable": "conditional",
+      "component": "B",
+      "caller_must_enforce": "Set provider spending caps. Preserve concurrency, reservations and effective cache grants; inspect unknown usage and separate local/Actions ledgers. Exact operand contract: O-COST;not model-reported",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:180 — [usage]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/operations.md#usage-and-cost",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: M telemetry. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "B08",
+      "parameter": "Candidate",
+      "attacker_controllable": "yes",
+      "component": "B",
+      "caller_must_enforce": "Set separate host/VM storage bounds covering downloads, source copies, cache and persistent images. Exact operand contract: O-STORAGE;whole changeset",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:181 — [candidate]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#candidate-and-command-isolation"
+    },
+    {
+      "entry_point": "B08",
+      "parameter": "Target/baseline",
+      "attacker_controllable": "no",
+      "component": "B",
+      "caller_must_enforce": "Protect state/output/policy/snapshots. Rerun after code/policy/source/candidate changes; writable hashes are not signatures. Never delete publication records to bypass retry refusal. Exact operand contract: O-RECORDS;source-change refusal",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:182 — [candidate]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#candidate-and-command-isolation"
+    },
+    {
+      "entry_point": "B08",
+      "parameter": "allowThreatModel",
+      "attacker_controllable": "no",
+      "component": "B",
+      "caller_must_enforce": "Protect default-branch automation, prompts, policy, command files and overrides. Accept the association policy; never execute PR-head code in a privileged controller. Exact operand contract: O-CONTROL;P-EXPORT exception",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:183 — [candidate]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#candidate-and-command-isolation"
+    },
+    {
+      "entry_point": "B09",
+      "parameter": "Prompt/system/model/working/output/turn options",
+      "attacker_controllable": "conditional",
+      "component": "B",
+      "caller_must_enforce": "Protect default-branch automation, prompts, policy, command files and overrides. Accept the association policy; never execute PR-head code in a privileged controller. Exact operand contract: O-CONTROL;no inherited admission",
+      "provenance": "inferred",
+      "source": "open question Q2",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: T selections/U content. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "B09",
+      "parameter": "OPENROUTER_BASE_URL",
+      "attacker_controllable": "no",
+      "component": "B",
+      "caller_must_enforce": "Scope provider/GitHub/registry identities separately. Configure package-scoped tokens or trusted publishers; workflow permissions do not limit PATs. Exact operand contract: O-CREDENTIALS;support Q2",
+      "provenance": "inferred",
+      "source": "open question Q2"
+    },
+    {
+      "entry_point": "C01",
+      "parameter": "Root/manifest/lock",
+      "attacker_controllable": "conditional",
+      "component": "C",
+      "caller_must_enforce": "Supply a clean, secret-free, provider-appropriate checkout. Inspect context paths before disclosure. Exact operand contract: O-SOURCE;parser subset",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:186 — [Routine dependency updates][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: T root/U bytes. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "C01",
+      "parameter": "Names/ecosystems/versions",
+      "attacker_controllable": "yes",
+      "component": "C",
+      "caller_must_enforce": "Encode raw logs/JSON/paths/code/diffs for each consumer. Never execute/render them as instructions or reuse context-specific encoding elsewhere. Exact operand contract: O-OUTPUT;identity rechecked",
+      "provenance": "inferred",
+      "source": "open question Q8"
+    },
+    {
+      "entry_point": "C01",
+      "parameter": "OSV JSON/continuation",
+      "attacker_controllable": "yes",
+      "component": "C",
+      "caller_must_enforce": "Distinguish claims/facts, known/unknown usage, live/synthetic evidence and source/generated locks. Review model authority rather than accepting headings/counts. Exact operand contract: O-EVIDENCE;failure≠clean",
+      "provenance": "inferred",
+      "source": "open question Q5"
+    },
+    {
+      "entry_point": "C01",
+      "parameter": "Ecosyste.ms metadata/counts",
+      "attacker_controllable": "yes",
+      "component": "C",
+      "caller_must_enforce": "Distinguish claims/facts, known/unknown usage, live/synthetic evidence and source/generated locks. Review model authority rather than accepting headings/counts. Exact operand contract: O-EVIDENCE;unknown stays unknown",
+      "provenance": "inferred",
+      "source": "open question Q5"
+    },
+    {
+      "entry_point": "C01",
+      "parameter": "Offline selector",
+      "attacker_controllable": "no",
+      "component": "C",
+      "caller_must_enforce": "Distinguish claims/facts, known/unknown usage, live/synthetic evidence and source/generated locks. Review model authority rather than accepting headings/counts. Exact operand contract: O-EVIDENCE;no fabricated intelligence",
+      "provenance": "inferred",
+      "source": "open question Q1"
+    },
+    {
+      "entry_point": "C02",
+      "parameter": "Scan/time/open PRs/state",
+      "attacker_controllable": "conditional",
+      "component": "C",
+      "caller_must_enforce": "Set provider spending caps. Preserve concurrency, reservations and effective cache grants; inspect unknown usage and separate local/Actions ledgers. Exact operand contract: O-COST;fresh dedup≠exactly-once",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:191 — [Selection][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: M evidence. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "C02",
+      "parameter": "Mode/plan ID/approval",
+      "attacker_controllable": "no",
+      "component": "C",
+      "caller_must_enforce": "Approve the committed exact plan, files, replacement evidence and offline commands. Labels or planning issues cannot authorize execution. Exact operand contract: O-MIGRATE",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:192 — [Migration execution][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md"
+    },
+    {
+      "entry_point": "C03",
+      "parameter": "Selection/hash/plan",
+      "attacker_controllable": "no",
+      "component": "C",
+      "caller_must_enforce": "Approve the committed exact plan, files, replacement evidence and offline commands. Labels or planning issues cannot authorize execution. Exact operand contract: O-MIGRATE;independent intent match",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:193 — [Independent validation][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md"
+    },
+    {
+      "entry_point": "C03",
+      "parameter": "Manifest/lock/source",
+      "attacker_controllable": "yes",
+      "component": "C",
+      "caller_must_enforce": "Set separate host/VM storage bounds covering downloads, source copies, cache and persistent images. Exact operand contract: O-STORAGE;allowed files/exact resolution",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:194 — [Independent validation][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md"
+    },
+    {
+      "entry_point": "C03",
+      "parameter": "Original npm scripts",
+      "attacker_controllable": "yes",
+      "component": "C",
+      "caller_must_enforce": "Trust and review host, Docker, images, CLI/SDK and executable collaborators. Stronger support contracts remain Q2. Exact operand contract: O-HOST;fresh offline worker",
+      "provenance": "inferred",
+      "source": "open question Q2"
+    },
+    {
+      "entry_point": "C03",
+      "parameter": "Extra/migration commands",
+      "attacker_controllable": "no",
+      "component": "C",
+      "caller_must_enforce": "Approve the committed exact plan, files, replacement evidence and offline commands. Labels or planning issues cannot authorize execution. Exact operand contract: O-MIGRATE;offline",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:196 — [Migration execution][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md"
+    },
+    {
+      "entry_point": "C03",
+      "parameter": "Advisory/resolution output",
+      "attacker_controllable": "yes",
+      "component": "C",
+      "caller_must_enforce": "Distinguish claims/facts, known/unknown usage, live/synthetic evidence and source/generated locks. Review model authority rather than accepting headings/counts. Exact operand contract: O-EVIDENCE;source/exec-bit checks",
+      "provenance": "inferred",
+      "source": "open question Q5"
+    },
+    {
+      "entry_point": "C04",
+      "parameter": "Result/evidence",
+      "attacker_controllable": "conditional",
+      "component": "C",
+      "caller_must_enforce": "Protect state/output/policy/snapshots. Rerun after code/policy/source/candidate changes; writable hashes are not signatures. Never delete publication records to bypass retry refusal. Exact operand contract: O-RECORDS;matching completed live evidence",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:198 — [Publication][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: T records/U narrative. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "C04",
+      "parameter": "Base/branch/repository",
+      "attacker_controllable": "no",
+      "component": "C",
+      "caller_must_enforce": "Protect default-branch automation, prompts, policy, command files and overrides. Accept the association policy; never execute PR-head code in a privileged controller. Exact operand contract: O-CONTROL;installed repo",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:199 — [publication]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#github-publication-boundary"
+    },
+    {
+      "entry_point": "C05",
+      "parameter": "Policy/build-file list",
+      "attacker_controllable": "no",
+      "component": "C",
+      "caller_must_enforce": "Review hold/needs-human and security/compatibility changes. Distinguish author opt-in from protected/breaking overrides; keep sensitive external merge off unless coverage justifies it. Exact operand contract: O-OVERRIDE;held proposals",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:200 — [Node toolchain maintenance][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md"
+    },
+    {
+      "entry_point": "C05",
+      "parameter": "Schedule/source syntax",
+      "attacker_controllable": "yes",
+      "component": "C",
+      "caller_must_enforce": "Distinguish claims/facts, known/unknown usage, live/synthetic evidence and source/generated locks. Review model authority rather than accepting headings/counts. Exact operand contract: O-EVIDENCE;recognized literals",
+      "provenance": "inferred",
+      "source": "open question Q5"
+    },
+    {
+      "entry_point": "C06",
+      "parameter": "Config/parent/remotes",
+      "attacker_controllable": "conditional",
+      "component": "C",
+      "caller_must_enforce": "Review source/target/origin and save customizations. Understand replacement/force/label options; inspect preview and discovery proposals before applying them. Exact operand contract: O-INSTALL;read-only upstream",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:202 — [Upstream stewardship][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: M selection/platform. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "C06",
+      "parameter": "Issues/PRs/releases/closed issues",
+      "attacker_controllable": "yes",
+      "component": "C",
+      "caller_must_enforce": "Encode raw logs/JSON/paths/code/diffs for each consumer. Never execute/render them as instructions or reuse context-specific encoding elsewhere. Exact operand contract: O-OUTPUT;not rulings",
+      "provenance": "inferred",
+      "source": "open question Q8"
+    },
+    {
+      "entry_point": "C06",
+      "parameter": "Tracking markers",
+      "attacker_controllable": "conditional",
+      "component": "C",
+      "caller_must_enforce": "Protect state/output/policy/snapshots. Rerun after code/policy/source/candidate changes; writable hashes are not signatures. Never delete publication records to bypass retry refusal. Exact operand contract: O-RECORDS;dedup≠authority",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:204 — [Upstream stewardship][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: M author-qualified. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "C06",
+      "parameter": "Create-local/output/maxItems",
+      "attacker_controllable": "no",
+      "component": "C",
+      "caller_must_enforce": "Inspect confirmed branches/PRs/tags/versions and interrupted runs before retrying. Distinguish proposed, prepared, validated, published and merged outcomes. Exact operand contract: O-RETRY;confirmed mirrors persist",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:205 — [Upstream stewardship][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md"
+    },
+    {
+      "entry_point": "C07",
+      "parameter": "Model path/Markdown",
+      "attacker_controllable": "no",
+      "component": "C",
+      "caller_must_enforce": "Distinguish claims/facts, known/unknown usage, live/synthetic evidence and source/generated locks. Review model authority rather than accepting headings/counts. Exact operand contract: O-EVIDENCE",
+      "provenance": "inferred",
+      "source": "open question Q5"
+    },
+    {
+      "entry_point": "C08",
+      "parameter": "URL/cache",
+      "attacker_controllable": "no",
+      "component": "C",
+      "caller_must_enforce": "Protect default-branch automation, prompts, policy, command files and overrides. Accept the association policy; never execute PR-head code in a privileged controller. Exact operand contract: O-CONTROL",
+      "provenance": "inferred",
+      "source": "open question Q9"
+    },
+    {
+      "entry_point": "C08",
+      "parameter": "Install/root",
+      "attacker_controllable": "no",
+      "component": "C",
+      "caller_must_enforce": "Review source/target/origin and save customizations. Understand replacement/force/label options; inspect preview and discovery proposals before applying them. Exact operand contract: O-INSTALL;helper copies skills",
+      "provenance": "inferred",
+      "source": "open question Q3"
+    },
+    {
+      "entry_point": "C09",
+      "parameter": "Number/state/draft/author/labels/base/head",
+      "attacker_controllable": "conditional",
+      "component": "C",
+      "caller_must_enforce": "Protect the default branch; configure exact contexts/publishers/triggers. Retain review/CI gates, verify actual execution and inspect workflow definitions, not App ID alone. Exact operand contract: O-CI;fresh exact head",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:209 — [gates]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#deterministic-pr-gates",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: M platform/maintainer. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "C09",
+      "parameter": "Files/rename origins/changed_files",
+      "attacker_controllable": "yes",
+      "component": "C",
+      "caller_must_enforce": "Protect the default branch; configure exact contexts/publishers/triggers. Retain review/CI gates, verify actual execution and inspect workflow definitions, not App ID alone. Exact operand contract: O-CI;unique complete ≤3,000",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:210 — [gates]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#deterministic-pr-gates"
+    },
+    {
+      "entry_point": "C09",
+      "parameter": "Diff",
+      "attacker_controllable": "yes",
+      "component": "C",
+      "caller_must_enforce": "Encode raw logs/JSON/paths/code/diffs for each consumer. Never execute/render them as instructions or reuse context-specific encoding elsewhere. Exact operand contract: O-OUTPUT;data-only review",
+      "provenance": "inferred",
+      "source": "open question Q8"
+    },
+    {
+      "entry_point": "C09",
+      "parameter": "Fresh review",
+      "attacker_controllable": "yes",
+      "component": "C",
+      "caller_must_enforce": "Protect the default branch; configure exact contexts/publishers/triggers. Retain review/CI gates, verify actual execution and inspect workflow definitions, not App ID alone. Exact operand contract: O-CI;no comment approval reuse",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:212 — [gates]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#deterministic-pr-gates"
+    },
+    {
+      "entry_point": "C09",
+      "parameter": "Checks/statuses",
+      "attacker_controllable": "conditional",
+      "component": "C",
+      "caller_must_enforce": "Protect the default branch; configure exact contexts/publishers/triggers. Retain review/CI gates, verify actual execution and inspect workflow definitions, not App ID alone. Exact operand contract: O-CI;SHA/context/App≠workflow",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:213 — [checks]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#required-ci-checks",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: M service. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "C09",
+      "parameter": "Autonomy/bot controls",
+      "attacker_controllable": "no",
+      "component": "C",
+      "caller_must_enforce": "Review hold/needs-human and security/compatibility changes. Distinguish author opt-in from protected/breaking overrides; keep sensitive external merge off unless coverage justifies it. Exact operand contract: O-OVERRIDE;distinct exceptions",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:214 — [merge]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#merge-policy"
+    },
+    {
+      "entry_point": "D01",
+      "parameter": "Repo/server/GH defaults",
+      "attacker_controllable": "no",
+      "component": "D",
+      "caller_must_enforce": "Scope provider/GitHub/registry identities separately. Configure package-scoped tokens or trusted publishers; workflow permissions do not limit PATs. Exact operand contract: O-CREDENTIALS;GitHub.com binding",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:215 — [publication]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#github-publication-boundary"
+    },
+    {
+      "entry_point": "D01",
+      "parameter": "Command/argv",
+      "attacker_controllable": "conditional",
+      "component": "D",
+      "caller_must_enforce": "Protect default-branch automation, prompts, policy, command files and overrides. Accept the association policy; never execute PR-head code in a privileged controller. Exact operand contract: O-CONTROL;not hostile-command API",
+      "provenance": "inferred",
+      "source": "open question Q2",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: T operation/U text. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "D01",
+      "parameter": "Body/notes",
+      "attacker_controllable": "yes",
+      "component": "D",
+      "caller_must_enforce": "Encode raw logs/JSON/paths/code/diffs for each consumer. Never execute/render them as instructions or reuse context-specific encoding elsewhere. Exact operand contract: O-OUTPUT;P-TEXT",
+      "provenance": "inferred",
+      "source": "open question Q8"
+    },
+    {
+      "entry_point": "D01",
+      "parameter": "Body-file path",
+      "attacker_controllable": "conditional",
+      "component": "D",
+      "caller_must_enforce": "Protect default-branch automation, prompts, policy, command files and overrides. Accept the association policy; never execute PR-head code in a privileged controller. Exact operand contract: O-CONTROL;renderer applies",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:218 — [publication]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#github-publication-boundary",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: T path/U bytes. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "D01",
+      "parameter": "Title/merge subject/commit",
+      "attacker_controllable": "yes",
+      "component": "D",
+      "caller_must_enforce": "Encode raw logs/JSON/paths/code/diffs for each consumer. Never execute/render them as instructions or reuse context-specific encoding elsewhere. Exact operand contract: O-OUTPUT;plain handling",
+      "provenance": "inferred",
+      "source": "open question Q8"
+    },
+    {
+      "entry_point": "D01",
+      "parameter": "Closing-issue number",
+      "attacker_controllable": "no",
+      "component": "D",
+      "caller_must_enforce": "Protect default-branch automation, prompts, policy, command files and overrides. Accept the association policy; never execute PR-head code in a privileged controller. Exact operand contract: O-CONTROL;local reference exception",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:220 — [publication]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#github-publication-boundary"
+    },
+    {
+      "entry_point": "D02",
+      "parameter": "Flags/ref",
+      "attacker_controllable": "no",
+      "component": "D",
+      "caller_must_enforce": "Inspect confirmed branches/PRs/tags/versions and interrupted runs before retrying. Distinguish proposed, prepared, validated, published and merged outcomes. Exact operand contract: O-RETRY;automation/nonforced tags",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:221 — [publication]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#github-publication-boundary"
+    },
+    {
+      "entry_point": "D02",
+      "parameter": "Origin push URLs",
+      "attacker_controllable": "no",
+      "component": "D",
+      "caller_must_enforce": "Review source/target/origin and save customizations. Understand replacement/force/label options; inspect preview and discovery proposals before applying them. Exact operand contract: O-INSTALL;sole installed HTTPS",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:222 — [publication]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#github-publication-boundary"
+    },
+    {
+      "entry_point": "D02",
+      "parameter": "Token/helper",
+      "attacker_controllable": "no",
+      "component": "D",
+      "caller_must_enforce": "Scope provider/GitHub/registry identities separately. Configure package-scoped tokens or trusted publishers; workflow permissions do not limit PATs. Exact operand contract: O-CREDENTIALS;command-scoped, unpersisted",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:223 — [publication]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#github-publication-boundary"
+    },
+    {
+      "entry_point": "D03",
+      "parameter": "PR/head",
+      "attacker_controllable": "no",
+      "component": "D",
+      "caller_must_enforce": "Protect the default branch; configure exact contexts/publishers/triggers. Retain review/CI gates, verify actual execution and inspect workflow definitions, not App ID alone. Exact operand contract: O-CI;commit_id",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:224 — [gates]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#deterministic-pr-gates"
+    },
+    {
+      "entry_point": "D03",
+      "parameter": "Verdict/body",
+      "attacker_controllable": "yes",
+      "component": "D",
+      "caller_must_enforce": "Encode raw logs/JSON/paths/code/diffs for each consumer. Never execute/render them as instructions or reuse context-specific encoding elsewhere. Exact operand contract: O-OUTPUT;self-COMMENT≠approval",
+      "provenance": "inferred",
+      "source": "open question Q8"
+    },
+    {
+      "entry_point": "D04",
+      "parameter": "Head/base/repository",
+      "attacker_controllable": "no",
+      "component": "D",
+      "caller_must_enforce": "Inspect confirmed branches/PRs/tags/versions and interrupted runs before retrying. Distinguish proposed, prepared, validated, published and merged outcomes. Exact operand contract: O-RETRY;matching open PR",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:226 — [A branch was pushed but no PR appeared][operations]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/operations.md"
+    },
+    {
+      "entry_point": "D04",
+      "parameter": "Title/body/bodyFile/labels",
+      "attacker_controllable": "conditional",
+      "component": "D",
+      "caller_must_enforce": "Encode raw logs/JSON/paths/code/diffs for each consumer. Never execute/render them as instructions or reuse context-specific encoding elsewhere. Exact operand contract: O-OUTPUT;confirm target",
+      "provenance": "inferred",
+      "source": "open question Q8",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: M narrative/T label intent. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "D05",
+      "parameter": "Body/notes",
+      "attacker_controllable": "yes",
+      "component": "D",
+      "caller_must_enforce": "Encode raw logs/JSON/paths/code/diffs for each consumer. Never execute/render them as instructions or reuse context-specific encoding elsewhere. Exact operand contract: O-OUTPUT;P-TEXT",
+      "provenance": "inferred",
+      "source": "open question Q8"
+    },
+    {
+      "entry_point": "D05",
+      "parameter": "Title/merge subject/commit",
+      "attacker_controllable": "yes",
+      "component": "D",
+      "caller_must_enforce": "Encode raw logs/JSON/paths/code/diffs for each consumer. Never execute/render them as instructions or reuse context-specific encoding elsewhere. Exact operand contract: O-OUTPUT;plain handling",
+      "provenance": "inferred",
+      "source": "open question Q8"
+    },
+    {
+      "entry_point": "D06",
+      "parameter": "Commit subjects/bodies",
+      "attacker_controllable": "yes",
+      "component": "D",
+      "caller_must_enforce": "Review hold/needs-human and security/compatibility changes. Distinguish author opt-in from protected/breaking overrides; keep sensitive external merge off unless coverage justifies it. Exact operand contract: O-OVERRIDE;bump cap≠compatibility",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:228 — [Version policy][releases]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/releases.md"
+    },
+    {
+      "entry_point": "D06",
+      "parameter": "Tags/current version",
+      "attacker_controllable": "conditional",
+      "component": "D",
+      "caller_must_enforce": "Distinguish claims/facts, known/unknown usage, live/synthetic evidence and source/generated locks. Review model authority rather than accepting headings/counts. Exact operand contract: O-EVIDENCE;history failure aborts",
+      "provenance": "inferred",
+      "source": "open question Q5",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: M history. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "D06",
+      "parameter": "Version/manifest",
+      "attacker_controllable": "conditional",
+      "component": "D",
+      "caller_must_enforce": "Inspect confirmed branches/PRs/tags/versions and interrupted runs before retrying. Distinguish proposed, prepared, validated, published and merged outcomes. Exact operand contract: O-RETRY;prevalidate, no set rollback",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:230 — [Version policy][releases]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/releases.md",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: T version/U syntax. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "D06",
+      "parameter": "Settings/dry-run",
+      "attacker_controllable": "no",
+      "component": "D",
+      "caller_must_enforce": "Configure trusted expected names, exact committed versions and builders. Enable release only after identity/auth setup; inspect artifacts and partial registry outcomes. Exact operand contract: O-RELEASE",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:231 — [Controls][releases]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/releases.md"
+    },
+    {
+      "entry_point": "D07",
+      "parameter": "Event/author/label/base/SHA",
+      "attacker_controllable": "conditional",
+      "component": "D",
+      "caller_must_enforce": "Protect default-branch automation, prompts, policy, command files and overrides. Accept the association policy; never execute PR-head code in a privileged controller. Exact operand contract: O-CONTROL;qualifying default-branch source",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:232 — [Release lifecycle][releases]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/releases.md",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: M platform/maintainer. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "D07",
+      "parameter": "Version marker/title/version",
+      "attacker_controllable": "yes",
+      "component": "D",
+      "caller_must_enforce": "Configure trusted expected names, exact committed versions and builders. Enable release only after identity/auth setup; inspect artifacts and partial registry outcomes. Exact operand contract: O-RELEASE;committed-manifest match",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:233 — [Manual release dispatch][releases]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/releases.md"
+    },
+    {
+      "entry_point": "D07",
+      "parameter": "Token-presence/provenance",
+      "attacker_controllable": "no",
+      "component": "D",
+      "caller_must_enforce": "Scope provider/GitHub/registry identities separately. Configure package-scoped tokens or trusted publishers; workflow permissions do not limit PATs. Exact operand contract: O-CREDENTIALS;select job before secrets",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:234 — [Registry support][releases]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/releases.md"
+    },
+    {
+      "entry_point": "D08",
+      "parameter": "Root/backend",
+      "attacker_controllable": "no",
+      "component": "D",
+      "caller_must_enforce": "Trust and review host, Docker, images, CLI/SDK and executable collaborators. Stronger support contracts remain Q2. Exact operand contract: O-HOST;no registry/OIDC",
+      "provenance": "inferred",
+      "source": "open question Q2"
+    },
+    {
+      "entry_point": "D08",
+      "parameter": "Ecosystem/version/output",
+      "attacker_controllable": "no",
+      "component": "D",
+      "caller_must_enforce": "Configure trusted expected names, exact committed versions and builders. Enable release only after identity/auth setup; inspect artifacts and partial registry outcomes. Exact operand contract: O-RELEASE;package-only handoff",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:236 — [artifacts]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/releases.md#build-and-upload-constraints"
+    },
+    {
+      "entry_point": "D09",
+      "parameter": "Manifest/archive",
+      "attacker_controllable": "yes",
+      "component": "D",
+      "caller_must_enforce": "Set separate host/VM storage bounds covering downloads, source copies, cache and persistent images. Exact operand contract: O-STORAGE;hash≠identity authority",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:237 — [release-isolation]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#release-isolation"
+    },
+    {
+      "entry_point": "D09",
+      "parameter": "Expected names",
+      "attacker_controllable": "no",
+      "component": "D",
+      "caller_must_enforce": "Configure trusted expected names, exact committed versions and builders. Enable release only after identity/auth setup; inspect artifacts and partial registry outcomes. Exact operand contract: O-RELEASE;exact version/complete set",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:238 — [artifacts]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/releases.md#build-and-upload-constraints"
+    },
+    {
+      "entry_point": "D09",
+      "parameter": "Members/metadata classes",
+      "attacker_controllable": "yes",
+      "component": "D",
+      "caller_must_enforce": "none — P-PACKAGE Exact operand contract: No execution/extraction;reject unsafe structure",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:239 — [artifacts]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/releases.md#build-and-upload-constraints"
+    },
+    {
+      "entry_point": "D09",
+      "parameter": "npm publishConfig",
+      "attacker_controllable": "yes",
+      "component": "D",
+      "caller_must_enforce": "none — P-PACKAGE Exact operand contract: Only registry/access/tag;fixed registry",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:240 — [artifacts]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/releases.md#build-and-upload-constraints"
+    },
+    {
+      "entry_point": "D10",
+      "parameter": "Set/version/ecosystem",
+      "attacker_controllable": "yes",
+      "component": "D",
+      "caller_must_enforce": "Configure trusted expected names, exact committed versions and builders. Enable release only after identity/auth setup; inspect artifacts and partial registry outcomes. Exact operand contract: O-RELEASE;fresh outside-source validation",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:241 — [release-isolation]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#release-isolation"
+    },
+    {
+      "entry_point": "D10",
+      "parameter": "Token/OIDC",
+      "attacker_controllable": "no",
+      "component": "D",
+      "caller_must_enforce": "Scope provider/GitHub/registry identities separately. Configure package-scoped tokens or trusted publishers; workflow permissions do not limit PATs. Exact operand contract: O-CREDENTIALS",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:242 — [Registry support][releases]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/releases.md"
+    },
+    {
+      "entry_point": "D10",
+      "parameter": "Response",
+      "attacker_controllable": "yes",
+      "component": "D",
+      "caller_must_enforce": "Inspect confirmed branches/PRs/tags/versions and interrupted runs before retrying. Distinguish proposed, prepared, validated, published and merged outcomes. Exact operand contract: O-RETRY;partial success",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:243 — [artifacts]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/releases.md#build-and-upload-constraints"
+    },
+    {
+      "entry_point": "E01",
+      "parameter": "Subcommand/task/tier/item/plan/version/ecosystem",
+      "attacker_controllable": "no",
+      "component": "E",
+      "caller_must_enforce": "Protect default-branch automation, prompts, policy, command files and overrides. Accept the association policy; never execute PR-head code in a privileged controller. Exact operand contract: O-CONTROL;fixed operations",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:244 — [Tasks and providers][local]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md"
+    },
+    {
+      "entry_point": "E01",
+      "parameter": "Policy path",
+      "attacker_controllable": "no",
+      "component": "E",
+      "caller_must_enforce": "Protect state/output/policy/snapshots. Rerun after code/policy/source/candidate changes; writable hashes are not signatures. Never delete publication records to bypass retry refusal. Exact operand contract: O-RECORDS;repo cannot widen",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:245 — [Quick start][local]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md"
+    },
+    {
+      "entry_point": "E01",
+      "parameter": "Output/run paths",
+      "attacker_controllable": "no",
+      "component": "E",
+      "caller_must_enforce": "Protect state/output/policy/snapshots. Rerun after code/policy/source/candidate changes; writable hashes are not signatures. Never delete publication records to bypass retry refusal. Exact operand contract: O-RECORDS;selected cleanup",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:246 — [recovery]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#results-state-and-recovery"
+    },
+    {
+      "entry_point": "E01",
+      "parameter": "Repository/ref",
+      "attacker_controllable": "no",
+      "component": "E",
+      "caller_must_enforce": "Review source/target/origin and save customizations. Understand replacement/force/label options; inspect preview and discovery proposals before applying them. Exact operand contract: O-INSTALL;resolved SHA",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:247 — [local-publish]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#publication-and-real-github-ci"
+    },
+    {
+      "entry_point": "E01",
+      "parameter": "Four publication flags",
+      "attacker_controllable": "no",
+      "component": "E",
+      "caller_must_enforce": "Grant only intended independent capabilities; intersect flags with policy. Preserve installed-repository writes and read-only upstream access. Exact operand contract: O-PUBLISH;policy intersection",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:248 — [local-publish]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#publication-and-real-github-ci"
+    },
+    {
+      "entry_point": "E01",
+      "parameter": "WSL distro/credential variable names",
+      "attacker_controllable": "no",
+      "component": "E",
+      "caller_must_enforce": "Trust and review host, Docker, images, CLI/SDK and executable collaborators. Stronger support contracts remain Q2. Exact operand contract: O-HOST",
+      "provenance": "inferred",
+      "source": "open question Q2"
+    },
+    {
+      "entry_point": "E02",
+      "parameter": "Repository/upstreams",
+      "attacker_controllable": "no",
+      "component": "E",
+      "caller_must_enforce": "Grant only intended independent capabilities; intersect flags with policy. Preserve installed-repository writes and read-only upstream access. Exact operand contract: O-PUBLISH;upstream read-only",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:250 — [network]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#network-policy-and-audit"
+    },
+    {
+      "entry_point": "E02",
+      "parameter": "Images",
+      "attacker_controllable": "no",
+      "component": "E",
+      "caller_must_enforce": "Trust and review host, Docker, images, CLI/SDK and executable collaborators. Stronger support contracts remain Q2. Exact operand contract: O-HOST;immutable/loaded/Linux",
+      "provenance": "inferred",
+      "source": "open question Q2"
+    },
+    {
+      "entry_point": "E02",
+      "parameter": "Rule host",
+      "attacker_controllable": "no",
+      "component": "E",
+      "caller_must_enforce": "Scope provider/GitHub/registry identities separately. Configure package-scoped tokens or trusted publishers; workflow permissions do not limit PATs. Exact operand contract: O-CREDENTIALS;public DNS/TLS",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:252 — [network]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#network-policy-and-audit"
+    },
+    {
+      "entry_point": "E02",
+      "parameter": "Rule path",
+      "attacker_controllable": "no",
+      "component": "E",
+      "caller_must_enforce": "none — P-EGRESS Exact operand contract: Exact or trailing-slash subtree",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:253 — [network]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#network-policy-and-audit"
+    },
+    {
+      "entry_point": "E02",
+      "parameter": "Methods/roles",
+      "attacker_controllable": "no",
+      "component": "E",
+      "caller_must_enforce": "Grant only intended independent capabilities; intersect flags with policy. Preserve installed-repository writes and read-only upstream access. Exact operand contract: O-PUBLISH;independent grants",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:254 — [network]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#network-policy-and-audit"
+    },
+    {
+      "entry_point": "E02",
+      "parameter": "Secret env/file",
+      "attacker_controllable": "no",
+      "component": "E",
+      "caller_must_enforce": "Scope provider/GitHub/registry identities separately. Configure package-scoped tokens or trusted publishers; workflow permissions do not limit PATs. Exact operand contract: O-CREDENTIALS;operation-specific loading",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:255 — [Quick start][local]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md"
+    },
+    {
+      "entry_point": "E02",
+      "parameter": "Header/prefix/basic user/forwardAuthorization",
+      "attacker_controllable": "no",
+      "component": "E",
+      "caller_must_enforce": "Scope provider/GitHub/registry identities separately. Configure package-scoped tokens or trusted publishers; workflow permissions do not limit PATs. Exact operand contract: O-CREDENTIALS;narrow Copilot exception",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:256 — [Tasks and providers][local]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md"
+    },
+    {
+      "entry_point": "E02",
+      "parameter": "Limits",
+      "attacker_controllable": "no",
+      "component": "E",
+      "caller_must_enforce": "Set separate host/VM storage bounds covering downloads, source copies, cache and persistent images. Exact operand contract: O-STORAGE;request/response/count/deadline",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:257 — [network]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#network-policy-and-audit"
+    },
+    {
+      "entry_point": "E02",
+      "parameter": "Upstream CA",
+      "attacker_controllable": "no",
+      "component": "E",
+      "caller_must_enforce": "Trust and review host, Docker, images, CLI/SDK and executable collaborators. Stronger support contracts remain Q2. Exact operand contract: O-HOST;verification retained",
+      "provenance": "inferred",
+      "source": "open question Q2"
+    },
+    {
+      "entry_point": "E03",
+      "parameter": "Git objects/metadata",
+      "attacker_controllable": "yes",
+      "component": "E",
+      "caller_must_enforce": "Trust and review host, Docker, images, CLI/SDK and executable collaborators. Stronger support contracts remain Q2. Exact operand contract: O-HOST;exact repo/SHA,no candidate .git",
+      "provenance": "inferred",
+      "source": "open question Q2"
+    },
+    {
+      "entry_point": "E03",
+      "parameter": "PR head/files/diff",
+      "attacker_controllable": "yes",
+      "component": "E",
+      "caller_must_enforce": "Supply every required profile, image/cache, output declaration and synthetic service. Missing/blocked cases fail; passing proves neither semantics nor remote CI. Exact operand contract: O-VALIDATE;offline-head/trusted-config Q7",
+      "provenance": "inferred",
+      "source": "open question Q7"
+    },
+    {
+      "entry_point": "E04",
+      "parameter": "Config/request/context",
+      "attacker_controllable": "conditional",
+      "component": "E",
+      "caller_must_enforce": "Protect default-branch automation, prompts, policy, command files and overrides. Accept the association policy; never execute PR-head code in a privileged controller. Exact operand contract: O-CONTROL;tooling separate",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:261 — [Tasks and providers][local]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: M policy/U data. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "E04",
+      "parameter": "Credential/state mount",
+      "attacker_controllable": "no",
+      "component": "E",
+      "caller_must_enforce": "Scope provider/GitHub/registry identities separately. Configure package-scoped tokens or trusted publishers; workflow permissions do not limit PATs. Exact operand contract: O-CREDENTIALS;no worker secrets",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:262 — [Tasks and providers][local]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md"
+    },
+    {
+      "entry_point": "E05",
+      "parameter": "Connection/method/path",
+      "attacker_controllable": "no",
+      "component": "E",
+      "caller_must_enforce": "Trust and review host, Docker, images, CLI/SDK and executable collaborators. Stronger support contracts remain Q2. Exact operand contract: O-HOST;no worker access",
+      "provenance": "inferred",
+      "source": "open question Q2"
+    },
+    {
+      "entry_point": "E05",
+      "parameter": "Operation/source/worker ID",
+      "attacker_controllable": "no",
+      "component": "E",
+      "caller_must_enforce": "Protect state/output/policy/snapshots. Rerun after code/policy/source/candidate changes; writable hashes are not signatures. Never delete publication records to bypass retry refusal. Exact operand contract: O-RECORDS;lifetime Q6",
+      "provenance": "inferred",
+      "source": "open question Q6"
+    },
+    {
+      "entry_point": "E05",
+      "parameter": "Command",
+      "attacker_controllable": "yes",
+      "component": "E",
+      "caller_must_enforce": "Trust and review host, Docker, images, CLI/SDK and executable collaborators. Stronger support contracts remain Q2. Exact operand contract: O-HOST;fixed restrictions,no caller Docker flags",
+      "provenance": "inferred",
+      "source": "open question Q2"
+    },
+    {
+      "entry_point": "E06",
+      "parameter": "Host/scheme/port/userinfo",
+      "attacker_controllable": "conditional",
+      "component": "E",
+      "caller_must_enforce": "none — P-EGRESS Exact operand contract: HTTPS/public DNS/pinned IP/TLS",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:266 — [network]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#network-policy-and-audit",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: M client. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "E06",
+      "parameter": "Raw/decoded path/query",
+      "attacker_controllable": "conditional",
+      "component": "E",
+      "caller_must_enforce": "Canonical route;query Q6 Exact operand contract: Canonical route;query Q6",
+      "provenance": "inferred",
+      "source": "open question Q6",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: M client. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "E06",
+      "parameter": "Method",
+      "attacker_controllable": "conditional",
+      "component": "E",
+      "caller_must_enforce": "Grant only intended independent capabilities; intersect flags with policy. Preserve installed-repository writes and read-only upstream access. Exact operand contract: O-PUBLISH;rule/capability",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:268 — [network]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#network-policy-and-audit",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: M client. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "E06",
+      "parameter": "Host/Upgrade",
+      "attacker_controllable": "conditional",
+      "component": "E",
+      "caller_must_enforce": "none — P-EGRESS Exact operand contract: Matching host;no tunnels/upgrades",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:269 — [network]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#network-policy-and-audit",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: M client. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "E06",
+      "parameter": "Content-Length/Transfer-Encoding",
+      "attacker_controllable": "conditional",
+      "component": "E",
+      "caller_must_enforce": "Measured bounded body;edges Q6 Exact operand contract: Measured bounded body;edges Q6",
+      "provenance": "inferred",
+      "source": "open question Q6",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: M client. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "E06",
+      "parameter": "Authorization/cookie/key",
+      "attacker_controllable": "conditional",
+      "component": "E",
+      "caller_must_enforce": "Rule injection;stripping/forwarding Q6 Exact operand contract: Rule injection;stripping/forwarding Q6",
+      "provenance": "inferred",
+      "source": "open question Q6",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: M client. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "E06",
+      "parameter": "Body/Git ref JSON",
+      "attacker_controllable": "conditional",
+      "component": "E",
+      "caller_must_enforce": "Grant only intended independent capabilities; intersect flags with policy. Preserve installed-repository writes and read-only upstream access. Exact operand contract: O-PUBLISH;scoped mutation",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:272 — [local-publish]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#publication-and-real-github-ci",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: M request. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "E06",
+      "parameter": "DNS/certificate",
+      "attacker_controllable": "yes",
+      "component": "E",
+      "caller_must_enforce": "Trust and review host, Docker, images, CLI/SDK and executable collaborators. Stronger support contracts remain Q2. Exact operand contract: O-HOST;all public/TLS verified",
+      "provenance": "inferred",
+      "source": "open question Q2"
+    },
+    {
+      "entry_point": "E06",
+      "parameter": "Response/status",
+      "attacker_controllable": "yes",
+      "component": "E",
+      "caller_must_enforce": "Encode raw logs/JSON/paths/code/diffs for each consumer. Never execute/render them as instructions or reuse context-specific encoding elsewhere. Exact operand contract: O-OUTPUT;caps/no redirects",
+      "provenance": "inferred",
+      "source": "open question Q8"
+    },
+    {
+      "entry_point": "E06",
+      "parameter": "Audit/counter sink",
+      "attacker_controllable": "no",
+      "component": "E",
+      "caller_must_enforce": "Protect state/output/policy/snapshots. Rerun after code/policy/source/candidate changes; writable hashes are not signatures. Never delete publication records to bypass retry refusal. Exact operand contract: O-RECORDS;P-AUDIT",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:275 — [network]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#network-policy-and-audit"
+    },
+    {
+      "entry_point": "E07",
+      "parameter": "Bundle name/URL/hash",
+      "attacker_controllable": "conditional",
+      "component": "E",
+      "caller_must_enforce": "Trust and review host, Docker, images, CLI/SDK and executable collaborators. Stronger support contracts remain Q2. Exact operand contract: O-HOST;inert verified download",
+      "provenance": "inferred",
+      "source": "open question Q2",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: T identity/U bytes. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "E07",
+      "parameter": "Docker/npmRegistry",
+      "attacker_controllable": "no",
+      "component": "E",
+      "caller_must_enforce": "Set separate host/VM storage bounds covering downloads, source copies, cache and persistent images. Exact operand contract: O-STORAGE;outside audit",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:277 — [Dependencies and custom images][local]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md"
+    },
+    {
+      "entry_point": "E08",
+      "parameter": "Profile/image/platform",
+      "attacker_controllable": "no",
+      "component": "E",
+      "caller_must_enforce": "Supply every required profile, image/cache, output declaration and synthetic service. Missing/blocked cases fail; passing proves neither semantics nor remote CI. Exact operand contract: O-VALIDATE;unavailable blocks",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:278 — [validation]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#arbitrary-ci-tools-offline"
+    },
+    {
+      "entry_point": "E08",
+      "parameter": "Commands",
+      "attacker_controllable": "conditional",
+      "component": "E",
+      "caller_must_enforce": "Supply every required profile, image/cache, output declaration and synthetic service. Missing/blocked cases fail; passing proves neither semantics nor remote CI. Exact operand contract: O-VALIDATE;no dropped coverage",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:279 — [validation]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#arbitrary-ci-tools-offline",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: T code/U project. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "E08",
+      "parameter": "Limits/timeout",
+      "attacker_controllable": "no",
+      "component": "E",
+      "caller_must_enforce": "Set separate host/VM storage bounds covering downloads, source copies, cache and persistent images. Exact operand contract: O-STORAGE;readiness shares deadline",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:280 — [validation]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#arbitrary-ci-tools-offline"
+    },
+    {
+      "entry_point": "E08",
+      "parameter": "Service image/command/health",
+      "attacker_controllable": "no",
+      "component": "E",
+      "caller_must_enforce": "Supply every required profile, image/cache, output declaration and synthetic service. Missing/blocked cases fail; passing proves neither semantics nor remote CI. Exact operand contract: O-VALIDATE;offline loopback",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:281 — [services]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#databases-and-other-test-services"
+    },
+    {
+      "entry_point": "E08",
+      "parameter": "Service ports/data paths",
+      "attacker_controllable": "no",
+      "component": "E",
+      "caller_must_enforce": "Supply every required profile, image/cache, output declaration and synthetic service. Missing/blocked cases fail; passing proves neither semantics nor remote CI. Exact operand contract: O-VALIDATE;no host ports/mounts",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:282 — [services]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#databases-and-other-test-services"
+    },
+    {
+      "entry_point": "E08",
+      "parameter": "Service environment",
+      "attacker_controllable": "no",
+      "component": "E",
+      "caller_must_enforce": "Supply every required profile, image/cache, output declaration and synthetic service. Missing/blocked cases fail; passing proves neither semantics nor remote CI. Exact operand contract: O-VALIDATE;no production secrets",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:283 — [services]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#databases-and-other-test-services"
+    },
+    {
+      "entry_point": "E08",
+      "parameter": "Bundle/outputs",
+      "attacker_controllable": "conditional",
+      "component": "E",
+      "caller_must_enforce": "Supply every required profile, image/cache, output declaration and synthetic service. Missing/blocked cases fail; passing proves neither semantics nor remote CI. Exact operand contract: O-VALIDATE;hash/type/source/exec-bit checks",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:284 — [validation]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#arbitrary-ci-tools-offline",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: T declarations/U bytes. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "E09",
+      "parameter": "Policy/run/snapshot/result/validation/grants",
+      "attacker_controllable": "conditional",
+      "component": "E",
+      "caller_must_enforce": "Protect state/output/policy/snapshots. Rerun after code/policy/source/candidate changes; writable hashes are not signatures. Never delete publication records to bypass retry refusal. Exact operand contract: O-RECORDS;identity binding",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:285 — [local-publish]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#publication-and-real-github-ci",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: T records/U narrative. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "E09",
+      "parameter": "Tree/branch/files",
+      "attacker_controllable": "yes",
+      "component": "E",
+      "caller_must_enforce": "Grant only intended independent capabilities; intersect flags with policy. Preserve installed-repository writes and read-only upstream access. Exact operand contract: O-PUBLISH;new branch,no default/force",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:286 — [local-publish]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#publication-and-real-github-ci"
+    },
+    {
+      "entry_point": "E09",
+      "parameter": "PR/head/checks/tag",
+      "attacker_controllable": "conditional",
+      "component": "E",
+      "caller_must_enforce": "Protect the default branch; configure exact contexts/publishers/triggers. Retain review/CI gates, verify actual execution and inspect workflow definitions, not App ID alone. Exact operand contract: O-CI;separate reviewer/real CI",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:287 — [local-publish]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#publication-and-real-github-ci",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: M fresh platform. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "E09",
+      "parameter": "Credential/artifacts",
+      "attacker_controllable": "conditional",
+      "component": "E",
+      "caller_must_enforce": "Configure trusted expected names, exact committed versions and builders. Enable release only after identity/auth setup; inspect artifacts and partial registry outcomes. Exact operand contract: O-RELEASE;token,no simulated OIDC",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:288 — [local-publish]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#publication-and-real-github-ci",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: T secret/U package. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "E09",
+      "parameter": "Response",
+      "attacker_controllable": "yes",
+      "component": "E",
+      "caller_must_enforce": "Inspect confirmed branches/PRs/tags/versions and interrupted runs before retrying. Distinguish proposed, prepared, validated, published and merged outcomes. Exact operand contract: O-RETRY;record partial effects",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:289 — [local-publish]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#publication-and-real-github-ci"
+    },
+    {
+      "entry_point": "E10",
+      "parameter": "Run/lock/status",
+      "attacker_controllable": "no",
+      "component": "E",
+      "caller_must_enforce": "Inspect confirmed branches/PRs/tags/versions and interrupted runs before retrying. Distinguish proposed, prepared, validated, published and merged outcomes. Exact operand contract: O-RETRY;inspect/preserve state",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:290 — [recovery]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#results-state-and-recovery"
+    },
+    {
+      "entry_point": "F01",
+      "parameter": "Repo/ref/directory",
+      "attacker_controllable": "no",
+      "component": "F",
+      "caller_must_enforce": "Review source/target/origin and save customizations. Understand replacement/force/label options; inspect preview and discovery proposals before applying them. Exact operand contract: O-INSTALL;new directory",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:291 — [Prepare a target][demo]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/local/demos/npm/README.md"
+    },
+    {
+      "entry_point": "F01",
+      "parameter": "Provider/model/controller image",
+      "attacker_controllable": "no",
+      "component": "F",
+      "caller_must_enforce": "Trust and review host, Docker, images, CLI/SDK and executable collaborators. Stronger support contracts remain Q2. Exact operand contract: O-HOST;no setup inference",
+      "provenance": "inferred",
+      "source": "open question Q2"
+    },
+    {
+      "entry_point": "F01",
+      "parameter": "Registry/host npm config",
+      "attacker_controllable": "no",
+      "component": "F",
+      "caller_must_enforce": "Scope provider/GitHub/registry identities separately. Configure package-scoped tokens or trusted publishers; workflow permissions do not limit PATs. Exact operand contract: O-CREDENTIALS;selected unauthenticated HTTPS,no fallback",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:293 — [Requirements and limits][demo]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/local/demos/npm/README.md"
+    },
+    {
+      "entry_point": "F01",
+      "parameter": "GitHub auth/read token",
+      "attacker_controllable": "no",
+      "component": "F",
+      "caller_must_enforce": "Scope provider/GitHub/registry identities separately. Configure package-scoped tokens or trusted publishers; workflow permissions do not limit PATs. Exact operand contract: O-CREDENTIALS;fetch-only,not image",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:294 — [Prepare a target][demo]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/local/demos/npm/README.md"
+    },
+    {
+      "entry_point": "F02",
+      "parameter": "Requirements/name/version/platform/peers",
+      "attacker_controllable": "yes",
+      "component": "F",
+      "caller_must_enforce": "none — P-DEMO-PREP Exact operand contract: Inert subset;no scripts",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:295 — [Prepare a target][demo]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/local/demos/npm/README.md"
+    },
+    {
+      "entry_point": "F02",
+      "parameter": "Alternate locks/.npmrc",
+      "attacker_controllable": "yes",
+      "component": "F",
+      "caller_must_enforce": "none — P-DEMO-LOCK Exact operand contract: Unsupported lockless fallback blocks",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:296 — [Prepare a target][demo]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/local/demos/npm/README.md"
+    },
+    {
+      "entry_point": "F02",
+      "parameter": "Registry metadata",
+      "attacker_controllable": "yes",
+      "component": "F",
+      "caller_must_enforce": "none — P-DEMO-PREP Exact operand contract: Restricted prepare GETs;no node_modules/hooks",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:297 — [Prepare a target][demo]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/local/demos/npm/README.md"
+    },
+    {
+      "entry_point": "F03",
+      "parameter": "Lock locations/names/versions/integrity",
+      "attacker_controllable": "yes",
+      "component": "F",
+      "caller_must_enforce": "Set separate host/VM storage bounds covering downloads, source copies, cache and persistent images. Exact operand contract: O-STORAGE;never download resolved URL",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:298 — [Requirements and limits][demo]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/local/demos/npm/README.md"
+    },
+    {
+      "entry_point": "F03",
+      "parameter": "Pack metadata/archive",
+      "attacker_controllable": "yes",
+      "component": "F",
+      "caller_must_enforce": "none — P-DEMO-PREP Exact operand contract: Identity/integrity;post-download caps",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:299 — [Requirements and limits][demo]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/local/demos/npm/README.md"
+    },
+    {
+      "entry_point": "F03",
+      "parameter": "Cache/generated lock",
+      "attacker_controllable": "conditional",
+      "component": "F",
+      "caller_must_enforce": "Distinguish claims/facts, known/unknown usage, live/synthetic evidence and source/generated locks. Review model authority rather than accepting headings/counts. Exact operand contract: O-EVIDENCE;validation-only",
+      "provenance": "inferred",
+      "source": "open question Q5",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: M verified. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "F04",
+      "parameter": "Task/allow-inference",
+      "attacker_controllable": "no",
+      "component": "F",
+      "caller_must_enforce": "Set provider spending caps. Preserve concurrency, reservations and effective cache grants; inspect unknown usage and separate local/Actions ledgers. Exact operand contract: O-COST;no publication",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:301 — [Run a documentation agent][demo]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/local/demos/npm/README.md"
+    },
+    {
+      "entry_point": "F04",
+      "parameter": "demo.json/policies/provenance",
+      "attacker_controllable": "no",
+      "component": "F",
+      "caller_must_enforce": "Protect state/output/policy/snapshots. Rerun after code/policy/source/candidate changes; writable hashes are not signatures. Never delete publication records to bypass retry refusal. Exact operand contract: O-RECORDS;SHA/digests,no grants",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:302 — [Inspect the result][demo]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/local/demos/npm/README.md"
+    },
+    {
+      "entry_point": "F05",
+      "parameter": "npm ci arguments",
+      "attacker_controllable": "conditional",
+      "component": "F",
+      "caller_must_enforce": "Trust and review host, Docker, images, CLI/SDK and executable collaborators. Stronger support contracts remain Q2. Exact operand contract: O-HOST;expected offline/ignore-scripts only",
+      "provenance": "inferred",
+      "source": "open question Q2",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: M invocation. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "F05",
+      "parameter": "Manifest/generated lock/digest",
+      "attacker_controllable": "yes",
+      "component": "F",
+      "caller_must_enforce": "Distinguish claims/facts, known/unknown usage, live/synthetic evidence and source/generated locks. Review model authority rather than accepting headings/counts. Exact operand contract: O-EVIDENCE;no source-lock replacement",
+      "provenance": "inferred",
+      "source": "open question Q5"
+    },
+    {
+      "entry_point": "G01",
+      "parameter": "TargetDir",
+      "attacker_controllable": "no",
+      "component": "G",
+      "caller_must_enforce": "Review source/target/origin and save customizations. Understand replacement/force/label options; inspect preview and discovery proposals before applying them. Exact operand contract: O-INSTALL;hostile-tree Q3",
+      "provenance": "inferred",
+      "source": "open question Q3"
+    },
+    {
+      "entry_point": "G01",
+      "parameter": "SourceDir/RepoUrl/override",
+      "attacker_controllable": "no",
+      "component": "G",
+      "caller_must_enforce": "Review source/target/origin and save customizations. Understand replacement/force/label options; inspect preview and discovery proposals before applying them. Exact operand contract: O-INSTALL",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:306 — [Install the files][install]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/getting-started.md"
+    },
+    {
+      "entry_point": "G01",
+      "parameter": "DryRun/Force",
+      "attacker_controllable": "no",
+      "component": "G",
+      "caller_must_enforce": "Review source/target/origin and save customizations. Understand replacement/force/label options; inspect preview and discovery proposals before applying them. Exact operand contract: O-INSTALL;preview≠replacement",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:307 — [Installation side effects][install]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/getting-started.md"
+    },
+    {
+      "entry_point": "G01",
+      "parameter": "CreateLabels/SkipLabels/origin",
+      "attacker_controllable": "no",
+      "component": "G",
+      "caller_must_enforce": "Review source/target/origin and save customizations. Understand replacement/force/label options; inspect preview and discovery proposals before applying them. Exact operand contract: O-INSTALL;inspected origin",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:308 — [Installation side effects][install]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/getting-started.md"
+    },
+    {
+      "entry_point": "G02",
+      "parameter": "Target/source/branch",
+      "attacker_controllable": "no",
+      "component": "G",
+      "caller_must_enforce": "Review source/target/origin and save customizations. Understand replacement/force/label options; inspect preview and discovery proposals before applying them. Exact operand contract: O-INSTALL;branch fallback Q3",
+      "provenance": "inferred",
+      "source": "open question Q3"
+    },
+    {
+      "entry_point": "G02",
+      "parameter": "dry-run/force/create-labels/skip-labels",
+      "attacker_controllable": "no",
+      "component": "G",
+      "caller_must_enforce": "Review source/target/origin and save customizations. Understand replacement/force/label options; inspect preview and discovery proposals before applying them. Exact operand contract: O-INSTALL",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:310 — [Installation side effects][install]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/getting-started.md"
+    },
+    {
+      "entry_point": "G03",
+      "parameter": "Repo/branch",
+      "attacker_controllable": "no",
+      "component": "G",
+      "caller_must_enforce": "Protect the default branch; configure exact contexts/publishers/triggers. Retain review/CI gates, verify actual execution and inspect workflow definitions, not App ID alone. Exact operand contract: O-CI;not open-PR policy",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:311 — [discovery]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#discover-required-checks"
+    },
+    {
+      "entry_point": "G03",
+      "parameter": "Rules/checks/statuses/runs",
+      "attacker_controllable": "conditional",
+      "component": "G",
+      "caller_must_enforce": "Protect the default branch; configure exact contexts/publishers/triggers. Retain review/CI gates, verify actual execution and inspect workflow definitions, not App ID alone. Exact operand contract: O-CI;ambiguity/missing blocks",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:312 — [discovery]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#discover-required-checks",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: M platform. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "G03",
+      "parameter": "Root/config/workflow",
+      "attacker_controllable": "no",
+      "component": "G",
+      "caller_must_enforce": "Review source/target/origin and save customizations. Understand replacement/force/label options; inspect preview and discovery proposals before applying them. Exact operand contract: O-INSTALL;preserve different explicit list",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:313 — [discovery]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#discover-required-checks"
+    },
+    {
+      "entry_point": "G03",
+      "parameter": "write/update-workflows",
+      "attacker_controllable": "no",
+      "component": "G",
+      "caller_must_enforce": "Review source/target/origin and save customizations. Understand replacement/force/label options; inspect preview and discovery proposals before applying them. Exact operand contract: O-INSTALL;no commit/protection writes",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:314 — [discovery]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#discover-required-checks"
+    },
+    {
+      "entry_point": "G04",
+      "parameter": "Directory/backend",
+      "attacker_controllable": "no",
+      "component": "G",
+      "caller_must_enforce": "Trust and review host, Docker, images, CLI/SDK and executable collaborators. Stronger support contracts remain Q2. Exact operand contract: O-HOST;outside target",
+      "provenance": "inferred",
+      "source": "open question Q2"
+    },
+    {
+      "entry_point": "G04",
+      "parameter": "Registry/config/package",
+      "attacker_controllable": "conditional",
+      "component": "G",
+      "caller_must_enforce": "Trust and review host, Docker, images, CLI/SDK and executable collaborators. Stronger support contracts remain Q2. Exact operand contract: O-HOST;integrity≠benevolence",
+      "provenance": "inferred",
+      "source": "open question Q2",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: M transport/U dependency. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "G05",
+      "parameter": "Assets/default-branch dispatch",
+      "attacker_controllable": "no",
+      "component": "G",
+      "caller_must_enforce": "Protect default-branch automation, prompts, policy, command files and overrides. Accept the association policy; never execute PR-head code in a privileged controller. Exact operand contract: O-CONTROL;no maintenance API",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:317 — [Static site][web]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/web/README.md"
+    },
+    {
+      "entry_point": "G06",
+      "parameter": "Title/message/details/confirmed URL",
+      "attacker_controllable": "conditional",
+      "component": "G",
+      "caller_must_enforce": "Encode raw logs/JSON/paths/code/diffs for each consumer. Never execute/render them as instructions or reuse context-specific encoding elsewhere. Exact operand contract: O-OUTPUT;recognized-secret redaction only",
+      "provenance": "inferred",
+      "source": "open question Q8",
+      "condition": "Only the untrusted/data or authorized-control portion of the exact classification: M text/verified link. Platform identity is not claimed text; data-induced authority remains in scope."
+    },
+    {
+      "entry_point": "G06",
+      "parameter": "Environment/summary path/write callback",
+      "attacker_controllable": "no",
+      "component": "G",
+      "caller_must_enforce": "Protect default-branch automation, prompts, policy, command files and overrides. Accept the association policy; never execute PR-head code in a privileged controller. Exact operand contract: O-CONTROL;not hostile plugin",
+      "provenance": "inferred",
+      "source": "open question Q2"
+    },
+    {
+      "entry_point": "Shared-helpers-A",
+      "parameter": "fetch/spawn/exec/sandbox/runtime/SDK-loader/completion/API/clock",
+      "attacker_controllable": "no",
+      "component": "A",
+      "caller_must_enforce": "Trust and review host, Docker, images, CLI/SDK and executable collaborators. Stronger support contracts remain Q2. Exact operand contract: O-HOST;no inherited wrapper guarantees",
+      "provenance": "inferred",
+      "source": "open question Q2"
+    },
+    {
+      "entry_point": "Shared-helpers-B",
+      "parameter": "fetch/spawn/exec/sandbox/runtime/SDK-loader/completion/API/clock",
+      "attacker_controllable": "no",
+      "component": "B",
+      "caller_must_enforce": "Trust and review host, Docker, images, CLI/SDK and executable collaborators. Stronger support contracts remain Q2. Exact operand contract: O-HOST;no inherited wrapper guarantees",
+      "provenance": "inferred",
+      "source": "open question Q2"
+    },
+    {
+      "entry_point": "Shared-helpers-C",
+      "parameter": "fetch/spawn/exec/sandbox/runtime/SDK-loader/completion/API/clock",
+      "attacker_controllable": "no",
+      "component": "C",
+      "caller_must_enforce": "Trust and review host, Docker, images, CLI/SDK and executable collaborators. Stronger support contracts remain Q2. Exact operand contract: O-HOST;no inherited wrapper guarantees",
+      "provenance": "inferred",
+      "source": "open question Q2"
+    },
+    {
+      "entry_point": "Shared-helpers-D",
+      "parameter": "fetch/spawn/exec/sandbox/runtime/SDK-loader/completion/API/clock",
+      "attacker_controllable": "no",
+      "component": "D",
+      "caller_must_enforce": "Trust and review host, Docker, images, CLI/SDK and executable collaborators. Stronger support contracts remain Q2. Exact operand contract: O-HOST;no inherited wrapper guarantees",
+      "provenance": "inferred",
+      "source": "open question Q2"
+    },
+    {
+      "entry_point": "Shared-helpers-E",
+      "parameter": "fetch/spawn/exec/sandbox/runtime/SDK-loader/completion/API/clock",
+      "attacker_controllable": "no",
+      "component": "E",
+      "caller_must_enforce": "Trust and review host, Docker, images, CLI/SDK and executable collaborators. Stronger support contracts remain Q2. Exact operand contract: O-HOST;no inherited wrapper guarantees",
+      "provenance": "inferred",
+      "source": "open question Q2"
+    },
+    {
+      "entry_point": "Shared-helpers-F",
+      "parameter": "fetch/spawn/exec/sandbox/runtime/SDK-loader/completion/API/clock",
+      "attacker_controllable": "no",
+      "component": "F",
+      "caller_must_enforce": "Trust and review host, Docker, images, CLI/SDK and executable collaborators. Stronger support contracts remain Q2. Exact operand contract: O-HOST;no inherited wrapper guarantees",
+      "provenance": "inferred",
+      "source": "open question Q2"
+    },
+    {
+      "entry_point": "Shared-helpers-G",
+      "parameter": "fetch/spawn/exec/sandbox/runtime/SDK-loader/completion/API/clock",
+      "attacker_controllable": "no",
+      "component": "G",
+      "caller_must_enforce": "Trust and review host, Docker, images, CLI/SDK and executable collaborators. Stronger support contracts remain Q2. Exact operand contract: O-HOST;no inherited wrapper guarantees",
+      "provenance": "inferred",
+      "source": "open question Q2"
+    }
+  ],
+  "environment": {
+    "assumes": [
+      "Node 24 and trusted Linux/container hosts enforce execution; Windows uses WSL. Source must contain no provider-inappropriate secrets: isolation cannot retract disclosed source.",
+      "Dependency internals/native runtimes/unsampled helpers remain open. No product-wide absence of sockets/processes/signals/environment or outside-checkout writes; old checkout/four-service promises remain conflicts."
+    ],
+    "does_not": [
+      "Owned-source scan (85 files, excluding locks) found no locale/FPU/umask mutation; not a permanent guarantee."
+    ],
+    "provenance": "inferred",
+    "source": "THREAT_MODEL.md §1.5/§1.10; open questions Q2/Q3; scoped Q3 assumption is not a universal absence guarantee."
+  },
+  "build_variants": [
+    {
+      "name": "Enable/mode",
+      "default": "enabled:true; review-only is a selectable mode",
+      "effect": "`enabled:true`; literal `LIGHTS_ON_ENABLED=false` stops new eligible jobs, YAML checks follow startup. Cancel active jobs. `review-only` blocks merges, not proposals/releases; Q4 retains immediate-stop conflict. Only explicitly documented supported selections and the ordinary default. Unresolved disabled gates/custom collaborators/options are not classified here; see x-unresolved-build-variants and Q2. Nondefault is not unsupported.",
+      "discouraged": false,
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:94 — [stop]; [merge]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/operations.md#stop-new-work; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#merge-policy"
+    },
+    {
+      "name": "Providers",
+      "default": "Copilot CLI 1.0.98; SDK 1.0.22 opt-in; four providers",
+      "effect": "copilot, claude/Anthropic, codex/OpenAI, openrouter; CLI 1.0.98 default, SDK 1.0.22 opt-in; `GITHUB_TOKEN` insufficient. Only explicitly documented supported selections and the ordinary default. Unresolved disabled gates/custom collaborators/options are not classified here; see x-unresolved-build-variants and Q2. Nondefault is not unsupported.",
+      "discouraged": false,
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:95 — [Provider routing; Copilot CLI preparation][config]; [sdk]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#copilot-sdk-backend"
+    },
+    {
+      "name": "Admission/authors",
+      "default": "External paid events/external auto-merge off; bot merge on",
+      "effect": "External paid events/external auto-merge default off; bot merge on. Opt-ins waive no unrelated gate. Only explicitly documented supported selections and the ordinary default. Unresolved disabled gates/custom collaborators/options are not classified here; see x-unresolved-build-variants and Q2. Nondefault is not unsupported.",
+      "discouraged": false,
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:96 — [admission]; [merge]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#paid-event-admission; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#merge-policy"
+    },
+    {
+      "name": "Review/CI",
+      "default": "Both on; empty required checks block ordinary merge",
+      "effect": "Both default on; empty required checks block ordinary merge. Author opt-in differs from protected/breaking `approved-override`; disabled-gate support unresolved. Only explicitly documented supported selections and the ordinary default. Unresolved disabled gates/custom collaborators/options are not classified here; see x-unresolved-build-variants and Q2. Nondefault is not unsupported.",
+      "discouraged": false,
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:97 — [merge]; [Maintainer controls][operations]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#merge-policy; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/operations.md"
+    },
+    {
+      "name": "Limits",
+      "default": "Published defaults in PROP-RATE-LIMIT; configured replacements",
+      "effect": "Configured replacements; shared retries/fallback cap, no dependency fallback. Dry-run synthetic; `LIGHTS_ON_FORCE` cannot bypass reservation. Only explicitly documented supported selections and the ordinary default. Unresolved disabled gates/custom collaborators/options are not classified here; see x-unresolved-build-variants and Q2. Nondefault is not unsupported.",
+      "discouraged": false,
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:99 — [limits]; [Manual scheduled-maintenance tasks][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#usage-and-rate-limits; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md"
+    },
+    {
+      "name": "Lanes",
+      "default": "Routine npm/planning/approved migration distinct; toolchain opt-in",
+      "effect": "Routine npm/planning/approved migration distinct. Toolchain opt-in/held; `active-lts` narrows tests, not public engines. Only explicitly documented supported selections and the ordinary default. Unresolved disabled gates/custom collaborators/options are not classified here; see x-unresolved-build-variants and Q2. Nondefault is not unsupported.",
+      "discouraged": false,
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:100 — [Migration execution; Node toolchain maintenance][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md"
+    },
+    {
+      "name": "Release",
+      "default": "enabled/auto_publish/create_github_release switches; values not stated in this prose",
+      "effect": "`enabled` stops paths; `auto_publish` stops builds/uploads; `create_github_release` leaves tags. npm/PyPI OIDC/token, others token; local token-only. `provenance:false` preserves identity checks. Only explicitly documented supported selections and the ordinary default. Unresolved disabled gates/custom collaborators/options are not classified here; see x-unresolved-build-variants and Q2. Nondefault is not unsupported.",
+      "discouraged": false,
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:101 — [Registry support; Controls][releases]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/releases.md"
+    },
+    {
+      "name": "Local",
+      "default": "Operator policy; immutable loaded Linux images; required profiles",
+      "effect": "Operator policy, immutable loaded Linux images, required profiles, independent grants. Added CA preserves TLS; custom rules cannot elevate capabilities. Only explicitly documented supported selections and the ordinary default. Unresolved disabled gates/custom collaborators/options are not classified here; see x-unresolved-build-variants and Q2. Nondefault is not unsupported.",
+      "discouraged": false,
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:102 — [Dependencies and custom images][local]; [network]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#network-policy-and-audit"
+    },
+    {
+      "name": "Demo",
+      "default": "No inference without --allow-inference; no publication",
+      "effect": "Single npm package; v2/v3 or generated locks. `--allow-inference` required; no publication. Generated SHA-1 verified/re-pinned SHA-512. Only explicitly documented supported selections and the ordinary default. Unresolved disabled gates/custom collaborators/options are not classified here; see x-unresolved-build-variants and Q2. Nondefault is not unsupported.",
+      "discouraged": false,
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:103 — [Requirements and limits; Prepare a target][demo]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/local/demos/npm/README.md"
+    },
+    {
+      "name": "Adoption",
+      "default": "Labels/write discovery opt-in; Pages manual/default-branch",
+      "effect": "Preview/install; force replaces config, bundled automation normally replaced; labels/write discovery opt-in; Pages manual/default-branch. Only explicitly documented supported selections and the ordinary default. Unresolved disabled gates/custom collaborators/options are not classified here; see x-unresolved-build-variants and Q2. Nondefault is not unsupported.",
+      "discouraged": false,
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:104 — [Installation side effects][install]; [discovery]; [Static site][web]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/getting-started.md; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#discover-required-checks; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/web/README.md"
+    },
+    {
+      "name": "Model settings",
+      "default": "THREAT_MODEL.md and built-in skill source",
+      "effect": "Intent only: standard bootstrap uses `THREAT_MODEL.md`/built-in skill source; `block_automerge_on` is not a generic classifier. Only explicitly documented supported selections and the ordinary default. Unresolved disabled gates/custom collaborators/options are not classified here; see x-unresolved-build-variants and Q2. Nondefault is not unsupported.",
+      "discouraged": false,
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:105 — [intent]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#upstream-threat-model-and-dependency-health-settings"
+    }
+  ],
+  "adversaries": {
+    "in_scope": [
+      "ADV-EVENT",
+      "ADV-PR",
+      "ADV-MODEL",
+      "ADV-PACKAGE",
+      "ADV-NETWORK",
+      "ADV-WORKER",
+      "ADV-HELPER"
+    ],
+    "out_of_scope": [
+      "ADV-OPERATOR"
+    ],
+    "provenance": "inferred",
+    "source": "THREAT_MODEL.md §1.10; open question Q2. ADV-HELPER is unresolved, included conservatively, not a documented actor exclusion. Deliberate operator replacement differs from data-induced authority."
+  },
+  "properties_provided": [
+    {
+      "property": "PROP-SHELL-SAFE",
+      "violation_symptom": "integrity-bypass",
+      "severity_tier": "security",
+      "conditions": "event fields never become host-shell source. Controls/limits: Trusted workflow replacement, not event values; `lights-on-events.yml:63-128`",
+      "provenance": "documented",
+      "source": "maintainer ruling, 2026-10"
+    },
+    {
+      "property": "PROP-SLASH-AUTHZ",
+      "violation_symptom": "integrity-bypass",
+      "severity_tier": "security",
+      "conditions": "OWNER/MEMBER/COLLABORATOR required. Controls/limits: Altered trusted metadata/controller; paid opt-in never waives `lights-on-events.yml:103-105`",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:467 — [state]; [audit]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#state-and-authorization; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#workflow-audit-decisions"
+    },
+    {
+      "property": "PROP-EXT-PR-GATE",
+      "violation_symptom": "integrity-bypass",
+      "severity_tier": "security",
+      "conditions": "external auto-merge defaults off. Controls/limits: Author opt-in/`lights-on:automerge`, not unrelated gates; `verify-pr-safety.mjs:223-231`",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:468 — [merge]; [admission]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#merge-policy; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#paid-event-admission"
+    },
+    {
+      "property": "PROP-RATE-LIMIT",
+      "violation_symptom": "x-unapproved-paid-execution",
+      "severity_tier": "security",
+      "conditions": "reserve before inference; enforce configured checks. Controls/limits: Defaults: 262144 bytes, 30 shared calls, 25 turns/attempt, 100000 known tokens/$2 between turns, 25 recorded runs/day, 10 responses/hour, 2 attempts/item, $10 recorded/day. Config changes thresholds; force cannot bypass `run-agent.mjs:483`; D-BILLING.",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:469 — [limits]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#usage-and-rate-limits"
+    },
+    {
+      "property": "P-CONFIG",
+      "violation_symptom": "bad-data-accepted",
+      "severity_tier": "security",
+      "conditions": "reject unsupported YAML/duplicates/wrong known types; no executable reconstruction. Controls/limits: Permissive helpers Q2; unknown keys not universally rejected; size Q4; `load-config.mjs:422-423` This current boundary does not withdraw earlier configuration-size/unknown-key, all-.github, CI-invocation or PROP-POLICY-BLOCK promises as applicable. Retained conflicts remain Q4: a clear violation can be VALID; a contradiction is MODEL-GAP, never authority to close an earlier promised-boundary violation.",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:470 — [yaml]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#use-the-supported-yaml-subset"
+    },
+    {
+      "property": "P-STATE",
+      "violation_symptom": "integrity-bypass",
+      "severity_tier": "security",
+      "conditions": "recognized-author bookkeeping never becomes approval. Controls/limits: Trusted identity/evidence replacement; recovered fields Q12; `state-store.mjs:441,450`",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:471 — [state]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#state-and-authorization"
+    },
+    {
+      "property": "P-HANDOFF",
+      "violation_symptom": "wrong-output",
+      "severity_tier": "correctness",
+      "conditions": "promised results/evidence missing or malformed are errors, not successful absence; disabled runs emit skipped JSON; absent upstream uses optional outputs/skipped snapshots; bootstrap requires core skill; cache operations obey effective grants. Controls/limits: Executed promised producers/explicit evidence paths only, not unselected optional steps; no skill-trust/ratification/durability extension. `lights-on-events.yml:224`, `sync-upstream.mjs:698`, `ensure-threat-model.mjs:302`",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:472 — [Troubleshooting; Cache and recovery][operations]; [gates]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/operations.md; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#deterministic-pr-gates"
+    },
+    {
+      "property": "P-PATH",
+      "violation_symptom": "integrity-bypass",
+      "severity_tier": "security",
+      "conditions": "confine regular paths; reject symlink/special traversal. Controls/limits: `allowTmp:true` widens helper; tools pass false; `workspace-path.mjs:16`, `openrouter-agent.mjs:249`; host mutation/helper substitution unresolved",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:473 — [candidate]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#candidate-and-command-isolation"
+    },
+    {
+      "property": "P-EXPORT",
+      "violation_symptom": "integrity-bypass",
+      "severity_tier": "security",
+      "conditions": "require completion, validated changeset, protected paths and unchanged source. Controls/limits: Bootstrap model exception `agent-sandbox.mjs:18`; tool `ALLOW_WORKFLOW_EDIT` never bypasses export; all-.github Q4 This current boundary does not withdraw earlier configuration-size/unknown-key, all-.github, CI-invocation or PROP-POLICY-BLOCK promises as applicable. Retained conflicts remain Q4: a clear violation can be VALID; a contradiction is MODEL-GAP, never authority to close an earlier promised-boundary violation.",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:474 — [candidate]; [limits]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#candidate-and-command-isolation; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#usage-and-rate-limits"
+    },
+    {
+      "property": "P-OFFLINE",
+      "violation_symptom": "info-leak, integrity-bypass",
+      "severity_tier": "security",
+      "conditions": "workers lack credentials/external network/host home/Docker socket/controller mounts; no fallback. Controls/limits: Trusted runtime replacement, not reviewed image; `agent-sandbox.mjs:82-89`, `local\\runtime.mjs:230-233`; services use offline loopback",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:475 — [candidate]; [validation]; [services]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#candidate-and-command-isolation; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#arbitrary-ci-tools-offline; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#databases-and-other-test-services"
+    },
+    {
+      "property": "P-READONLY",
+      "violation_symptom": "integrity-bypass",
+      "severity_tier": "security",
+      "conditions": "reviewers/planners cannot write or execute commands. Controls/limits: Different task/direct dispatcher; `run-agent.mjs:534-535`, `openrouter-agent.mjs:245-317`",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:476 — [Migration planning][maintenance]; [gates]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#deterministic-pr-gates"
+    },
+    {
+      "property": "P-INFERENCE",
+      "violation_symptom": "integrity-bypass",
+      "severity_tier": "security",
+      "conditions": "validate controller tools; deny native activity; shut down before export. Controls/limits: Trusted CLI/SDK replacement, not SDK selection; deny `copilot-sdk-completion.mjs:97-98,115-117`; cleanup blocks fallback `run-agent.mjs:629`",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:477 — [providers]; [sdk]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#provider-integration; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#copilot-sdk-backend"
+    },
+    {
+      "property": "P-GATES",
+      "violation_symptom": "integrity-bypass",
+      "severity_tier": "security",
+      "conditions": "ordinary merge needs complete ≤3,000-file inventory, current metadata, fresh live APPROVE/four PASS and successful exact-head required CI. Controls/limits: CI disable `verify-pr-safety.mjs:279,294`; absent-review `:289`; protected/breaking override `:205,255`. Supplied failing gates/dangerous diffs still block; Q2. This current boundary does not withdraw earlier configuration-size/unknown-key, all-.github, CI-invocation or PROP-POLICY-BLOCK promises as applicable. Retained conflicts remain Q4: a clear violation can be VALID; a contradiction is MODEL-GAP, never authority to close an earlier promised-boundary violation.",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:478 — [gates]; [merge]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#deterministic-pr-gates; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#merge-policy"
+    },
+    {
+      "property": "P-REVIEW",
+      "violation_symptom": "integrity-bypass",
+      "severity_tier": "security",
+      "conditions": "explicit commit_id/exact-head merge; refuse stale/closed heads. Controls/limits: No unbound retry; self-review COMMENT≠approval; `github-io.mjs:101-106,208`, `local\\publisher.mjs:63`",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:479 — [gates]; [local-publish]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#deterministic-pr-gates; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#publication-and-real-github-ci"
+    },
+    {
+      "property": "P-DEPENDENCY",
+      "violation_symptom": "bad-data-accepted",
+      "severity_tier": "security",
+      "conditions": "independently check selected npm scope/resolution/advisories/original offline tests; exact approved migration plan. Controls/limits: Other lanes do not inherit; `dependency-work.mjs:168-186`",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:480 — [Independent validation; Migration execution][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md"
+    },
+    {
+      "property": "P-REPO",
+      "violation_symptom": "integrity-bypass",
+      "severity_tier": "security",
+      "conditions": "installed GitHub.com/restricted refs; upstream read-only. Controls/limits: Publisher replacement, not GH_HOST/GH_REPO; `github-io.mjs:12-15,182-187`; automation force allowed, tags not",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:481 — [publication]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#github-publication-boundary"
+    },
+    {
+      "property": "P-TEXT",
+      "violation_symptom": "x-cross-repository-reference-effect",
+      "severity_tier": "security",
+      "conditions": "inert references/HTML/entities/hashes; all fences text; separate plain titles/commits. Controls/limits: Local closing number/confirmed report links active; no rebase; oversize rejected, not truncated; `github-io.mjs:82,123-127`",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:482 — [publication]; [outcomes]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#github-publication-boundary; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/operations.md#read-run-outcomes"
+    },
+    {
+      "property": "P-RELEASE",
+      "violation_symptom": "info-leak, integrity-bypass",
+      "severity_tier": "security",
+      "conditions": "builds lack registry secrets/OIDC; fresh artifact-only upload executes no source/package. Controls/limits: Trusted role/script replacement, not token/provenance choice; `release-artifacts.mjs:17-18,125`",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:483 — [Release lifecycle][releases]; [artifacts]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/releases.md; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/releases.md#build-and-upload-constraints"
+    },
+    {
+      "property": "P-PACKAGE",
+      "violation_symptom": "bad-data-accepted",
+      "severity_tier": "security",
+      "conditions": "safe metadata/exact name/version/complete expected set; nonexecuting inspection. Controls/limits: Trusted expected-name override, not artifact authority; `package-identity.py:188-193,227-235,280-304`; upload revalidates",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:484 — [artifacts]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/releases.md#build-and-upload-constraints"
+    },
+    {
+      "property": "P-TAG",
+      "violation_symptom": "integrity-bypass",
+      "severity_tier": "security",
+      "conditions": "existing tag cannot move commits. Controls/limits: Outside-path mutation, not GitHub Release disable; `lights-on-release.yml:176-177`, `local\\publisher.mjs:143-151`",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:485 — [Release lifecycle][releases]; [local-publish]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/releases.md; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#publication-and-real-github-ci"
+    },
+    {
+      "property": "P-EGRESS",
+      "violation_symptom": "integrity-bypass",
+      "severity_tier": "security",
+      "conditions": "enforce role/host/method/exact-or-subtree path/grants; public pinned DNS/TLS; no redirects/tunnels. Controls/limits: Custom rules widen public destinations, not capabilities; `local\\network\\policy.py:94-175`, `local\\policy.mjs:100-105`; extra CA retains TLS. Configured request/response/aggregate/count/deadline bounds apply.",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:486 — [network]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#network-policy-and-audit"
+    },
+    {
+      "property": "P-AUDIT",
+      "violation_symptom": "integrity-bypass",
+      "severity_tier": "security",
+      "conditions": "persistence failure stops current/later traffic. Controls/limits: Trusted gateway/storage replacement; no disable key; `local\\network\\policy.py:46-48,63-68`; not host-wide",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:487 — [network]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#network-policy-and-audit"
+    },
+    {
+      "property": "P-VALIDATE",
+      "violation_symptom": "bad-data-accepted",
+      "severity_tier": "security",
+      "conditions": "required profiles/outputs pass; preserve source/exec bits; bind candidate. Controls/limits: Inadequate operator tests do not waive enforcement; `local\\validation.mjs:60`, `local\\publisher.mjs:72-73`; deadline includes services/readiness",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:488 — [validation]; [local-publish]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#arbitrary-ci-tools-offline; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#publication-and-real-github-ci"
+    },
+    {
+      "property": "P-GRANTS",
+      "violation_symptom": "integrity-bypass",
+      "severity_tier": "security",
+      "conditions": "fresh publisher rechecks code/policy/source/candidate and intersects flags/policy. Controls/limits: Malicious operator, not model; `local\\policy.mjs:133-134`, `local\\lights-on.mjs:98`; independent publish/merge/release/registry grants",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:489 — [local-publish]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#publication-and-real-github-ci"
+    },
+    {
+      "property": "P-DEMO-PREP",
+      "violation_symptom": "bad-data-accepted",
+      "severity_tier": "security",
+      "conditions": "no acquisition hooks; selected-registry identity/integrity before cache export. Controls/limits: Committed SHA-512; generated SHA-1 verified/re-pinned at `local\\demos\\npm\\common.mjs:154-155,173-179`; ≤512 versions/128 MiB archives checked post-download",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:490 — [Requirements and limits; Prepare a target][demo]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/local/demos/npm/README.md"
+    },
+    {
+      "property": "P-DEMO-LOCK",
+      "violation_symptom": "bad-data-accepted",
+      "severity_tier": "security",
+      "conditions": "synthetic lock is validation-only, manifest-bound; never replaces source lock. Controls/limits: Changed source needs preparation; scan refusal `local\\demos\\npm\\run.mjs:14-15`; `local\\demos\\npm\\npm-install.mjs:21-23`",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:491 — [Prepare a target; Validate and scan][demo]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/local/demos/npm/README.md"
+    },
+    {
+      "property": "P-DEMO-GRANTS",
+      "violation_symptom": "integrity-bypass",
+      "severity_tier": "security",
+      "conditions": "no publication; explicit inference consent. Controls/limits: `--allow-inference` grants charges only; `local\\demos\\npm\\run.mjs:17-27`",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:492 — [Run a documentation agent][demo]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/local/demos/npm/README.md"
+    },
+    {
+      "property": "P-PREVIEW",
+      "violation_symptom": "wrong-output",
+      "severity_tier": "correctness",
+      "conditions": "no target files/directories/labels changed. Controls/limits: Removing dry-run installs; force affects config; source acquisition remains; `install.ps1:234`, `install.sh:251`",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:493 — [Preview before installing][install]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/getting-started.md"
+    },
+    {
+      "property": "P-DISCOVERY",
+      "violation_symptom": "integrity-bypass",
+      "severity_tier": "security",
+      "conditions": "trusted policy/exact publishers; preserve explicit requirements; opt-in local writes. Controls/limits: `--write` applies ready plan, not forced replacement; workflow additions only; `discover-required-checks.mjs:219-224,284`",
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:494 — [discovery]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#discover-required-checks"
+    }
+  ],
+  "properties_not_provided": [
+    {
+      "property": "D-JUDGMENT",
+      "reason": "Review/tests≠semantic/backdoor/injection proof; B/C/D/E; not tool/credential/gate bypass",
+      "false_friend": true,
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:513 — [risks]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#remaining-risks"
+    },
+    {
+      "property": "D-PACKAGE",
+      "reason": "Identity/hash/provenance≠benevolence; D/E/F; not mismatch/execution waiver",
+      "false_friend": true,
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:514 — [artifacts]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/releases.md#build-and-upload-constraints"
+    },
+    {
+      "property": "D-BILLING",
+      "reason": "Accounting≠invoice/minute/distributed quota; A/B/E; configured bounds retained",
+      "false_friend": true,
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:515 — [usage]; [limits]; [recovery]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/operations.md#usage-and-cost; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#usage-and-rate-limits; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#results-state-and-recovery"
+    },
+    {
+      "property": "D-LEDGER",
+      "reason": "Cache≠durable global ledger; A eviction/grants; corruption fails closed",
+      "false_friend": true,
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:516 — [audit]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#workflow-audit-decisions"
+    },
+    {
+      "property": "D-TRANSACTION",
+      "reason": "Publication steps≠transaction; C/D/E partial effects; authorization/validation retained",
+      "false_friend": true,
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:517 — [artifacts]; [local-publish]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/releases.md#build-and-upload-constraints; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#publication-and-real-github-ci"
+    },
+    {
+      "property": "D-RECOVERY",
+      "reason": "Cleanup≠automatic recovery/remote rollback; E inspect crashes; selected inactive run only",
+      "false_friend": true,
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:518 — [recovery]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#results-state-and-recovery"
+    },
+    {
+      "property": "D-STORAGE",
+      "reason": "Container/post-download caps≠host disk quota; B/E/F; finite checks retained",
+      "false_friend": true,
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:519 — [recovery]; [Requirements and limits][demo]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#results-state-and-recovery; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/local/demos/npm/README.md"
+    },
+    {
+      "property": "D-AUDIT",
+      "reason": "Gateway≠whole-host trace; E/F omissions; P-AUDIT retained",
+      "false_friend": true,
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:520 — [recovery]; [Requirements and limits][demo]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#results-state-and-recovery; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/local/demos/npm/README.md"
+    },
+    {
+      "property": "D-STATE-SECRET",
+      "reason": "Public markers≠secret storage; A/D own nonsecret fields only; not credentials/recovered authority",
+      "false_friend": true,
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:521 — [Prior §1.15 state comments not encrypted][prior]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/THREAT_MODEL.md"
+    },
+    {
+      "property": "D-YAML",
+      "reason": "Subset≠YAML1.2 loader; A anchors/tags/aliases/multiline/multidocument; not unsafe parsing/prototype mutation/effects",
+      "false_friend": true,
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:522 — [yaml]; [Prior §1.15 parseSimpleYaml][prior]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#use-the-supported-yaml-subset; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/THREAT_MODEL.md"
+    },
+    {
+      "property": "D-ANALYSIS",
+      "reason": "No advisory≠complete SBOM/history/compatibility proof; C supported subsets; lane requirements retained",
+      "false_friend": true,
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:523 — [Routine dependency updates; Upstream stewardship][maintenance]; [risks]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#remaining-risks"
+    },
+    {
+      "property": "D-REMOTE-CHECKS",
+      "reason": "Local pass≠remote App checks; E real CI still required",
+      "false_friend": true,
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:524 — [local-publish]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/local-container.md#publication-and-real-github-ci"
+    },
+    {
+      "property": "D-APP-IDENTITY",
+      "reason": "App≠workflow identity; C/G inspect definitions/server protection",
+      "false_friend": true,
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:525 — [gates]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#deterministic-pr-gates"
+    },
+    {
+      "property": "D-DEMO-FORMAT",
+      "reason": "Demo≠general package-manager acquisition; F supported formats; rejection never waives isolation/integrity",
+      "false_friend": true,
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:526 — [Requirements and limits][demo]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/local/demos/npm/README.md"
+    },
+    {
+      "property": "D-DEMO-IMAGES",
+      "reason": "Cleanup≠image deletion; F persistent images/operator storage",
+      "false_friend": true,
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:527 — [Inspect the result][demo]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/local/demos/npm/README.md"
+    },
+    {
+      "property": "D-RELEASE-LAYOUT",
+      "reason": "Detection≠monorepo/private-registry setup; D explicit builders; fixed destinations retained",
+      "false_friend": true,
+      "provenance": "documented",
+      "source": "THREAT_MODEL.md:528 — [artifacts]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/releases.md#build-and-upload-constraints"
+    }
+  ],
+  "attack_classes": [
+    "injection",
+    "paid work",
+    "gate bypass",
+    "backdoor",
+    "escape",
+    "disclosure",
+    "artifact",
+    "authority confusion",
+    "SSRF",
+    "egress",
+    "exhaustion",
+    "forged evidence"
+  ],
+  "downstream_responsibilities": [
+    "Protect default-branch automation, prompts, policy, command files and overrides. Accept the association policy; never execute PR-head code in a privileged controller. Applies to families A/B/C/D/E/G.",
+    "Supply a clean, secret-free, provider-appropriate checkout. Inspect context paths before disclosure. Applies to families A/B/C.",
+    "Trust and review host, Docker, images, CLI/SDK and executable collaborators. Stronger support contracts remain Q2. Applies to families A/B/C/D/E/F/G.",
+    "Scope provider/GitHub/registry identities separately. Configure package-scoped tokens or trusted publishers; workflow permissions do not limit PATs. Applies to families B/D/E/F.",
+    "Set provider spending caps. Preserve concurrency, reservations and effective cache grants; inspect unknown usage and separate local/Actions ledgers. Applies to families A/B/C/F.",
+    "Protect the default branch; configure exact contexts/publishers/triggers. Retain review/CI gates, verify actual execution and inspect workflow definitions, not App ID alone. Applies to families B/C/D/E/G.",
+    "Review hold/needs-human and security/compatibility changes. Distinguish author opt-in from protected/breaking overrides; keep sensitive external merge off unless coverage justifies it. Applies to families A/B/C/D.",
+    "Approve the committed exact plan, files, replacement evidence and offline commands. Labels or planning issues cannot authorize execution. Applies to families A/C.",
+    "Supply every required profile, image/cache, output declaration and synthetic service. Missing/blocked cases fail; passing proves neither semantics nor remote CI. Applies to families E.",
+    "Protect state/output/policy/snapshots. Rerun after code/policy/source/candidate changes; writable hashes are not signatures. Never delete publication records to bypass retry refusal. Applies to families A/B/C/E/F.",
+    "Grant only intended independent capabilities; intersect flags with policy. Preserve installed-repository writes and read-only upstream access. Applies to families E.",
+    "Configure trusted expected names, exact committed versions and builders. Enable release only after identity/auth setup; inspect artifacts and partial registry outcomes. Applies to families D/E.",
+    "Inspect confirmed branches/PRs/tags/versions and interrupted runs before retrying. Distinguish proposed, prepared, validated, published and merged outcomes. Applies to families C/D/E.",
+    "Set separate host/VM storage bounds covering downloads, source copies, cache and persistent images. Applies to families B/C/D/E/F.",
+    "Review source/target/origin and save customizations. Understand replacement/force/label options; inspect preview and discovery proposals before applying them. Applies to families C/D/E/F/G.",
+    "Encode raw logs/JSON/paths/code/diffs for each consumer. Never execute/render them as instructions or reuse context-specific encoding elsewhere. Applies to families A/B/C/D/E/G.",
+    "Distinguish claims/facts, known/unknown usage, live/synthetic evidence and source/generated locks. Review model authority rather than accepting headings/counts. Applies to families B/C/D/F."
+  ],
+  "known_misuse": [
+    {
+      "pattern": "Privileged fork checkout/execution",
+      "why_unsafe": "Confuses the required boundary: data-only controller/offline tests. Hardening only absent a violated claim; not a basis to close a boundary violation.",
+      "instead": "data-only controller/offline tests"
+    },
+    {
+      "pattern": "Routine override",
+      "why_unsafe": "Confuses the required boundary: inspect exact gate/change. Hardening only absent a violated claim; not a basis to close a boundary violation.",
+      "instead": "inspect exact gate/change"
+    },
+    {
+      "pattern": "External merge/model confidence without coverage",
+      "why_unsafe": "Confuses the required boundary: independent gates/contexts. Hardening only absent a violated claim; not a basis to close a boundary violation.",
+      "instead": "independent gates/contexts"
+    },
+    {
+      "pattern": "Checked-in token despite isolation",
+      "why_unsafe": "Confuses the required boundary: clean source/context. Hardening only absent a violated claim; not a basis to close a boundary violation.",
+      "instead": "clean source/context"
+    },
+    {
+      "pattern": "Controller/SDK called worker",
+      "why_unsafe": "Confuses the required boundary: separate executable isolation. Hardening only absent a violated claim; not a basis to close a boundary violation.",
+      "instead": "separate executable isolation"
+    },
+    {
+      "pattern": "Generated lock/local pass/model verdict promoted",
+      "why_unsafe": "Confuses the required boundary: preserve evidence boundaries. Hardening only absent a violated claim; not a basis to close a boundary violation.",
+      "instead": "preserve evidence boundaries"
+    },
+    {
+      "pattern": "Deleting records/retrying registries",
+      "why_unsafe": "Confuses the required boundary: inspect partial effects. Hardening only absent a violated claim; not a basis to close a boundary violation.",
+      "instead": "inspect partial effects"
+    },
+    {
+      "pattern": "GitHub escaping reused/raw terminal logs",
+      "why_unsafe": "Confuses the required boundary: consumer encoding. Hardening only absent a violated claim; not a basis to close a boundary violation.",
+      "instead": "consumer encoding"
+    }
+  ],
+  "known_non_findings": [
+    {
+      "reported_as": "info-leak:unencrypted bookkeeping",
+      "why_safe": "Only components A/D at markers, for symptom info-leak:unencrypted bookkeeping, under exactly these conditions: Own nonsecret attempt/task/cooldown fields only;no credential/authorization/recovery issue;D-STATE-SECRET. Discharged by D-STATE-SECRET; adjacent positive boundaries are not waived.",
+      "cites": "properties_not_provided[8]",
+      "suppression": "Own nonsecret attempt/task/cooldown fields only;no credential/authorization/recovery issue;D-STATE-SECRET"
+    },
+    {
+      "reported_as": "wrong-output:full YAML unsupported",
+      "why_safe": "Only components A at parser, for symptom wrong-output:full YAML unsupported, under exactly these conditions: Syntax demand only;no dangerous reconstruction/mutation/effects;D-YAML/P-CONFIG. Discharged by D-YAML/P-CONFIG; adjacent positive boundaries are not waived.",
+      "cites": "properties_not_provided[9]",
+      "suppression": "Syntax demand only;no dangerous reconstruction/mutation/effects;D-YAML/P-CONFIG"
+    },
+    {
+      "reported_as": "wrong-output:external merge refused",
+      "why_safe": "Only components C at gate, for symptom wrong-output:external merge refused, under exactly these conditions: Disabled author category/no opt-in;refusal only,not evidence loss/other effects;PROP-EXT-PR-GATE. Discharged by PROP-EXT-PR-GATE; adjacent positive boundaries are not waived.",
+      "cites": "properties_provided[2]",
+      "suppression": "Disabled author category/no opt-in;refusal only,not evidence loss/other effects;PROP-EXT-PR-GATE"
+    }
+  ],
+  "dispositions": [
+    "valid",
+    "valid_hardening",
+    "out_of_model_trusted_input",
+    "out_of_model_adversary",
+    "out_of_model_unsupported_component",
+    "out_of_model_non_default_build",
+    "by_design_disclaimed",
+    "known_non_finding",
+    "model_gap"
+  ],
+  "open_questions": [
+    {
+      "claim": "Q1 — UNANSWERED decision on: retain seven families and unread code; supported Actions/local paths have documented contracts. No answer or ratification recorded.",
+      "field": "components",
+      "proposed": "retain seven families and unread code; supported Actions/local paths have documented contracts. Independently confirm helper/standalone/probe/non-npm/rewrite contracts; tests remain nonnormative unless declared otherwise. (§§1.2–1.4/1.7/1.10)"
+    },
+    {
+      "claim": "Q2 — UNANSWERED decision on: classify each disabled gate/opt-in/label/custom controller/image/rule/host/release flag/helper option/endpoint/PATH/callback exposure separately. No answer or ratification recorded.",
+      "field": "build_variants",
+      "proposed": "classify each disabled gate/opt-in/label/custom controller/image/rule/host/release flag/helper option/endpoint/PATH/callback exposure separately. Preserve supported nondefaults and ordinary gates; choose conditional guarantees or explicit bounded limits, never defaultness-based exclusions. (§§1.5–1.7/1.11–1.14/1.17)"
+    },
+    {
+      "claim": "Q3 — UNANSWERED decision on: retain §1.5 effects/preview boundary. No answer or ratification recorded.",
+      "field": "environment",
+      "proposed": "retain §1.5 effects/preview boundary. Confirm installer source/target topology/POSIX branch fallback. Apply scoped locale/FPU/umask observation only to eligible relaxed provisional routes; dependency effects remain open. (§§1.5/1.7–1.9/1.13)"
+    },
+    {
+      "claim": "Q4 — UNANSWERED decision on: obtain dated retention/correction/prospective narrowing for stop/CI/all-.github/config-size/unknown-key/classifier/host-egress/risk-elimination conflicts. No answer or ratification recorded.",
+      "field": "properties_provided",
+      "proposed": "obtain dated retention/correction/prospective narrowing for stop/CI/all-.github/config-size/unknown-key/classifier/host-egress/risk-elimination conflicts. Keep broad bad-PR KNF inactive pending exact §1.15 ruling/backtest; no retroactive withdrawal. (§§1.5–1.7/1.11–1.12/1.15/1.17/appendix)"
+    },
+    {
+      "claim": "Q5 — UNANSWERED decision on: retain uppercase prose > YAML > JSON, relaxed floors, canonical precedence and prose crosswalk; generated headings/skills/intent cannot ratify. No answer or ratification recorded.",
+      "field": "dispositions",
+      "proposed": "retain uppercase prose > YAML > JSON, relaxed floors, canonical precedence and prose crosswalk; generated headings/skills/intent cannot ratify. Confirm semantic-validation extensions and final acceptance explicitly. (§§1.1/1.8–1.9/1.15–1.19)"
+    },
+    {
+      "claim": "Q6 — UNANSWERED decision on: retain documented gateway guarantees; confirm rule order/overlap/query/headers/framing/Copilot forwarding/issued-handle lifetime, or precise narrower protocols—not blanket egress disclaimer. No answer or ratification recorded.",
+      "field": "entry_points",
+      "proposed": "retain documented gateway guarantees; confirm rule order/overlap/query/headers/framing/Copilot forwarding/issued-handle lifetime, or precise narrower protocols—not blanket egress disclaimer. (§§1.4–1.8/1.11–1.12)"
+    },
+    {
+      "claim": "Q7 — UNANSWERED decision on: retain profiles/source/exec-bit/remote-CI/no-acquisition-hooks/no-demo-publication/generated-lock boundaries. No answer or ratification recorded.",
+      "field": "properties_provided",
+      "proposed": "retain profiles/source/exec-bit/remote-CI/no-acquisition-hooks/no-demo-publication/generated-lock boundaries. Confirm offline PR-head versus trusted-config split and concurrent-mutation conditions. (§§1.6–1.8/1.11–1.14)"
+    },
+    {
+      "claim": "Q8 — UNANSWERED decision on: retain publication encoding/recognized-secret redaction/package checks; raw logs/JSON/diffs/code stay tainted. No answer or ratification recorded.",
+      "field": "properties_not_provided",
+      "proposed": "retain publication encoding/recognized-secret redaction/package checks; raw logs/JSON/diffs/code stay tainted. Confirm stronger encoders/archive acceptance or bounded limits without waiving credentialed boundaries. (§§1.7–1.9/1.11–1.13)"
+    },
+    {
+      "claim": "Q9 — UNANSWERED decision on: retain enumerated dependencies; require named contracts/conformant use/actual upstream cause. No answer or ratification recorded.",
+      "field": "environment",
+      "proposed": "retain enumerated dependencies; require named contracts/conformant use/actual upstream cause. Confirm bundled-version remediation ownership; built-ins/hashes/pins never eliminate risk. (§§1.5/1.9/1.11–1.12/1.17)"
+    },
+    {
+      "claim": "Q10 — UNANSWERED decision on: retain no unfinished export/host fallback, partial effects and manual inspection. No answer or ratification recorded.",
+      "field": "properties_not_provided",
+      "proposed": "retain no unfinished export/host fallback, partial effects and manual inspection. Specify cross-write/settlement/callback/install/preparation/helper-sharing/response-loss rollback or bounded correctness limits. Never classify leaks/unauthorized writes/failed gates as acceptable partial failure. (§§1.5/1.7–1.8/1.11–1.13)"
+    },
+    {
+      "claim": "Q11 — UNANSWERED decision on: retain published caps; confirm candidate/archive expansion/output/numeric/version/time/skew/recursion/cycle/parser/helper thresholds and failure modes. No answer or ratification recorded.",
+      "field": "entry_points",
+      "proposed": "retain published caps; confirm candidate/archive expansion/output/numeric/version/time/skew/recursion/cycle/parser/helper thresholds and failure modes. No implicit total CPU/heap/disk/arbitrary-precision/distributed-clock guarantee; never waive published limits. (§§1.7/1.11–1.13)"
+    },
+    {
+      "claim": "Q12 — UNANSWERED decision on: author-qualified bookkeeping never approves; protect storage/cache provenance and separate ledgers/unknown costs. No answer or ratification recorded.",
+      "field": "entry_points",
+      "proposed": "author-qualified bookkeeping never approves; protect storage/cache provenance and separate ledgers/unknown costs. Confirm recovered fields/replay/merge/clock/allocation/direct-object contracts without expanding historical author-check authority. (§§1.5/1.7–1.8/1.11–1.13)"
+    }
+  ]
+}

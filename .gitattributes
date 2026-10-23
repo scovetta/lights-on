@@ -1,1 +1,3 @@
 *.sh text eol=lf
+# The sidecar binds the exact prose bytes by SHA-256 on every platform.
+THREAT_MODEL.md text eol=lf
