@@ -173,7 +173,7 @@ already-open PR; it does not regenerate or test the branch.
 | `Context file is missing ... lights-on-upstream-context.json` | Update the installed scheduled workflow and upstream runner together. Callers use `steps.upstream-sync.outputs.context_file`; when no upstream is selected, sync also writes an explicit skipped snapshot for older fixed-path callers. Discovery/fetch failures still fail the step. |
 | `Threat-model skill cache is incomplete` | Inspect and rebuild the cached skill checkout. Bootstrap tasks, including `/lights-on update-threat-model`, prepare the skill automatically; an incomplete cache is rejected before inference. |
 | `Expected agent ... result file is missing` | A producing step did not deliver its promised result. Inspect that step and update the composite action and workflows together. Disabled runs write a structured skipped result; genuinely missing results are errors, not successful skips. |
-| `could not add label ... not found` | Update the label/publisher helpers and confirm the workflow has issue/PR write permission. |
+| `could not add label ... not found` | Update the issue/PR workflows, prompts and `agent-labels.mjs` helper together. Agent label requests are checked against the repository inventory; missing standard labels are created, while unknown custom labels are reported and skipped without dropping the response. Permission/API failures still stop publication. |
 | `NativeCommandError` from PowerShell installer | Older Windows PowerShell handling treated native stderr as fatal. Use the current installer; exit codes still determine actual failure. |
 | Docker unavailable / offline install fails | Supply Docker and a suitable reviewed worker image/cache. There is no host-shell or online-worker fallback. |
 | Stale review refused | The PR head changed/closed during review. Request a new review for the current head; do not reuse the old verdict. |
@@ -327,6 +327,14 @@ token event suppression. `lights-on:approved` and `lights-on:needs-human` alone
 do not grant or block merging by themselves.
 
 ### Label reference
+
+Agent-suggested changes pass the maintainer-control restrictions before label
+lookup or creation. The publisher creates only missing standard Lights On
+labels. It reuses existing custom labels without changing their definitions.
+An unknown custom label produces a warning and is omitted; removing an absent
+label is a reported no-op. Inventory, label-creation and edit failures remain
+errors. For out-of-scope issues the prompt uses `lights-on:ignore`, not an
+assumed repository-specific `out-of-scope` label.
 
 | Label | Effect |
 |---|---|
