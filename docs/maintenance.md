@@ -28,7 +28,7 @@ Select the task in **Actions > Lights On - Scheduled Maintenance > Run workflow*
 | `upstream` | Upstream polling and actionable-issue processing. |
 | `security` | Security-remediation agent. |
 | `dependencies` | Routine dependency stages and optional toolchain maintenance. |
-| `migration-plan` | Read-only analysis of one unhealthy dependency. |
+| `migration-plan` | Read-only analysis of one unhealthy dependency or deferred major upgrade. |
 | `migration` | Execute the `migration_plan` ID from approved configuration, on the default branch only. |
 | `toolchains` | Optional Node lifecycle proposals. |
 | `docs` | Documentation clarification and actionable-issue processing. |
@@ -84,16 +84,25 @@ Step D uses Step B's report and the current checkout to select work:
 - Defers security bumps to Step C.
 - Leaves migration and major-version work out of the routine update task.
 
-The routine verifier supports npm `package-lock.json` v2/v3, without
-npm workspaces or competing lockfiles. It requires a test script and a stable,
-compatible target. Pre-1.0 minor updates, unsupported ranges, missing lockfiles,
-and unsupported ecosystems block candidate generation.
+The routine verifier supports npm projects with `package-lock.json` v2/v3
+**or no committed lockfile**. It still requires a test script and a stable,
+compatible target. Workspaces, competing lockfiles, a non-npm `packageManager`,
+pre-1.0 minor updates, unsupported ranges and unsupported ecosystems block
+candidate generation. An existing invalid/older lockfile is not treated as absent.
+
+Selection records `lockfile.mode: committed` or `temporary`. Without a source
+lockfile, the scanner's current version comes from the manifest requirement,
+not an observed installed graph. Validation establishes the candidate's exact
+resolution; it does not reconstruct historical installations or prove every
+future resolution allowed by the published ranges will work.
 
 ### Candidate generation
 
 The `dependency-updater` receives the selected package and evidence. It may
-change only that package's requirements and lockfile, preserving the requirement
-style (`^`, `~`, or exact).
+change only that package's requirements and existing lockfile, preserving the
+requirement style (`^`, `~`, or exact). When the source has no lockfile, the
+candidate must change only the manifest. The controller generates a temporary
+v3 lock in its independent offline worker; it is never added to the proposal.
 
 The package manager must generate the lockfile; the agent cannot invent hashes
 or registry URLs. A missing offline package blocks verification.
@@ -104,19 +113,31 @@ Before candidate files can reach the credentialed checkout, the controller:
 
 1. Confirms the selection still matches the trusted source.
 2. Rejects unrelated source, test, script, or manifest changes.
-3. Checks manifest/root-lock agreement and the exact locked target.
+3. Checks manifest/root-lock agreement and the exact locked target. For a
+   lockfile-free project, this check follows temporary lock generation below.
 4. Queries target-version advisories; lookup failure or a known vulnerability
    blocks this lane.
 5. Creates a fresh offline worker from the candidate.
-6. Runs `npm ci --offline --ignore-scripts --no-audit --no-fund`.
+6. If needed, generates a temporary v3 lock with `npm install --package-lock-only
+   --lockfile-version=3 --package-lock=true --offline --ignore-scripts --no-audit
+   --no-fund`, then verifies it. Runs `npm ci --offline --ignore-scripts
+   --no-audit --no-fund` against the verified lock.
 7. Checks the installed target package version.
 8. Runs the original build/lint/test scripts when present; a test script is
    required.
-9. Rejects validation-time modification of candidate source contents or executable bits, including symlink substitution.
+9. Rejects validation-time modification of candidate source contents or executable bits, including symlink substitution. A generated lock must also remain unchanged during tests.
 
 Add trusted checks through `dependencies.validation_commands`. The controller
 records file hashes and command exit codes rather than relying on a model's
 claim that tests passed.
+
+An offline worker must contain registry metadata and package archives for the
+intended candidate graph. The stock Node worker does not include project
+dependencies. Missing inputs still block publication; this change does not
+enable network access, run install hooks or add an acquisition service. Prepare
+approved inputs using the configured registry/proxyfeed, never a silent public
+registry fallback. The npm demo cache covers its prepared graph only and may
+not contain metadata or new versions needed for an update.
 
 ### Publication
 
@@ -139,6 +160,14 @@ Use `task: migration-plan` for scan-based planning, or
 `dependency-maintainer` task name is retained as a read-only planning alias.
 Neither a model response nor a `lights-on:migrate-dep` label grants code-write
 permission for a migration.
+
+Scan-based planning accepts both `migrate` and `evaluate-major-bump` decisions.
+The selected `planning_kind` is `replacement` or `major-upgrade`. These are
+read-only plans, not automatic upgrades. A same-package major upgrade needs a
+separate reviewed implementation PR; the current migration executor only
+replaces/removes a dependency and cannot execute that upgrade. Running
+`task: dependencies` does not automatically start the planning or security
+lanes: dispatch `migration-plan` or `security` explicitly where appropriate.
 
 The plan should state the reason for retiring the dependency and consider a
 standard-library replacement. It must identify the replacement version/license,

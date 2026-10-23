@@ -202,8 +202,17 @@ Read the selection or validation reason alongside the model summary.
   starting another, including security work from Step C.
 - **Unsupported lockfile/ecosystem/range:** use a reviewed migration plan or
   manual maintenance. A manifest-only change is not a substitute.
+- **`routine-update-requires-package-lock-v2-or-v3`:** older installations
+  required a committed npm lockfile. Update the dependency runners and prompt
+  together to allow manifest-only proposals with a temporary offline validation
+  lock. Existing locks must still be supported and updated.
+- **Deferred major/security updates:** `deferred` is routing information, not
+  an execution failure. Run `migration-plan` for major-upgrade/replacement
+  analysis and `security` for the security-remediation lane. Deferred items
+  were not updated by the routine dependency task.
 - **Offline package missing:** rebuild the trusted worker cache for the exact
-  candidate graph.
+  candidate graph. Lockfile-free updates also need cached registry metadata to
+  generate the temporary lock; lack of network access is intentional.
 - **Validation changed source:** investigate generators or scripts that rewrite
   the candidate during tests.
 - **Cooldown/attempt limit:** inspect the tracking issue and state. Do not
