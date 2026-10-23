@@ -157,7 +157,8 @@ The supplied workflows use Ubuntu GitHub-hosted runners with Docker. Their
 commit-bound `$/` action references require runner 2.336.0 or newer.
 The default worker image supplies Node.js. You must provide your project's other tools and
 dependencies. Routine npm validation needs an offline cache for the candidate
-lockfile; preinstalled `node_modules` cannot replace that frozen install.
+lockfile, including registry metadata if a temporary lock must be generated;
+preinstalled `node_modules` cannot replace that frozen install.
 
 For a reviewed custom image, set the `LIGHTS_ON_SANDBOX_IMAGE` repository
 variable, preferably to an immutable image digest. See

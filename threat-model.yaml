@@ -1,7 +1,7 @@
 # Derived index; THREAT_MODEL.md is canonical. No ratification is implied.
 schema: threat-model-sidecar/v2
 project: Lights On
-prose_version: THREAT_MODEL.md@sha256:7ee33c0f6af9e9919b4d51954b5d9ad67c928be90dc827e452d03df40e1a9432
+prose_version: THREAT_MODEL.md@sha256:4b6dc2a7076096da4e7bcdc86217ca4ab725911625eb3b58336d3bfc15f47a2c
 model_status: unratified-draft
 triage_policy: relaxed
 confidence:
@@ -29,7 +29,7 @@ components:
     kind: documented
     x-prose-source: THREAT_MODEL.md:33
     x-original-tag: '*(documented, [Workflow map][maintenance]; [permissions])*'
-    source: THREAT_MODEL.md:33 — [Workflow map][maintenance]; [permissions]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md;
+    source: THREAT_MODEL.md:33 — [Workflow map][maintenance]; [permissions]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md;
       https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#workflow-token-permissions
   x-prose-source: THREAT_MODEL.md:33
   x-name: A Actions/admission/state
@@ -65,7 +65,7 @@ components:
     kind: documented
     x-prose-source: THREAT_MODEL.md:35
     x-original-tag: '*(documented, [Scheduled stages][maintenance])*'
-    source: THREAT_MODEL.md:35 — [Scheduled stages][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+    source: THREAT_MODEL.md:35 — [Scheduled stages][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
   x-prose-source: THREAT_MODEL.md:35
   x-name: C maintenance/review
   x-entry-groups: C01–C09
@@ -281,7 +281,7 @@ host_side_effects:
     kind: documented
     x-prose-source: THREAT_MODEL.md:80
     x-original-tag: '*(documented, [Independent validation; Upstream stewardship][maintenance])*'
-    source: THREAT_MODEL.md:80 — [Independent validation; Upstream stewardship][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+    source: THREAT_MODEL.md:80 — [Independent validation; Upstream stewardship][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
   x-prose-source: THREAT_MODEL.md:80
 - effect: x-confirmed-mirrors
   stance: conditional
@@ -293,7 +293,7 @@ host_side_effects:
     kind: documented
     x-prose-source: THREAT_MODEL.md:80
     x-original-tag: '*(documented, [Independent validation; Upstream stewardship][maintenance])*'
-    source: THREAT_MODEL.md:80 — [Independent validation; Upstream stewardship][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+    source: THREAT_MODEL.md:80 — [Independent validation; Upstream stewardship][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
   x-prose-source: THREAT_MODEL.md:80
 - effect: filesystem
   stance: conditional
@@ -306,7 +306,7 @@ host_side_effects:
     x-prose-source: THREAT_MODEL.md:81
     x-original-tag: '*(documented, [artifacts]; [A branch was pushed but no PR appeared][operations])*'
     source: THREAT_MODEL.md:81 — [artifacts]; [A branch was pushed but no PR appeared][operations]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/releases.md#build-and-upload-constraints;
-      https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/operations.md
+      https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/operations.md
   x-prose-source: THREAT_MODEL.md:81
 - effect: x-publication-mutation
   stance: conditional
@@ -319,7 +319,7 @@ host_side_effects:
     x-prose-source: THREAT_MODEL.md:81
     x-original-tag: '*(documented, [artifacts]; [A branch was pushed but no PR appeared][operations])*'
     source: THREAT_MODEL.md:81 — [artifacts]; [A branch was pushed but no PR appeared][operations]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/releases.md#build-and-upload-constraints;
-      https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/operations.md
+      https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/operations.md
   x-prose-source: THREAT_MODEL.md:81
 - effect: filesystem
   stance: conditional
@@ -458,7 +458,7 @@ host_side_effects:
     kind: documented
     x-prose-source: THREAT_MODEL.md:119
     x-original-tag: '*(documented, [Workflow map][maintenance])*'
-    source: THREAT_MODEL.md:119 — [Workflow map][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+    source: THREAT_MODEL.md:119 — [Workflow map][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
   x-prose-source: THREAT_MODEL.md:119
 - effect: network-sockets
   stance: conditional
@@ -491,7 +491,7 @@ host_side_effects:
     kind: documented
     x-prose-source: THREAT_MODEL.md:188
     x-original-tag: '*(documented, [Routine dependency updates][maintenance])*'
-    source: THREAT_MODEL.md:188 — [Routine dependency updates][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+    source: THREAT_MODEL.md:188 — [Routine dependency updates][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
   x-prose-source: THREAT_MODEL.md:188
 - effect: child-processes
   stance: conditional
@@ -502,7 +502,7 @@ host_side_effects:
     kind: documented
     x-prose-source: THREAT_MODEL.md:195
     x-original-tag: '*(documented, [Independent validation][maintenance])*'
-    source: THREAT_MODEL.md:195 — [Independent validation][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+    source: THREAT_MODEL.md:195 — [Independent validation][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
   x-prose-source: THREAT_MODEL.md:195
 - effect: network-sockets
   stance: conditional
@@ -595,7 +595,7 @@ entry_points:
       kind: documented
       x-prose-source: THREAT_MODEL.md:119
       x-original-tag: '*(documented, [Workflow map][maintenance])*'
-      source: THREAT_MODEL.md:119 — [Workflow map][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      source: THREAT_MODEL.md:119 — [Workflow map][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
     x-prose-source: THREAT_MODEL.md:119
     x-trust-classification: T platform
     x-input-contract: O-CONTROL
@@ -665,7 +665,7 @@ entry_points:
       x-prose-source: THREAT_MODEL.md:546
       x-original-tag: '*(documented, [Maintainer controls][operations]; [Prior §1.13 High-Sensitivity Repos][prior])*'
       source: THREAT_MODEL.md:546 — [Maintainer controls][operations]; [Prior §1.13 High-Sensitivity Repos][prior];
-        https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/operations.md;
+        https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/operations.md;
         https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/THREAT_MODEL.md
   - name: Association/author/labels
     attacker_controllable: true
@@ -720,7 +720,7 @@ entry_points:
       kind: documented
       x-prose-source: THREAT_MODEL.md:124
       x-original-tag: '*(documented, [Manual scheduled-maintenance tasks][maintenance])*'
-      source: THREAT_MODEL.md:124 — [Manual scheduled-maintenance tasks][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      source: THREAT_MODEL.md:124 — [Manual scheduled-maintenance tasks][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
     x-prose-source: THREAT_MODEL.md:124
     x-trust-classification: T dispatcher
     x-input-contract: O-CONTROL
@@ -739,7 +739,7 @@ entry_points:
       kind: documented
       x-prose-source: THREAT_MODEL.md:125
       x-original-tag: '*(documented, [Migration execution][maintenance])*'
-      source: THREAT_MODEL.md:125 — [Migration execution][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      source: THREAT_MODEL.md:125 — [Migration execution][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
     x-prose-source: THREAT_MODEL.md:125
     x-trust-classification: T maintainer
     x-input-contract: O-MIGRATE
@@ -753,7 +753,7 @@ entry_points:
       kind: documented
       x-prose-source: THREAT_MODEL.md:547
       x-original-tag: '*(documented, [Migration execution][maintenance])*'
-      source: THREAT_MODEL.md:547 — [Migration execution][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      source: THREAT_MODEL.md:547 — [Migration execution][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
   - name: Force
     attacker_controllable: false
     control_kinds:
@@ -762,7 +762,7 @@ entry_points:
       kind: documented
       x-prose-source: THREAT_MODEL.md:126
       x-original-tag: '*(documented, [Manual scheduled-maintenance tasks][maintenance])*'
-      source: THREAT_MODEL.md:126 — [Manual scheduled-maintenance tasks][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      source: THREAT_MODEL.md:126 — [Manual scheduled-maintenance tasks][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
     x-prose-source: THREAT_MODEL.md:126
     x-trust-classification: T dispatcher
     x-input-contract: O-COST;no cap bypass
@@ -917,7 +917,7 @@ entry_points:
       kind: documented
       x-prose-source: THREAT_MODEL.md:133
       x-original-tag: '*(documented, [Selection; Independent validation][maintenance])*'
-      source: THREAT_MODEL.md:133 — [Selection; Independent validation][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      source: THREAT_MODEL.md:133 — [Selection; Independent validation][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
     x-prose-source: THREAT_MODEL.md:133
     x-trust-classification: T record/U metadata
     x-input-contract: O-CONTROL;independent validation
@@ -1328,7 +1328,7 @@ entry_points:
       kind: documented
       x-prose-source: THREAT_MODEL.md:152
       x-original-tag: '*(documented, [Migration planning][maintenance]; [gates])*'
-      source: THREAT_MODEL.md:152 — [Migration planning][maintenance]; [gates]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md;
+      source: THREAT_MODEL.md:152 — [Migration planning][maintenance]; [gates]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md;
         https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#deterministic-pr-gates
     x-prose-source: THREAT_MODEL.md:152
     x-trust-classification: T
@@ -1496,7 +1496,7 @@ entry_points:
       kind: documented
       x-prose-source: THREAT_MODEL.md:159
       x-original-tag: '*(documented, [Common gate reasons][operations])*'
-      source: THREAT_MODEL.md:159 — [Common gate reasons][operations]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/operations.md
+      source: THREAT_MODEL.md:159 — [Common gate reasons][operations]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/operations.md
 - id: B02
   component: B
   parameters:
@@ -1875,7 +1875,7 @@ entry_points:
       kind: documented
       x-prose-source: THREAT_MODEL.md:174
       x-original-tag: '*(documented, [Independent validation][maintenance])*'
-      source: THREAT_MODEL.md:174 — [Independent validation][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      source: THREAT_MODEL.md:174 — [Independent validation][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
   - name: Branch
     attacker_controllable: true
     control_kinds:
@@ -1903,11 +1903,13 @@ entry_points:
     provenance:
       kind: documented
       x-prose-source: THREAT_MODEL.md:176
-      x-original-tag: '*(documented, [state])*'
-      source: THREAT_MODEL.md:176 — [state]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#state-and-authorization
+      x-original-tag: '*(documented, [state]; [Label reference][operations])*'
+      source: THREAT_MODEL.md:176 — [state]; [Label reference][operations]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#state-and-authorization;
+        https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/operations.md
     x-prose-source: THREAT_MODEL.md:176
     x-trust-classification: U suggestion
-    x-input-contract: O-OVERRIDE;delimiter/protected filtering
+    x-input-contract: O-OVERRIDE;filter before inventory lookup. Create only missing standard labels; reuse existing
+      custom labels; report/skip undefined custom additions or absent removals. API failures stay errors.
     x-original-entry: B06
     x-source-operand-id: INPUT-176
     x-property-references: []
@@ -2145,7 +2147,7 @@ entry_points:
       kind: documented
       x-prose-source: THREAT_MODEL.md:186
       x-original-tag: '*(documented, [Routine dependency updates][maintenance])*'
-      source: THREAT_MODEL.md:186 — [Routine dependency updates][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      source: THREAT_MODEL.md:186 — [Routine dependency updates][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
     x-prose-source: THREAT_MODEL.md:186
     x-trust-classification: T root/U bytes
     x-input-contract: O-SOURCE;parser subset
@@ -2184,7 +2186,7 @@ entry_points:
       kind: documented
       x-prose-source: THREAT_MODEL.md:187
       x-original-tag: '*(documented, [Routine dependency updates][maintenance])*'
-      source: THREAT_MODEL.md:187 — [Routine dependency updates][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      source: THREAT_MODEL.md:187 — [Routine dependency updates][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
   - name: OSV JSON/continuation
     attacker_controllable: true
     control_kinds:
@@ -2212,7 +2214,7 @@ entry_points:
       kind: documented
       x-prose-source: THREAT_MODEL.md:188
       x-original-tag: '*(documented, [Routine dependency updates][maintenance])*'
-      source: THREAT_MODEL.md:188 — [Routine dependency updates][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      source: THREAT_MODEL.md:188 — [Routine dependency updates][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
   - name: Ecosyste.ms metadata/counts
     attacker_controllable: true
     control_kinds:
@@ -2238,7 +2240,7 @@ entry_points:
       kind: documented
       x-prose-source: THREAT_MODEL.md:189
       x-original-tag: '*(documented, [Routine dependency updates][maintenance])*'
-      source: THREAT_MODEL.md:189 — [Routine dependency updates][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      source: THREAT_MODEL.md:189 — [Routine dependency updates][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
   - name: Offline selector
     attacker_controllable: false
     control_kinds:
@@ -2269,7 +2271,7 @@ entry_points:
       kind: documented
       x-prose-source: THREAT_MODEL.md:191
       x-original-tag: '*(documented, [Selection][maintenance])*'
-      source: THREAT_MODEL.md:191 — [Selection][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      source: THREAT_MODEL.md:191 — [Selection][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
     x-prose-source: THREAT_MODEL.md:191
     x-trust-classification: M evidence
     x-input-contract: O-COST;fresh dedup≠exactly-once
@@ -2290,11 +2292,11 @@ entry_points:
     provenance:
       kind: documented
       x-prose-source: THREAT_MODEL.md:192
-      x-original-tag: '*(documented, [Migration execution][maintenance])*'
-      source: THREAT_MODEL.md:192 — [Migration execution][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      x-original-tag: '*(documented, [Migration planning; Migration execution][maintenance])*'
+      source: THREAT_MODEL.md:192 — [Migration planning; Migration execution][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
     x-prose-source: THREAT_MODEL.md:192
     x-trust-classification: T maintainer
-    x-input-contract: O-MIGRATE
+    x-input-contract: O-MIGRATE;major-upgrade plans are read-only, not executable same-package upgrades
     x-original-entry: C02
     x-source-operand-id: INPUT-192
     x-property-references: []
@@ -2313,7 +2315,7 @@ entry_points:
       kind: documented
       x-prose-source: THREAT_MODEL.md:193
       x-original-tag: '*(documented, [Independent validation][maintenance])*'
-      source: THREAT_MODEL.md:193 — [Independent validation][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      source: THREAT_MODEL.md:193 — [Independent validation][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
     x-prose-source: THREAT_MODEL.md:193
     x-trust-classification: T controller
     x-input-contract: O-MIGRATE;independent intent match
@@ -2332,11 +2334,13 @@ entry_points:
     provenance:
       kind: documented
       x-prose-source: THREAT_MODEL.md:194
-      x-original-tag: '*(documented, [Independent validation][maintenance])*'
-      source: THREAT_MODEL.md:194 — [Independent validation][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      x-original-tag: '*(documented, [Routine dependency updates; Independent validation][maintenance])*'
+      source: THREAT_MODEL.md:194 — [Routine dependency updates; Independent validation][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
     x-prose-source: THREAT_MODEL.md:194
     x-trust-classification: U candidate
-    x-input-contract: O-STORAGE;allowed files/exact resolution
+    x-input-contract: O-STORAGE;update existing supported lock. If absent, manifest-only candidate plus native temporary
+      v3 lock in fresh offline worker; never export that lock. Verify agreement, exact resolution and unchanged
+      source/lock during tests.
     x-original-entry: C03
     x-source-operand-id: INPUT-194
     x-property-references: []
@@ -2369,7 +2373,7 @@ entry_points:
       kind: documented
       x-prose-source: THREAT_MODEL.md:195
       x-original-tag: '*(documented, [Independent validation][maintenance])*'
-      source: THREAT_MODEL.md:195 — [Independent validation][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      source: THREAT_MODEL.md:195 — [Independent validation][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
   - name: Extra/migration commands
     attacker_controllable: false
     control_kinds:
@@ -2378,7 +2382,7 @@ entry_points:
       kind: documented
       x-prose-source: THREAT_MODEL.md:196
       x-original-tag: '*(documented, [Migration execution][maintenance])*'
-      source: THREAT_MODEL.md:196 — [Migration execution][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      source: THREAT_MODEL.md:196 — [Migration execution][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
     x-prose-source: THREAT_MODEL.md:196
     x-trust-classification: T approval
     x-input-contract: O-MIGRATE;offline
@@ -2414,7 +2418,7 @@ entry_points:
       kind: documented
       x-prose-source: THREAT_MODEL.md:197
       x-original-tag: '*(documented, [Independent validation][maintenance])*'
-      source: THREAT_MODEL.md:197 — [Independent validation][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      source: THREAT_MODEL.md:197 — [Independent validation][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
 - id: C04
   component: C
   parameters:
@@ -2426,7 +2430,7 @@ entry_points:
       kind: documented
       x-prose-source: THREAT_MODEL.md:198
       x-original-tag: '*(documented, [Publication][maintenance])*'
-      source: THREAT_MODEL.md:198 — [Publication][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      source: THREAT_MODEL.md:198 — [Publication][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
     x-prose-source: THREAT_MODEL.md:198
     x-trust-classification: T records/U narrative
     x-input-contract: O-RECORDS;matching completed live evidence
@@ -2470,7 +2474,7 @@ entry_points:
       kind: documented
       x-prose-source: THREAT_MODEL.md:200
       x-original-tag: '*(documented, [Node toolchain maintenance][maintenance])*'
-      source: THREAT_MODEL.md:200 — [Node toolchain maintenance][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      source: THREAT_MODEL.md:200 — [Node toolchain maintenance][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
     x-prose-source: THREAT_MODEL.md:200
     x-trust-classification: T
     x-input-contract: O-OVERRIDE;held proposals
@@ -2507,7 +2511,7 @@ entry_points:
       kind: documented
       x-prose-source: THREAT_MODEL.md:201
       x-original-tag: '*(documented, [Node toolchain maintenance][maintenance])*'
-      source: THREAT_MODEL.md:201 — [Node toolchain maintenance][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      source: THREAT_MODEL.md:201 — [Node toolchain maintenance][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
 - id: C06
   component: C
   parameters:
@@ -2519,7 +2523,7 @@ entry_points:
       kind: documented
       x-prose-source: THREAT_MODEL.md:202
       x-original-tag: '*(documented, [Upstream stewardship][maintenance])*'
-      source: THREAT_MODEL.md:202 — [Upstream stewardship][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      source: THREAT_MODEL.md:202 — [Upstream stewardship][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
     x-prose-source: THREAT_MODEL.md:202
     x-trust-classification: M selection/platform
     x-input-contract: O-INSTALL;read-only upstream
@@ -2564,7 +2568,7 @@ entry_points:
       kind: documented
       x-prose-source: THREAT_MODEL.md:203
       x-original-tag: '*(documented, [Upstream stewardship][maintenance])*'
-      source: THREAT_MODEL.md:203 — [Upstream stewardship][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      source: THREAT_MODEL.md:203 — [Upstream stewardship][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
   - name: Tracking markers
     attacker_controllable: true
     control_kinds:
@@ -2573,7 +2577,7 @@ entry_points:
       kind: documented
       x-prose-source: THREAT_MODEL.md:204
       x-original-tag: '*(documented, [Upstream stewardship][maintenance])*'
-      source: THREAT_MODEL.md:204 — [Upstream stewardship][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      source: THREAT_MODEL.md:204 — [Upstream stewardship][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
     x-prose-source: THREAT_MODEL.md:204
     x-trust-classification: M author-qualified
     x-input-contract: O-RECORDS;dedup≠authority
@@ -2597,7 +2601,7 @@ entry_points:
       kind: documented
       x-prose-source: THREAT_MODEL.md:205
       x-original-tag: '*(documented, [Upstream stewardship][maintenance])*'
-      source: THREAT_MODEL.md:205 — [Upstream stewardship][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      source: THREAT_MODEL.md:205 — [Upstream stewardship][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
     x-prose-source: THREAT_MODEL.md:205
     x-trust-classification: T
     x-input-contract: O-RETRY;confirmed mirrors persist
@@ -3072,7 +3076,7 @@ entry_points:
       kind: documented
       x-prose-source: THREAT_MODEL.md:226
       x-original-tag: '*(documented, [A branch was pushed but no PR appeared][operations])*'
-      source: THREAT_MODEL.md:226 — [A branch was pushed but no PR appeared][operations]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/operations.md
+      source: THREAT_MODEL.md:226 — [A branch was pushed but no PR appeared][operations]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/operations.md
     x-prose-source: THREAT_MODEL.md:226
     x-trust-classification: T
     x-input-contract: O-RETRY;matching open PR
@@ -5615,7 +5619,7 @@ contract_dimensions:
     kind: documented
     x-prose-source: THREAT_MODEL.md:344
     x-original-tag: '*(documented, [Selection][maintenance]; [gates])*'
-    source: THREAT_MODEL.md:344 — [Selection][maintenance]; [gates]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md;
+    source: THREAT_MODEL.md:344 — [Selection][maintenance]; [gates]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md;
       https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#deterministic-pr-gates
   x-prose-source: THREAT_MODEL.md:344
   x-related-property-ids:
@@ -5632,7 +5636,7 @@ contract_dimensions:
     x-prose-source: THREAT_MODEL.md:345
     x-original-tag: '*(documented, [Independent validation; Upstream stewardship][maintenance]; [Troubleshooting][operations])*'
     source: THREAT_MODEL.md:345 — [Independent validation; Upstream stewardship][maintenance]; [Troubleshooting][operations];
-      https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/operations.md
+      https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/operations.md
   x-prose-source: THREAT_MODEL.md:345
   x-related-property-ids:
   - P-DEPENDENCY
@@ -5649,7 +5653,7 @@ contract_dimensions:
     kind: documented
     x-prose-source: THREAT_MODEL.md:346
     x-original-tag: '*(documented, [Routine dependency updates][maintenance]; [gates])*'
-    source: THREAT_MODEL.md:346 — [Routine dependency updates][maintenance]; [gates]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md;
+    source: THREAT_MODEL.md:346 — [Routine dependency updates][maintenance]; [gates]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md;
       https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#deterministic-pr-gates
   x-prose-source: THREAT_MODEL.md:346
   x-related-property-ids:
@@ -5666,7 +5670,7 @@ contract_dimensions:
     kind: documented
     x-prose-source: THREAT_MODEL.md:347
     x-original-tag: '*(documented, [Independent validation; Migration planning][maintenance])*'
-    source: THREAT_MODEL.md:347 — [Independent validation; Migration planning][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+    source: THREAT_MODEL.md:347 — [Independent validation; Migration planning][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
   x-prose-source: THREAT_MODEL.md:347
   x-related-property-ids:
   - P-DEPENDENCY
@@ -5682,7 +5686,7 @@ contract_dimensions:
     x-prose-source: THREAT_MODEL.md:348
     x-original-tag: '*(documented, [gates]; [Troubleshooting][operations])*'
     source: THREAT_MODEL.md:348 — [gates]; [Troubleshooting][operations]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#deterministic-pr-gates;
-      https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/operations.md
+      https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/operations.md
   x-prose-source: THREAT_MODEL.md:348
   x-related-property-ids:
   - P-DEPENDENCY
@@ -6623,13 +6627,15 @@ outputs:
         https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#remaining-risks
   - id: OUT-394-C-P-DEPENDENCY
     statement: 'independently check selected npm scope/resolution/advisories/original offline tests; exact approved
-      migration plan. Controls/limits: Other lanes do not inherit; `dependency-work.mjs:168-186`'
+      migration plan. Controls/limits: Existing locks must be updated. Without a source lock, publish only the manifest
+      after temporary offline native-lock verification; source/validation lock remain unchanged. Missing evidence
+      blocks export; other lanes do not inherit. `dependency-work.mjs:186-327`'
     property_id: P-DEPENDENCY
     provenance:
       kind: documented
       x-prose-source: THREAT_MODEL.md:480
       x-original-tag: '*(documented, [Independent validation; Migration execution][maintenance])*'
-      source: THREAT_MODEL.md:480 — [Independent validation; Migration execution][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      source: THREAT_MODEL.md:480 — [Independent validation; Migration execution][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
     x-output-provenance:
       kind: documented
       x-prose-source: THREAT_MODEL.md:394
@@ -6853,7 +6859,7 @@ outputs:
     kind: documented
     x-prose-source: THREAT_MODEL.md:397
     x-original-tag: '*(documented, [Routine dependency updates][maintenance]; [risks])*'
-    source: THREAT_MODEL.md:397 — [Routine dependency updates][maintenance]; [risks]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md;
+    source: THREAT_MODEL.md:397 — [Routine dependency updates][maintenance]; [risks]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md;
       https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#remaining-risks
   invariants: []
   downstream_must_not_assume:
@@ -6863,7 +6869,7 @@ outputs:
       kind: documented
       x-prose-source: THREAT_MODEL.md:397
       x-original-tag: '*(documented, [Routine dependency updates][maintenance]; [risks])*'
-      source: THREAT_MODEL.md:397 — [Routine dependency updates][maintenance]; [risks]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md;
+      source: THREAT_MODEL.md:397 — [Routine dependency updates][maintenance]; [risks]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md;
         https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#remaining-risks
   x-output-contract:
     statement: Parsed source/external intelligence/missing evidence
@@ -6871,7 +6877,7 @@ outputs:
       kind: documented
       x-prose-source: THREAT_MODEL.md:397
       x-original-tag: '*(documented, [Routine dependency updates][maintenance]; [risks])*'
-      source: THREAT_MODEL.md:397 — [Routine dependency updates][maintenance]; [risks]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md;
+      source: THREAT_MODEL.md:397 — [Routine dependency updates][maintenance]; [risks]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md;
         https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#remaining-risks
   x-prose-source: THREAT_MODEL.md:397
   x-source-channel-id: OUTPUT-397
@@ -6883,37 +6889,39 @@ outputs:
     kind: documented
     x-prose-source: THREAT_MODEL.md:398
     x-original-tag: '*(documented, [Independent validation][maintenance])*'
-    source: THREAT_MODEL.md:398 — [Independent validation][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+    source: THREAT_MODEL.md:398 — [Independent validation][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
   invariants:
   - id: OUT-398-C-P-DEPENDENCY
     statement: 'independently check selected npm scope/resolution/advisories/original offline tests; exact approved
-      migration plan. Controls/limits: Other lanes do not inherit; `dependency-work.mjs:168-186`'
+      migration plan. Controls/limits: Existing locks must be updated. Without a source lock, publish only the manifest
+      after temporary offline native-lock verification; source/validation lock remain unchanged. Missing evidence
+      blocks export; other lanes do not inherit. `dependency-work.mjs:186-327`'
     property_id: P-DEPENDENCY
     provenance:
       kind: documented
       x-prose-source: THREAT_MODEL.md:480
       x-original-tag: '*(documented, [Independent validation; Migration execution][maintenance])*'
-      source: THREAT_MODEL.md:480 — [Independent validation; Migration execution][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      source: THREAT_MODEL.md:480 — [Independent validation; Migration execution][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
     x-output-provenance:
       kind: documented
       x-prose-source: THREAT_MODEL.md:398
       x-original-tag: '*(documented, [Independent validation][maintenance])*'
-      source: THREAT_MODEL.md:398 — [Independent validation][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      source: THREAT_MODEL.md:398 — [Independent validation][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
   downstream_must_not_assume:
   - id: OUT-398-C-NOT-ASSUME
-    statement: Arbitrary-code safety/unrelated-file permission
+    statement: Arbitrary-code safety/unrelated-file permission or every future range resolution
     provenance:
       kind: documented
       x-prose-source: THREAT_MODEL.md:398
       x-original-tag: '*(documented, [Independent validation][maintenance])*'
-      source: THREAT_MODEL.md:398 — [Independent validation][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      source: THREAT_MODEL.md:398 — [Independent validation][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
   x-output-contract:
-    statement: Identity/hash/commands;P-DEPENDENCY
+    statement: Identity/hash/commands;P-DEPENDENCY;temporary lock hash/mode recorded but lock not published
     provenance:
       kind: documented
       x-prose-source: THREAT_MODEL.md:398
       x-original-tag: '*(documented, [Independent validation][maintenance])*'
-      source: THREAT_MODEL.md:398 — [Independent validation][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      source: THREAT_MODEL.md:398 — [Independent validation][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
   x-prose-source: THREAT_MODEL.md:398
   x-source-channel-id: OUTPUT-398
   x-taint-scope: Only the stated checks/encoding constrain this channel; no universal sanitization or authority.
@@ -6924,7 +6932,7 @@ outputs:
     kind: documented
     x-prose-source: THREAT_MODEL.md:399
     x-original-tag: '*(documented, [Upstream stewardship][maintenance])*'
-    source: THREAT_MODEL.md:399 — [Upstream stewardship][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+    source: THREAT_MODEL.md:399 — [Upstream stewardship][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
   invariants: []
   downstream_must_not_assume:
   - id: OUT-399-C-NOT-ASSUME
@@ -6933,14 +6941,14 @@ outputs:
       kind: documented
       x-prose-source: THREAT_MODEL.md:399
       x-original-tag: '*(documented, [Upstream stewardship][maintenance])*'
-      source: THREAT_MODEL.md:399 — [Upstream stewardship][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      source: THREAT_MODEL.md:399 — [Upstream stewardship][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
   x-output-contract:
     statement: Trimmed external text/local rendering
     provenance:
       kind: documented
       x-prose-source: THREAT_MODEL.md:399
       x-original-tag: '*(documented, [Upstream stewardship][maintenance])*'
-      source: THREAT_MODEL.md:399 — [Upstream stewardship][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      source: THREAT_MODEL.md:399 — [Upstream stewardship][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
   x-prose-source: THREAT_MODEL.md:399
   x-source-channel-id: OUTPUT-399
   x-taint-scope: Only the stated checks/encoding constrain this channel; no universal sanitization or authority.
@@ -6951,7 +6959,7 @@ outputs:
     kind: documented
     x-prose-source: THREAT_MODEL.md:400
     x-original-tag: '*(documented, [Node toolchain maintenance][maintenance]; [Version policy][releases])*'
-    source: THREAT_MODEL.md:400 — [Node toolchain maintenance][maintenance]; [Version policy][releases]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md;
+    source: THREAT_MODEL.md:400 — [Node toolchain maintenance][maintenance]; [Version policy][releases]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md;
       https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/releases.md
   invariants: []
   downstream_must_not_assume:
@@ -6961,7 +6969,7 @@ outputs:
       kind: documented
       x-prose-source: THREAT_MODEL.md:400
       x-original-tag: '*(documented, [Node toolchain maintenance][maintenance]; [Version policy][releases])*'
-      source: THREAT_MODEL.md:400 — [Node toolchain maintenance][maintenance]; [Version policy][releases]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md;
+      source: THREAT_MODEL.md:400 — [Node toolchain maintenance][maintenance]; [Version policy][releases]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md;
         https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/releases.md
   x-output-contract:
     statement: Deterministic edits/external text
@@ -6969,7 +6977,7 @@ outputs:
       kind: documented
       x-prose-source: THREAT_MODEL.md:400
       x-original-tag: '*(documented, [Node toolchain maintenance][maintenance]; [Version policy][releases])*'
-      source: THREAT_MODEL.md:400 — [Node toolchain maintenance][maintenance]; [Version policy][releases]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md;
+      source: THREAT_MODEL.md:400 — [Node toolchain maintenance][maintenance]; [Version policy][releases]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md;
         https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/releases.md
   x-prose-source: THREAT_MODEL.md:400
   x-source-channel-id: OUTPUT-400
@@ -6981,7 +6989,7 @@ outputs:
     kind: documented
     x-prose-source: THREAT_MODEL.md:400
     x-original-tag: '*(documented, [Node toolchain maintenance][maintenance]; [Version policy][releases])*'
-    source: THREAT_MODEL.md:400 — [Node toolchain maintenance][maintenance]; [Version policy][releases]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md;
+    source: THREAT_MODEL.md:400 — [Node toolchain maintenance][maintenance]; [Version policy][releases]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md;
       https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/releases.md
   invariants: []
   downstream_must_not_assume:
@@ -6991,7 +6999,7 @@ outputs:
       kind: documented
       x-prose-source: THREAT_MODEL.md:400
       x-original-tag: '*(documented, [Node toolchain maintenance][maintenance]; [Version policy][releases])*'
-      source: THREAT_MODEL.md:400 — [Node toolchain maintenance][maintenance]; [Version policy][releases]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md;
+      source: THREAT_MODEL.md:400 — [Node toolchain maintenance][maintenance]; [Version policy][releases]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md;
         https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/releases.md
   x-output-contract:
     statement: Deterministic edits/external text
@@ -6999,7 +7007,7 @@ outputs:
       kind: documented
       x-prose-source: THREAT_MODEL.md:400
       x-original-tag: '*(documented, [Node toolchain maintenance][maintenance]; [Version policy][releases])*'
-      source: THREAT_MODEL.md:400 — [Node toolchain maintenance][maintenance]; [Version policy][releases]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md;
+      source: THREAT_MODEL.md:400 — [Node toolchain maintenance][maintenance]; [Version policy][releases]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md;
         https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/releases.md
   x-prose-source: THREAT_MODEL.md:400
   x-source-channel-id: OUTPUT-400
@@ -7808,7 +7816,7 @@ adversaries:
     x-prose-source: THREAT_MODEL.md:452
     x-original-tag: '*(documented, [release-isolation]; [Upstream stewardship][maintenance])*'
     source: THREAT_MODEL.md:452 — [release-isolation]; [Upstream stewardship][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#release-isolation;
-      https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
   x-prose-source: THREAT_MODEL.md:452
   x-exact-scope-control: 'In: archives/metadata/advisories/upstream text'
   x-exact-exclusions-and-goals: Not expected identities/policy;artifact/authority confusion
@@ -8581,7 +8589,7 @@ dependencies:
     kind: documented
     x-prose-source: THREAT_MODEL.md:437
     x-original-tag: '*(documented, [Routine dependency updates][maintenance])*'
-    source: THREAT_MODEL.md:437 — [Routine dependency updates][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+    source: THREAT_MODEL.md:437 — [Routine dependency updates][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
   x-prose-source: THREAT_MODEL.md:437
   x-name: DEP-OSV
   x-contract-id-namespace: Local derivative ID; no upstream model/obligation IDs are published in the prose.
@@ -8605,7 +8613,7 @@ dependencies:
       kind: documented
       x-prose-source: THREAT_MODEL.md:187
       x-original-tag: '*(documented, [Routine dependency updates][maintenance])*'
-      source: THREAT_MODEL.md:187 — [Routine dependency updates][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      source: THREAT_MODEL.md:187 — [Routine dependency updates][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
     x-prose-source: THREAT_MODEL.md:187
   x-forwarding-status: These are the data/code capabilities crossing the cited §1.7 operand boundary, not authority
     to execute in a trusted role. Empty means no per-edge forwarding asserted by this prose, not absence of hostile
@@ -8625,7 +8633,7 @@ dependencies:
     kind: documented
     x-prose-source: THREAT_MODEL.md:438
     x-original-tag: '*(documented, [Routine dependency updates][maintenance]; [risks])*'
-    source: THREAT_MODEL.md:438 — [Routine dependency updates][maintenance]; [risks]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md;
+    source: THREAT_MODEL.md:438 — [Routine dependency updates][maintenance]; [risks]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md;
       https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#remaining-risks
   x-prose-source: THREAT_MODEL.md:438
   x-name: DEP-ECOSYSTEMS
@@ -8650,7 +8658,7 @@ dependencies:
       kind: documented
       x-prose-source: THREAT_MODEL.md:187
       x-original-tag: '*(documented, [Routine dependency updates][maintenance])*'
-      source: THREAT_MODEL.md:187 — [Routine dependency updates][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      source: THREAT_MODEL.md:187 — [Routine dependency updates][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
     x-prose-source: THREAT_MODEL.md:187
   x-forwarding-status: These are the data/code capabilities crossing the cited §1.7 operand boundary, not authority
     to execute in a trusted role. Empty means no per-edge forwarding asserted by this prose, not absence of hostile
@@ -8669,7 +8677,7 @@ dependencies:
     kind: documented
     x-prose-source: THREAT_MODEL.md:439
     x-original-tag: '*(documented, [Node toolchain maintenance][maintenance])*'
-    source: THREAT_MODEL.md:439 — [Node toolchain maintenance][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+    source: THREAT_MODEL.md:439 — [Node toolchain maintenance][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
   x-prose-source: THREAT_MODEL.md:439
   x-name: DEP-NODE-SCHEDULE
   x-contract-id-namespace: Local derivative ID; no upstream model/obligation IDs are published in the prose.
@@ -8908,13 +8916,13 @@ build_flags:
       x-prose-source: THREAT_MODEL.md:97
       x-original-tag: '*(documented, [merge]; [Maintainer controls][operations])*'
       source: THREAT_MODEL.md:97 — [merge]; [Maintainer controls][operations]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#merge-policy;
-        https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/operations.md
+        https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/operations.md
   provenance:
     kind: documented
     x-prose-source: THREAT_MODEL.md:97
     x-original-tag: '*(documented, [merge]; [Maintainer controls][operations])*'
     source: THREAT_MODEL.md:97 — [merge]; [Maintainer controls][operations]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#merge-policy;
-      https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/operations.md
+      https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/operations.md
   x-prose-source: THREAT_MODEL.md:97
   x-conditions: Both default on; empty required checks block ordinary merge. Author opt-in differs from protected/breaking
     `approved-override`; disabled-gate support unresolved.
@@ -8935,13 +8943,13 @@ build_flags:
       x-prose-source: THREAT_MODEL.md:99
       x-original-tag: '*(documented, [limits]; [Manual scheduled-maintenance tasks][maintenance])*'
       source: THREAT_MODEL.md:99 — [limits]; [Manual scheduled-maintenance tasks][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#usage-and-rate-limits;
-        https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+        https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
   provenance:
     kind: documented
     x-prose-source: THREAT_MODEL.md:99
     x-original-tag: '*(documented, [limits]; [Manual scheduled-maintenance tasks][maintenance])*'
     source: THREAT_MODEL.md:99 — [limits]; [Manual scheduled-maintenance tasks][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#usage-and-rate-limits;
-      https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
   x-prose-source: THREAT_MODEL.md:99
   x-conditions: Configured replacements; shared retries/fallback cap, no dependency fallback. Dry-run synthetic;
     `LIGHTS_ON_FORCE` cannot bypass reservation.
@@ -8955,30 +8963,39 @@ build_flags:
   affects_properties:
   - property_id: P-DEPENDENCY
     effect: preserves
-    x-conditions: Routine npm/planning/approved migration distinct. Toolchain opt-in/held; `active-lts` narrows
-      tests, not public engines.
+    x-conditions: Routine npm updates change an existing v2/v3 lock or only the manifest when no lock exists. Major
+      upgrades/replacements have read-only plans; replacement/removal execution needs a committed approved plan.
+      Toolchain opt-in/held; `active-lts` narrows tests, not public engines.
     x-provenance:
       kind: documented
       x-prose-source: THREAT_MODEL.md:100
-      x-original-tag: '*(documented, [Migration execution; Node toolchain maintenance][maintenance])*'
-      source: THREAT_MODEL.md:100 — [Migration execution; Node toolchain maintenance][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      x-original-tag: '*(documented, [Routine dependency updates; Migration planning; Migration execution; Node
+        toolchain maintenance][maintenance])*'
+      source: THREAT_MODEL.md:100 — [Routine dependency updates; Migration planning; Migration execution; Node toolchain
+        maintenance][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
   - property_id: P-READONLY
     effect: preserves
-    x-conditions: Routine npm/planning/approved migration distinct. Toolchain opt-in/held; `active-lts` narrows
-      tests, not public engines.
+    x-conditions: Routine npm updates change an existing v2/v3 lock or only the manifest when no lock exists. Major
+      upgrades/replacements have read-only plans; replacement/removal execution needs a committed approved plan.
+      Toolchain opt-in/held; `active-lts` narrows tests, not public engines.
     x-provenance:
       kind: documented
       x-prose-source: THREAT_MODEL.md:100
-      x-original-tag: '*(documented, [Migration execution; Node toolchain maintenance][maintenance])*'
-      source: THREAT_MODEL.md:100 — [Migration execution; Node toolchain maintenance][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+      x-original-tag: '*(documented, [Routine dependency updates; Migration planning; Migration execution; Node
+        toolchain maintenance][maintenance])*'
+      source: THREAT_MODEL.md:100 — [Routine dependency updates; Migration planning; Migration execution; Node toolchain
+        maintenance][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
   provenance:
     kind: documented
     x-prose-source: THREAT_MODEL.md:100
-    x-original-tag: '*(documented, [Migration execution; Node toolchain maintenance][maintenance])*'
-    source: THREAT_MODEL.md:100 — [Migration execution; Node toolchain maintenance][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+    x-original-tag: '*(documented, [Routine dependency updates; Migration planning; Migration execution; Node toolchain
+      maintenance][maintenance])*'
+    source: THREAT_MODEL.md:100 — [Routine dependency updates; Migration planning; Migration execution; Node toolchain
+      maintenance][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
   x-prose-source: THREAT_MODEL.md:100
-  x-conditions: Routine npm/planning/approved migration distinct. Toolchain opt-in/held; `active-lts` narrows tests,
-    not public engines.
+  x-conditions: Routine npm updates change an existing v2/v3 lock or only the manifest when no lock exists. Major
+    upgrades/replacements have read-only plans; replacement/removal execution needs a committed approved plan. Toolchain
+    opt-in/held; `active-lts` narrows tests, not public engines.
   x-support-scope: Only explicitly documented supported selections and the ordinary default. Unresolved disabled
     gates/custom collaborators/options are not classified here; see x-unresolved-build-variants and Q2. Nondefault
     is not unsupported.
@@ -9324,7 +9341,7 @@ properties_claimed:
     kind: documented
     x-prose-source: THREAT_MODEL.md:472
     x-original-tag: '*(documented, [Troubleshooting; Cache and recovery][operations]; [gates])*'
-    source: THREAT_MODEL.md:472 — [Troubleshooting; Cache and recovery][operations]; [gates]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/operations.md;
+    source: THREAT_MODEL.md:472 — [Troubleshooting; Cache and recovery][operations]; [gates]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/operations.md;
       https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#deterministic-pr-gates
   x-prose-source: THREAT_MODEL.md:472
   x-statement: promised results/evidence missing or malformed are errors, not successful absence; disabled runs
@@ -9426,7 +9443,7 @@ properties_claimed:
     kind: documented
     x-prose-source: THREAT_MODEL.md:476
     x-original-tag: '*(documented, [Migration planning][maintenance]; [gates])*'
-    source: THREAT_MODEL.md:476 — [Migration planning][maintenance]; [gates]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md;
+    source: THREAT_MODEL.md:476 — [Migration planning][maintenance]; [gates]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md;
       https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#deterministic-pr-gates
   x-prose-source: THREAT_MODEL.md:476
   x-statement: reviewers/planners cannot write or execute commands
@@ -9512,19 +9529,21 @@ properties_claimed:
   - C
   tier: security-critical
   conditions: 'independently check selected npm scope/resolution/advisories/original offline tests; exact approved
-    migration plan. Controls/limits: Other lanes do not inherit; `dependency-work.mjs:168-186`'
+    migration plan. Controls/limits: Existing locks must be updated. Without a source lock, publish only the manifest
+    after temporary offline native-lock verification; source/validation lock remain unchanged. Missing evidence
+    blocks export; other lanes do not inherit. `dependency-work.mjs:186-327`'
   violation_symptoms:
   - bad-data-accepted
   provenance:
     kind: documented
     x-prose-source: THREAT_MODEL.md:480
     x-original-tag: '*(documented, [Independent validation; Migration execution][maintenance])*'
-    source: THREAT_MODEL.md:480 — [Independent validation; Migration execution][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+    source: THREAT_MODEL.md:480 — [Independent validation; Migration execution][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
   x-prose-source: THREAT_MODEL.md:480
   x-statement: independently check selected npm scope/resolution/advisories/original offline tests; exact approved
     migration plan
   x-enforcement-locators:
-  - dependency-work.mjs:168-186
+  - dependency-work.mjs:186-327
   x-scope-rule: Only the stated operations and conditions; not a family-wide guarantee.
 - id: P-REPO
   kind: integrity
@@ -9972,14 +9991,15 @@ properties_disclaimed:
 - id: D-ANALYSIS
   components:
   - C
-  conditions: No advisory≠complete SBOM/history/compatibility proof; C supported subsets; lane requirements retained
+  conditions: No advisory≠complete SBOM/history/compatibility proof; C supported subsets; one temporary resolved
+    graph does not prove historical installations or all future allowed versions; lane requirements retained
   tier: correctness-only
   false_friend: true
   provenance:
     kind: documented
     x-prose-source: THREAT_MODEL.md:523
     x-original-tag: '*(documented, [Routine dependency updates; Upstream stewardship][maintenance]; [risks])*'
-    source: THREAT_MODEL.md:523 — [Routine dependency updates; Upstream stewardship][maintenance]; [risks]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md;
+    source: THREAT_MODEL.md:523 — [Routine dependency updates; Upstream stewardship][maintenance]; [risks]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md;
       https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#remaining-risks
   x-prose-source: THREAT_MODEL.md:523
   x-retained-boundaries: []
@@ -10463,7 +10483,7 @@ downstream_responsibilities:
     x-prose-source: THREAT_MODEL.md:546
     x-original-tag: '*(documented, [Maintainer controls][operations]; [Prior §1.13 High-Sensitivity Repos][prior])*'
     source: THREAT_MODEL.md:546 — [Maintainer controls][operations]; [Prior §1.13 High-Sensitivity Repos][prior];
-      https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/operations.md; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/THREAT_MODEL.md
+      https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/operations.md; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/THREAT_MODEL.md
   x-prose-source: THREAT_MODEL.md:546
   x-canonical-obligation-id: O-OVERRIDE
 - id: O-OVERRIDE-B
@@ -10477,7 +10497,7 @@ downstream_responsibilities:
     x-prose-source: THREAT_MODEL.md:546
     x-original-tag: '*(documented, [Maintainer controls][operations]; [Prior §1.13 High-Sensitivity Repos][prior])*'
     source: THREAT_MODEL.md:546 — [Maintainer controls][operations]; [Prior §1.13 High-Sensitivity Repos][prior];
-      https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/operations.md; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/THREAT_MODEL.md
+      https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/operations.md; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/THREAT_MODEL.md
   x-prose-source: THREAT_MODEL.md:546
   x-canonical-obligation-id: O-OVERRIDE
 - id: O-OVERRIDE-C
@@ -10491,7 +10511,7 @@ downstream_responsibilities:
     x-prose-source: THREAT_MODEL.md:546
     x-original-tag: '*(documented, [Maintainer controls][operations]; [Prior §1.13 High-Sensitivity Repos][prior])*'
     source: THREAT_MODEL.md:546 — [Maintainer controls][operations]; [Prior §1.13 High-Sensitivity Repos][prior];
-      https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/operations.md; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/THREAT_MODEL.md
+      https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/operations.md; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/THREAT_MODEL.md
   x-prose-source: THREAT_MODEL.md:546
   x-canonical-obligation-id: O-OVERRIDE
 - id: O-OVERRIDE-D
@@ -10505,7 +10525,7 @@ downstream_responsibilities:
     x-prose-source: THREAT_MODEL.md:546
     x-original-tag: '*(documented, [Maintainer controls][operations]; [Prior §1.13 High-Sensitivity Repos][prior])*'
     source: THREAT_MODEL.md:546 — [Maintainer controls][operations]; [Prior §1.13 High-Sensitivity Repos][prior];
-      https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/operations.md; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/THREAT_MODEL.md
+      https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/operations.md; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/THREAT_MODEL.md
   x-prose-source: THREAT_MODEL.md:546
   x-canonical-obligation-id: O-OVERRIDE
 - id: O-MIGRATE-A
@@ -10518,7 +10538,7 @@ downstream_responsibilities:
     kind: documented
     x-prose-source: THREAT_MODEL.md:547
     x-original-tag: '*(documented, [Migration execution][maintenance])*'
-    source: THREAT_MODEL.md:547 — [Migration execution][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+    source: THREAT_MODEL.md:547 — [Migration execution][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
   x-prose-source: THREAT_MODEL.md:547
   x-canonical-obligation-id: O-MIGRATE
 - id: O-MIGRATE-C
@@ -10531,7 +10551,7 @@ downstream_responsibilities:
     kind: documented
     x-prose-source: THREAT_MODEL.md:547
     x-original-tag: '*(documented, [Migration execution][maintenance])*'
-    source: THREAT_MODEL.md:547 — [Migration execution][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+    source: THREAT_MODEL.md:547 — [Migration execution][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
   x-prose-source: THREAT_MODEL.md:547
   x-canonical-obligation-id: O-MIGRATE
 - id: O-VALIDATE-E
@@ -11000,7 +11020,7 @@ known_misuses:
     x-prose-source: THREAT_MODEL.md:565
     x-original-tag: '*(documented, [state]; [Maintainer controls][operations])*'
     source: THREAT_MODEL.md:565 — [state]; [Maintainer controls][operations]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#state-and-authorization;
-      https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/operations.md
+      https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/operations.md
   x-prose-source: THREAT_MODEL.md:565
   x-eligibility: VALID-HARDENING only without a violated claim; never dismiss supported-default defects.
 - id: M-NO-COVERAGE
@@ -11172,7 +11192,7 @@ disposition_statuses:
 - escalated
 x-model-binding:
   repository: https://github.com/scovetta/lights-on
-  commit: abf1125826227badca1977b8389efc9b599814d9
+  commit: 5f8b3c062a90feef367cc0683e41cb4e8785c248
   date: '2026-10-23'
   schema-json-sha256: 1dcadaa1cf4397024182a76a5f235f7c5ed6a60f1f1460e4b2512e7678a2ec09
 x-authority:
@@ -11492,7 +11512,7 @@ x-external-contract-index:
     kind: documented
     x-prose-source: THREAT_MODEL.md:437
     x-original-tag: '*(documented, [Routine dependency updates][maintenance])*'
-    source: THREAT_MODEL.md:437 — [Routine dependency updates][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+    source: THREAT_MODEL.md:437 — [Routine dependency updates][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
   x-prose-source: THREAT_MODEL.md:437
   x-namespace: Local index of this prose's relied-on contract; not an asserted upstream-model identifier.
 - id: DEP-ECOSYSTEMS-CONTRACT
@@ -11502,7 +11522,7 @@ x-external-contract-index:
     kind: documented
     x-prose-source: THREAT_MODEL.md:438
     x-original-tag: '*(documented, [Routine dependency updates][maintenance]; [risks])*'
-    source: THREAT_MODEL.md:438 — [Routine dependency updates][maintenance]; [risks]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md;
+    source: THREAT_MODEL.md:438 — [Routine dependency updates][maintenance]; [risks]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md;
       https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#remaining-risks
   x-prose-source: THREAT_MODEL.md:438
   x-namespace: Local index of this prose's relied-on contract; not an asserted upstream-model identifier.
@@ -11513,7 +11533,7 @@ x-external-contract-index:
     kind: documented
     x-prose-source: THREAT_MODEL.md:439
     x-original-tag: '*(documented, [Node toolchain maintenance][maintenance])*'
-    source: THREAT_MODEL.md:439 — [Node toolchain maintenance][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
+    source: THREAT_MODEL.md:439 — [Node toolchain maintenance][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
   x-prose-source: THREAT_MODEL.md:439
   x-namespace: Local index of this prose's relied-on contract; not an asserted upstream-model identifier.
 - id: DEP-SKILLS-CONTRACT

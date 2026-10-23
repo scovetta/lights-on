@@ -89,7 +89,8 @@ describe('Dependency stage selection and scan evidence', () => {
       assert.equal(select().status, 'blocked');
       fs.unlinkSync(path.join(f.source, 'yarn.lock'));
       fs.unlinkSync(path.join(f.source, 'package-lock.json'));
-      assert.equal(select().status, 'blocked');
+      assert.equal(select().status, 'ready');
+      assert.equal(select().lockfile.mode, 'temporary');
       fs.writeFileSync(path.join(f.source, 'requirements.txt'), 'demo==1.0.0');
       const python = { ...dep, ecosystem: 'pypi', manifest: 'requirements.txt', versionSpec: '==1.0.0' };
       assert.equal(select(python).status, 'blocked');

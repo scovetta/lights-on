@@ -217,7 +217,8 @@ A worker image must support the sandbox contract:
 4. Account for `HOME=/tmp` and a fresh temporary `/tmp` on each command.
 5. Put setup logic in a tool wrapper if needed; the runner invokes `/bin/sh` instead of the image entrypoint.
 6. Include an offline package-manager cache for the **candidate** lockfile graph,
-   not only installed dependencies from the old version.
+   not only installed dependencies from the old version. Lockfile-free updates
+   also require registry metadata to resolve a temporary lock offline.
 7. Keep registry/provider credentials out of the image.
 
 If a package manager needs a writable cache, a reviewed wrapper on the image's

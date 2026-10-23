@@ -209,6 +209,7 @@ jobs:
           import { plainPublicationText } from './.github/lights-on/runner/publication-text.mjs';
           import { describeChange, describeCommit } from './.github/lights-on/runner/describe-change.mjs';
           import * as stateStore from './.github/lights-on/runner/state-store.mjs';
+          import { prepareAgentLabelChanges } from './.github/lights-on/runner/agent-labels.mjs';
           import { publishPr } from './.github/lights-on/runner/publish-pr.mjs';
           import { reportWorkflowEvent, githubItemUrl } from './.github/lights-on/runner/workflow-report.mjs';
           import { assertWriteTargetIsInstalledRepo, neutralizeCrossRepoAutoLinks } from './.github/lights-on/runner/sync-upstream.mjs';
@@ -235,11 +236,11 @@ jobs:
             process.exit(0);
           }
 
-          const { labelsToAdd, labelsToRemove } = stateStore.sanitizeAgentLabelChanges(
-            result.labels_to_add,
-            result.labels_to_remove,
-            { readOnly: process.env.READ_ONLY_MODE === 'true' }
-          );
+          const { labelsToAdd, labelsToRemove } = prepareAgentLabelChanges({
+            repo: installedRepo, installedRepo,
+            labelsToAdd: result.labels_to_add, labelsToRemove: result.labels_to_remove,
+            readOnly: process.env.READ_ONLY_MODE === 'true'
+          });
 
           if (labelsToAdd.length > 0) {
             try {

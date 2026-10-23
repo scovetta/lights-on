@@ -2,7 +2,7 @@
 
 ## 1.1 Header
 
-- **Revision**: [scovetta/lights-on, abf1125826227badca1977b8389efc9b599814d9][revision]. Links bind to this published SHA; configuration `version: 1` is not a software version.
+- **Revision**: [scovetta/lights-on, 5f8b3c062a90feef367cc0683e41cb4e8785c248][revision], the committed implementation integrated locally. Publication of this revision is not asserted. Unchanged citations and the backtest figures retain the published `abf1125` baseline; dependency/label updates cite the integrated revision. Full integration backtesting remains pending. Configuration `version: 1` is not a software version.
 - **Date/status**: 2026-10-23; **unratified draft**. Q1–Q12 are unanswered. Drafting approval was not ratification or sign-off.
 - **Triage policy**: `relaxed`. Inferred claims never close; assumptions permit only the provisional, low-blast-radius routes below.
 - **Draft confidence**: 462 documented / 16 maintainer / 78 inferred / 1 assumption. Body-tag occurrences, including historical mappings, not unique guarantees.
@@ -97,7 +97,7 @@ Dependency internals/native runtimes/unsampled helpers remain open. No product-w
 |Review/CI|Both default on; empty required checks block ordinary merge. Author opt-in differs from protected/breaking `approved-override`; disabled-gate support unresolved.|*(documented, [merge]; [Maintainer controls][operations])*|
 |Support decisions|Disabled gates/custom controllers/images/rules/endpoints/PATH/callbacks; helper `strict:false`, `allowTmp`, `ALLOW_WORKFLOW_EDIT`: classify exposure separately, not by defaultness.|*(inferred, Q2)*|
 |Limits|Configured replacements; shared retries/fallback cap, no dependency fallback. Dry-run synthetic; `LIGHTS_ON_FORCE` cannot bypass reservation.|*(documented, [limits]; [Manual scheduled-maintenance tasks][maintenance])*|
-|Lanes|Routine npm/planning/approved migration distinct. Toolchain opt-in/held; `active-lts` narrows tests, not public engines.|*(documented, [Migration execution; Node toolchain maintenance][maintenance])*|
+|Lanes|Routine npm updates change an existing v2/v3 lock or only the manifest when no lock exists. Major upgrades/replacements have read-only plans; replacement/removal execution needs a committed approved plan. Toolchain opt-in/held; `active-lts` narrows tests, not public engines.|*(documented, [Routine dependency updates; Migration planning; Migration execution; Node toolchain maintenance][maintenance])*|
 |Release|`enabled` stops paths; `auto_publish` stops builds/uploads; `create_github_release` leaves tags. npm/PyPI OIDC/token, others token; local token-only. `provenance:false` preserves identity checks.|*(documented, [Registry support; Controls][releases])*|
 |Local|Operator policy, immutable loaded Linux images, required profiles, independent grants. Added CA preserves TLS; custom rules cannot elevate capabilities.|*(documented, [Dependencies and custom images][local]; [network])*|
 |Demo|Single npm package; v2/v3 or generated locks. `--allow-inference` required; no publication. Generated SHA-1 verified/re-pinned SHA-512.|*(documented, [Requirements and limits; Prepare a target][demo])*|
@@ -173,7 +173,7 @@ U=untrusted; T=trusted; M=mixed as specified. Kinds: data; size/rate; name=resou
 |B06|Risk/breaking/details|U judgment|data;state|O-OVERRIDE;false≠compatibility|*(documented, [risks])*|
 |B06|Changed files|U inventory|name|O-EVIDENCE;actual controller export|*(documented, [Independent validation][maintenance])*|
 |B06|Branch|U suggestion|name|O-CONTROL;automation refs|*(documented, [publication])*|
-|B06|Added/removed labels|U suggestion|name;auth|O-OVERRIDE;delimiter/protected filtering|*(documented, [state])*|
+|B06|Added/removed labels|U suggestion|name;auth|O-OVERRIDE;filter before inventory lookup. Create only missing standard labels; reuse existing custom labels; report/skip undefined custom additions or absent removals. API failures stay errors.|*(documented, [state]; [Label reference][operations])*|
 |B07 provider|History/schema|M data/T schema|state;size/rate|O-SOURCE;bounded request|*(documented, [providers])*|
 |B07|Response/tool/arguments|U provider|type;state|O-EVIDENCE;known schema|*(documented, [providers])*|
 |B07|Native events|M runtime/U-induced|code|O-HOST;deny unexpected activity|*(documented, [sdk])*|
@@ -189,9 +189,9 @@ U=untrusted; T=trusted; M=mixed as specified. Kinds: data; size/rate; name=resou
 |C01|Ecosyste.ms metadata/counts|U service|state|O-EVIDENCE;unknown stays unknown|*(documented, [Routine dependency updates][maintenance])*|
 |C01|Offline selector|T|capability|O-EVIDENCE;no fabricated intelligence|*(inferred, Q1)*|
 |C02 select|Scan/time/open PRs/state|M evidence|state|O-COST;fresh dedup≠exactly-once|*(documented, [Selection][maintenance])*|
-|C02|Mode/plan ID/approval|T maintainer|name;capability|O-MIGRATE|*(documented, [Migration execution][maintenance])*|
+|C02|Mode/plan ID/approval|T maintainer|name;capability|O-MIGRATE;major-upgrade plans are read-only, not executable same-package upgrades|*(documented, [Migration planning; Migration execution][maintenance])*|
 |C03 validate|Selection/hash/plan|T controller|state|O-MIGRATE;independent intent match|*(documented, [Independent validation][maintenance])*|
-|C03|Manifest/lock/source|U candidate|data;topology|O-STORAGE;allowed files/exact resolution|*(documented, [Independent validation][maintenance])*|
+|C03|Manifest/lock/source|U candidate|data;topology|O-STORAGE;update existing supported lock. If absent, manifest-only candidate plus native temporary v3 lock in fresh offline worker; never export that lock. Verify agreement, exact resolution and unchanged source/lock during tests.|*(documented, [Routine dependency updates; Independent validation][maintenance])*|
 |C03|Original npm scripts|U project|code|O-HOST;fresh offline worker|*(documented, [Independent validation][maintenance])*|
 |C03|Extra/migration commands|T approval|code|O-MIGRATE;offline|*(documented, [Migration execution][maintenance])*|
 |C03|Advisory/resolution output|U service/worker|state|O-EVIDENCE;source/exec-bit checks|*(documented, [Independent validation][maintenance])*|
@@ -395,7 +395,7 @@ All 56 rows use exact dimensions. Claimed rows inherit only referenced condition
 |Results/verdict/risk|B|Claims mixed with controller facts|Completion=publication/model gates=CI|*(documented, [outcomes])*|
 |Usage JSON|A/B/E|Reported/estimated/partial/unavailable; private telemetry counted once, distinct units|Null=zero/Copilot units=USD/invoice cap|*(documented, [usage])*|
 |Dependency report|C|Parsed source/external intelligence/missing evidence|Complete SBOM/vulnerability/compatibility proof|*(documented, [Routine dependency updates][maintenance]; [risks])*|
-|Dependency validation|C|Identity/hash/commands;P-DEPENDENCY|Arbitrary-code safety/unrelated-file permission|*(documented, [Independent validation][maintenance])*|
+|Dependency validation|C|Identity/hash/commands;P-DEPENDENCY;temporary lock hash/mode recorded but lock not published|Arbitrary-code safety/unrelated-file permission or every future range resolution|*(documented, [Independent validation][maintenance])*|
 |Upstream snapshots/tracking|C|Trimmed external text/local rendering|Complete history/quoted ruling authority|*(documented, [Upstream stewardship][maintenance])*|
 |Toolchain/release proposals|C/D|Deterministic edits/external text|Approval/nonbreaking minor bump|*(documented, [Node toolchain maintenance][maintenance]; [Version policy][releases])*|
 |Inspection/generated model|C|Presence/counts/unratified claims|Semantic/provenance/companion validity/sign-off|*(inferred, Q5)*|
@@ -477,7 +477,7 @@ Each claim includes its conditions. No unratified extension is security-critical
 |P-INFERENCE validate controller tools; deny native activity; shut down before export|integrity-bypass|security-critical|Trusted CLI/SDK replacement, not SDK selection; deny `copilot-sdk-completion.mjs:97-98,115-117`; cleanup blocks fallback `run-agent.mjs:629`|*(documented, [providers]; [sdk])*|
 |P-GATES ordinary merge needs complete ≤3,000-file inventory, current metadata, fresh live APPROVE/four PASS and successful exact-head required CI|integrity-bypass|security-critical|CI disable `verify-pr-safety.mjs:279,294`; absent-review `:289`; protected/breaking override `:205,255`. Supplied failing gates/dangerous diffs still block; Q2.|*(documented, [gates]; [merge])*|
 |P-REVIEW explicit commit_id/exact-head merge; refuse stale/closed heads|integrity-bypass|security-critical|No unbound retry; self-review COMMENT≠approval; `github-io.mjs:101-106,208`, `local\publisher.mjs:63`|*(documented, [gates]; [local-publish])*|
-|P-DEPENDENCY independently check selected npm scope/resolution/advisories/original offline tests; exact approved migration plan|bad-data-accepted|security-critical|Other lanes do not inherit; `dependency-work.mjs:168-186`|*(documented, [Independent validation; Migration execution][maintenance])*|
+|P-DEPENDENCY independently check selected npm scope/resolution/advisories/original offline tests; exact approved migration plan|bad-data-accepted|security-critical|Existing locks must be updated. Without a source lock, publish only the manifest after temporary offline native-lock verification; source/validation lock remain unchanged. Missing evidence blocks export; other lanes do not inherit. `dependency-work.mjs:186-327`|*(documented, [Independent validation; Migration execution][maintenance])*|
 |P-REPO installed GitHub.com/restricted refs; upstream read-only|integrity-bypass|security-critical|Publisher replacement, not GH_HOST/GH_REPO; `github-io.mjs:12-15,182-187`; automation force allowed, tags not|*(documented, [publication])*|
 |P-TEXT inert references/HTML/entities/hashes; all fences text; separate plain titles/commits|x-cross-repository-reference-effect|security-critical|Local closing number/confirmed report links active; no rebase; oversize rejected, not truncated; `github-io.mjs:82,123-127`|*(documented, [publication]; [outcomes])*|
 |P-RELEASE builds lack registry secrets/OIDC; fresh artifact-only upload executes no source/package|info-leak; integrity-bypass|security-critical|Trusted role/script replacement, not token/provenance choice; `release-artifacts.mjs:17-18,125`|*(documented, [Release lifecycle][releases]; [artifacts])*|
@@ -520,7 +520,7 @@ Disclaimers cannot waive adjacent positive boundaries. Silence cannot close seri
 |D-AUDIT|Gateway≠whole-host trace|E/F omissions; P-AUDIT retained|correctness-only|*(documented, [recovery]; [Requirements and limits][demo])*|
 |D-STATE-SECRET|Public markers≠secret storage|A/D own nonsecret fields only; not credentials/recovered authority|security-critical|*(documented, [Prior §1.15 state comments not encrypted][prior])*|
 |D-YAML|Subset≠YAML1.2 loader|A anchors/tags/aliases/multiline/multidocument; not unsafe parsing/prototype mutation/effects|correctness-only|*(documented, [yaml]; [Prior §1.15 parseSimpleYaml][prior])*|
-|D-ANALYSIS|No advisory≠complete SBOM/history/compatibility proof|C supported subsets; lane requirements retained|correctness-only|*(documented, [Routine dependency updates; Upstream stewardship][maintenance]; [risks])*|
+|D-ANALYSIS|No advisory≠complete SBOM/history/compatibility proof|C supported subsets; one temporary resolved graph does not prove historical installations or all future allowed versions; lane requirements retained|correctness-only|*(documented, [Routine dependency updates; Upstream stewardship][maintenance]; [risks])*|
 |D-REMOTE-CHECKS|Local pass≠remote App checks|E real CI still required|security-critical|*(documented, [local-publish])*|
 |D-APP-IDENTITY|App≠workflow identity|C/G inspect definitions/server protection|security-critical|*(documented, [gates])*|
 |D-DEMO-FORMAT|Demo≠general package-manager acquisition|F supported formats; rejection never waives isolation/integrity|correctness-only|*(documented, [Requirements and limits][demo])*|
@@ -645,7 +645,7 @@ All unanswered; Q-I01–Q-I12 map respectively to Q1–Q12. Historical Q1/Q2 bel
 
 Uppercase prose remains canonical. Generated YAML (`threat-model-sidecar/v2`, exact prose SHA-256) and JSON (`schema.json`) must be regenerated after changes; prose > YAML > JSON. *(documented, [Prior §1.19 Authority Order and Configured Path][prior])*
 
-JSON lacks policy/precedence/tiers/exact binding and is not a triage input. Backtest completed with owned gaps; acceptance remains pending. The installed official validator returned 92 passed, one error, zero warnings: `SC.prose-version` hard-codes lowercase `threat-model.md`. Other schema/cross-artifact checks passed; the required uppercase filename and exact-byte hash were independently verified. The validator was not modified.
+JSON lacks policy/precedence/tiers/exact binding and is not a triage input. Baseline backtesting completed with owned gaps; full integration backtesting and acceptance remain pending. The installed official validator's known limitation is `SC.prose-version`, which hard-codes lowercase `threat-model.md`. The required uppercase filename and exact-byte hash must be checked independently; this does not claim an all-green official gate. The validator was not modified.
 
 ## Appendix — prior security-policy back-map
 
@@ -767,7 +767,7 @@ All 113 old claims remain mapped. Locators address the [bound prior model][prior
 |Historical Q2, resolved 2026-10-16|Recorded: recovery/PR safety enforce isTrustedStateAuthor() for github-actions[bot]/OWNER/MEMBER/COLLABORATOR markers. Not approval reuse/all-field ratification;Q12.|*(maintainer, 2026-10)*|
 |§1.19 uppercase configured prose and companion authority|§1.19|*(documented, [Prior §1.19][prior])*|
 
-[revision]: https://github.com/scovetta/lights-on/commit/abf1125826227badca1977b8389efc9b599814d9
+[revision]: https://github.com/scovetta/lights-on/commit/5f8b3c062a90feef367cc0683e41cb4e8785c248
 [prior]: https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/THREAT_MODEL.md
 [architecture]: https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md
 [permissions]: https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#workflow-token-permissions
@@ -789,8 +789,8 @@ All 113 old claims remain mapped. Locators address the [bound prior model][prior
 [discovery]: https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#discover-required-checks
 [limits]: https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#usage-and-rate-limits
 [intent]: https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#upstream-threat-model-and-dependency-health-settings
-[maintenance]: https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md
-[operations]: https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/operations.md
+[maintenance]: https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md
+[operations]: https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/operations.md
 [stop]: https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/operations.md#stop-new-work
 [usage]: https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/operations.md#usage-and-cost
 [outcomes]: https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/operations.md#read-run-outcomes

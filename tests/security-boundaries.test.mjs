@@ -17,6 +17,7 @@ import { evaluateCi, fetchCiStatus } from '../.github/lights-on/runner/verify-ci
 import { loadConfig, parseSimpleYaml, sanitizeGitHubOutputValue } from '../.github/lights-on/runner/load-config.mjs';
 import { reportWorkflowEvent, githubItemUrl } from '../.github/lights-on/runner/workflow-report.mjs';
 import { allowAgentEvent } from '../.github/lights-on/runner/event-policy.mjs';
+import { prepareAgentLabelChanges } from '../.github/lights-on/runner/agent-labels.mjs';
 import { archive } from './package-fixtures.mjs';
 import { publishRelease } from '../.github/lights-on/runner/publish-release.mjs';
 import { buildReleaseArtifacts, validateReleaseArtifacts, uploadReleaseArtifacts, registryEnvironment } from '../.github/lights-on/runner/release-artifacts.mjs';
@@ -431,8 +432,9 @@ describe('Label and review-state authorization', () => {
     };
     new Function('fs', 'execFileSync', 'stateStore', 'assertWriteTargetIsInstalledRepo',
       'reportWorkflowEvent', 'githubItemUrl',
-      'neutralizeCrossRepoAutoLinks', 'process', source)(mockFs, (...args) => { calls.push(args); return ''; },
+      'neutralizeCrossRepoAutoLinks', 'prepareAgentLabelChanges', 'process', source)(mockFs, (...args) => { calls.push(args); return ''; },
       stateStore, (repo) => repo, (data) => reportWorkflowEvent(data, { env: {}, write: () => {} }), githubItemUrl, (body) => body,
+      prepareAgentLabelChanges,
       { env: { GITHUB_REPOSITORY: 'owner/repo', ISSUE_NUMBER: '42', READ_ONLY_MODE: 'true' } });
     const posted = writes.get('/tmp/lights-on-comment.md');
     assert.equal((posted.match(/<!-- lights-on-state:/g) || []).length, 1);

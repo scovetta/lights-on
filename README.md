@@ -159,26 +159,34 @@ Steps D through F handle dependency work. Step C handles security remediation.
 | E | Generate a candidate or read-only migration plan; validate executable changes in a fresh offline worker. |
 | F | Publish files matching the validation record, or create/reuse a blocker issue. |
 
-Routine updates support eligible npm `package-lock.json` v2/v3 projects with an
-existing test script. They target one stable, compatible patch/minor version.
+Routine updates support eligible npm projects with a v2/v3 lockfile or no
+committed lockfile, and an existing test script. They target one stable,
+compatible patch/minor version.
 Workspaces, competing lockfiles, pre-1.0 minor updates and missing registry or
 advisory evidence block this path. An open PR touching the same manifest also
 suppresses another update, including a security PR.
 
-The updater may change the selected requirement and lockfile, preserving
-`^`, `~` or exact-version style. The package manager must generate the lockfile.
+The updater may change the selected requirement and existing lockfile, preserving
+`^`, `~` or exact-version style. For a lockfile-free project, it changes only
+the manifest; the controller generates a temporary lock in the offline
+validation worker and never publishes it. The package manager must generate
+the lockfile.
 The controller checks scope, target advisories and installed resolution, then
 runs the original build/lint/test scripts. It rejects source changes made
 during validation.
 
-You need an offline cache for the candidate lockfile. Existing `node_modules`
+You need offline registry metadata and archives for the candidate dependency
+graph. A temporary validation lock checks one resolution, not every future
+version allowed by the published ranges. Existing `node_modules`
 does not establish that a frozen install will succeed.
 [Dependency validation requirements](docs/maintenance.md#independent-validation)
 
 ### Migrations
 
 Use `task: migration-plan` or `/lights-on migrate-dep <package>` to request
-read-only planning. Execution requires a reviewed
+read-only planning, including deferred major-version upgrades. Same-package
+major upgrades require a separate reviewed implementation PR. Replacement/removal
+execution requires a reviewed
 `dependencies.approved_migrations` entry on the default branch, followed by a
 manual `task: migration` run with its plan ID. A label or agent response cannot
 approve a replacement.

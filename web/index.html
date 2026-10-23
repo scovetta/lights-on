@@ -121,7 +121,7 @@
       </div>
       <aside class="scope-note">
         <strong>Scanning is not the same as update support.</strong>
-        <p>Scans cover several ecosystems. Routine updates currently need an eligible npm <code>package-lock.json</code> v2/v3 project, an existing test script and an offline cache. Workspaces and competing lockfiles block that path. <a href="https://github.com/scovetta/lights-on/blob/main/docs/maintenance.md">Read the maintenance guide <span aria-hidden="true">&rarr;</span></a></p>
+        <p>Scans cover several ecosystems. Routine npm updates need an existing test script and offline metadata/packages. Existing v2/v3 lockfiles are updated; projects without a lockfile use a temporary validation lock and publish only the manifest change. Workspaces and competing lockfiles block that path. <a href="https://github.com/scovetta/lights-on/blob/main/docs/maintenance.md">Read the maintenance guide <span aria-hidden="true">&rarr;</span></a></p>
       </aside>
     </section>
 

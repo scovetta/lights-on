@@ -1,7 +1,7 @@
 {
   "spec_version": 1,
   "repository": "https://github.com/scovetta/lights-on",
-  "commit": "abf1125826227badca1977b8389efc9b599814d9",
+  "commit": "5f8b3c062a90feef367cc0683e41cb4e8785c248",
   "date": "2026-10-23",
   "scope_subpath": null,
   "description": "Lights On proposes maintenance, reviews PRs and publishes authorized changes across Actions/admission/state, inference/workers, maintenance/review, publication/releases, protected local execution, the npm demo, and adoption/site. All seven families and helpers remain in scope. Neither model judgment nor passing tests proves semantic safety. This unratified export is lossy and is never a triage input; THREAT_MODEL.md > YAML > JSON. Prior-promise conflicts remain non-closing; dependency-contract has no JSON label and falls through to model_gap. No new ratification or acceptance occurred.",
@@ -30,7 +30,7 @@
       ],
       "in_scope": true,
       "provenance": "documented",
-      "source": "THREAT_MODEL.md:33 — [Workflow map][maintenance]; [permissions]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#workflow-token-permissions"
+      "source": "THREAT_MODEL.md:33 — [Workflow map][maintenance]; [permissions]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#workflow-token-permissions"
     },
     {
       "name": "B",
@@ -77,7 +77,7 @@
       ],
       "in_scope": true,
       "provenance": "documented",
-      "source": "THREAT_MODEL.md:35 — [Scheduled stages][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md"
+      "source": "THREAT_MODEL.md:35 — [Scheduled stages][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md"
     },
     {
       "name": "D",
@@ -266,7 +266,7 @@
       "component": "A",
       "caller_must_enforce": "Protect default-branch automation, prompts, policy, command files and overrides. Accept the association policy; never execute PR-head code in a privileged controller. Exact operand contract: O-CONTROL",
       "provenance": "documented",
-      "source": "THREAT_MODEL.md:119 — [Workflow map][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md"
+      "source": "THREAT_MODEL.md:119 — [Workflow map][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md"
     },
     {
       "entry_point": "A01",
@@ -314,7 +314,7 @@
       "component": "A",
       "caller_must_enforce": "Protect default-branch automation, prompts, policy, command files and overrides. Accept the association policy; never execute PR-head code in a privileged controller. Exact operand contract: O-CONTROL",
       "provenance": "documented",
-      "source": "THREAT_MODEL.md:124 — [Manual scheduled-maintenance tasks][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md"
+      "source": "THREAT_MODEL.md:124 — [Manual scheduled-maintenance tasks][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md"
     },
     {
       "entry_point": "A02",
@@ -323,7 +323,7 @@
       "component": "A",
       "caller_must_enforce": "Approve the committed exact plan, files, replacement evidence and offline commands. Labels or planning issues cannot authorize execution. Exact operand contract: O-MIGRATE",
       "provenance": "documented",
-      "source": "THREAT_MODEL.md:125 — [Migration execution][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md"
+      "source": "THREAT_MODEL.md:125 — [Migration execution][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md"
     },
     {
       "entry_point": "A02",
@@ -332,7 +332,7 @@
       "component": "A",
       "caller_must_enforce": "Set provider spending caps. Preserve concurrency, reservations and effective cache grants; inspect unknown usage and separate local/Actions ledgers. Exact operand contract: O-COST;no cap bypass",
       "provenance": "documented",
-      "source": "THREAT_MODEL.md:126 — [Manual scheduled-maintenance tasks][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md"
+      "source": "THREAT_MODEL.md:126 — [Manual scheduled-maintenance tasks][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md"
     },
     {
       "entry_point": "A03",
@@ -395,7 +395,7 @@
       "component": "A",
       "caller_must_enforce": "Protect default-branch automation, prompts, policy, command files and overrides. Accept the association policy; never execute PR-head code in a privileged controller. Exact operand contract: O-CONTROL;independent validation",
       "provenance": "documented",
-      "source": "THREAT_MODEL.md:133 — [Selection; Independent validation][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md",
+      "source": "THREAT_MODEL.md:133 — [Selection; Independent validation][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md",
       "condition": "Only the untrusted/data or authorized-control portion of the exact classification: T record/U metadata. Platform identity is not claimed text; data-induced authority remains in scope."
     },
     {
@@ -571,7 +571,7 @@
       "component": "B",
       "caller_must_enforce": "Protect default-branch automation, prompts, policy, command files and overrides. Accept the association policy; never execute PR-head code in a privileged controller. Exact operand contract: O-CONTROL;P-READONLY",
       "provenance": "documented",
-      "source": "THREAT_MODEL.md:152 — [Migration planning][maintenance]; [gates]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#deterministic-pr-gates"
+      "source": "THREAT_MODEL.md:152 — [Migration planning][maintenance]; [gates]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#deterministic-pr-gates"
     },
     {
       "entry_point": "B01",
@@ -786,9 +786,9 @@
       "parameter": "Added/removed labels",
       "attacker_controllable": "yes",
       "component": "B",
-      "caller_must_enforce": "Review hold/needs-human and security/compatibility changes. Distinguish author opt-in from protected/breaking overrides; keep sensitive external merge off unless coverage justifies it. Exact operand contract: O-OVERRIDE;delimiter/protected filtering",
+      "caller_must_enforce": "Review hold/needs-human and security/compatibility changes. Distinguish author opt-in from protected/breaking overrides; keep sensitive external merge off unless coverage justifies it. Exact operand contract: O-OVERRIDE;filter before inventory lookup. Create only missing standard labels; reuse existing custom labels; report/skip undefined custom additions or absent removals. API failures stay errors.",
       "provenance": "documented",
-      "source": "THREAT_MODEL.md:176 — [state]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#state-and-authorization"
+      "source": "THREAT_MODEL.md:176 — [state]; [Label reference][operations]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#state-and-authorization; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/operations.md"
     },
     {
       "entry_point": "B07",
@@ -882,7 +882,7 @@
       "component": "C",
       "caller_must_enforce": "Supply a clean, secret-free, provider-appropriate checkout. Inspect context paths before disclosure. Exact operand contract: O-SOURCE;parser subset",
       "provenance": "documented",
-      "source": "THREAT_MODEL.md:186 — [Routine dependency updates][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md",
+      "source": "THREAT_MODEL.md:186 — [Routine dependency updates][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md",
       "condition": "Only the untrusted/data or authorized-control portion of the exact classification: T root/U bytes. Platform identity is not claimed text; data-induced authority remains in scope."
     },
     {
@@ -928,7 +928,7 @@
       "component": "C",
       "caller_must_enforce": "Set provider spending caps. Preserve concurrency, reservations and effective cache grants; inspect unknown usage and separate local/Actions ledgers. Exact operand contract: O-COST;fresh dedup≠exactly-once",
       "provenance": "documented",
-      "source": "THREAT_MODEL.md:191 — [Selection][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md",
+      "source": "THREAT_MODEL.md:191 — [Selection][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md",
       "condition": "Only the untrusted/data or authorized-control portion of the exact classification: M evidence. Platform identity is not claimed text; data-induced authority remains in scope."
     },
     {
@@ -936,9 +936,9 @@
       "parameter": "Mode/plan ID/approval",
       "attacker_controllable": "no",
       "component": "C",
-      "caller_must_enforce": "Approve the committed exact plan, files, replacement evidence and offline commands. Labels or planning issues cannot authorize execution. Exact operand contract: O-MIGRATE",
+      "caller_must_enforce": "Approve the committed exact plan, files, replacement evidence and offline commands. Labels or planning issues cannot authorize execution. Exact operand contract: O-MIGRATE;major-upgrade plans are read-only, not executable same-package upgrades",
       "provenance": "documented",
-      "source": "THREAT_MODEL.md:192 — [Migration execution][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md"
+      "source": "THREAT_MODEL.md:192 — [Migration planning; Migration execution][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md"
     },
     {
       "entry_point": "C03",
@@ -947,16 +947,16 @@
       "component": "C",
       "caller_must_enforce": "Approve the committed exact plan, files, replacement evidence and offline commands. Labels or planning issues cannot authorize execution. Exact operand contract: O-MIGRATE;independent intent match",
       "provenance": "documented",
-      "source": "THREAT_MODEL.md:193 — [Independent validation][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md"
+      "source": "THREAT_MODEL.md:193 — [Independent validation][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md"
     },
     {
       "entry_point": "C03",
       "parameter": "Manifest/lock/source",
       "attacker_controllable": "yes",
       "component": "C",
-      "caller_must_enforce": "Set separate host/VM storage bounds covering downloads, source copies, cache and persistent images. Exact operand contract: O-STORAGE;allowed files/exact resolution",
+      "caller_must_enforce": "Set separate host/VM storage bounds covering downloads, source copies, cache and persistent images. Exact operand contract: O-STORAGE;update existing supported lock. If absent, manifest-only candidate plus native temporary v3 lock in fresh offline worker; never export that lock. Verify agreement, exact resolution and unchanged source/lock during tests.",
       "provenance": "documented",
-      "source": "THREAT_MODEL.md:194 — [Independent validation][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md"
+      "source": "THREAT_MODEL.md:194 — [Routine dependency updates; Independent validation][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md"
     },
     {
       "entry_point": "C03",
@@ -974,7 +974,7 @@
       "component": "C",
       "caller_must_enforce": "Approve the committed exact plan, files, replacement evidence and offline commands. Labels or planning issues cannot authorize execution. Exact operand contract: O-MIGRATE;offline",
       "provenance": "documented",
-      "source": "THREAT_MODEL.md:196 — [Migration execution][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md"
+      "source": "THREAT_MODEL.md:196 — [Migration execution][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md"
     },
     {
       "entry_point": "C03",
@@ -992,7 +992,7 @@
       "component": "C",
       "caller_must_enforce": "Protect state/output/policy/snapshots. Rerun after code/policy/source/candidate changes; writable hashes are not signatures. Never delete publication records to bypass retry refusal. Exact operand contract: O-RECORDS;matching completed live evidence",
       "provenance": "documented",
-      "source": "THREAT_MODEL.md:198 — [Publication][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md",
+      "source": "THREAT_MODEL.md:198 — [Publication][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md",
       "condition": "Only the untrusted/data or authorized-control portion of the exact classification: T records/U narrative. Platform identity is not claimed text; data-induced authority remains in scope."
     },
     {
@@ -1011,7 +1011,7 @@
       "component": "C",
       "caller_must_enforce": "Review hold/needs-human and security/compatibility changes. Distinguish author opt-in from protected/breaking overrides; keep sensitive external merge off unless coverage justifies it. Exact operand contract: O-OVERRIDE;held proposals",
       "provenance": "documented",
-      "source": "THREAT_MODEL.md:200 — [Node toolchain maintenance][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md"
+      "source": "THREAT_MODEL.md:200 — [Node toolchain maintenance][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md"
     },
     {
       "entry_point": "C05",
@@ -1029,7 +1029,7 @@
       "component": "C",
       "caller_must_enforce": "Review source/target/origin and save customizations. Understand replacement/force/label options; inspect preview and discovery proposals before applying them. Exact operand contract: O-INSTALL;read-only upstream",
       "provenance": "documented",
-      "source": "THREAT_MODEL.md:202 — [Upstream stewardship][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md",
+      "source": "THREAT_MODEL.md:202 — [Upstream stewardship][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md",
       "condition": "Only the untrusted/data or authorized-control portion of the exact classification: M selection/platform. Platform identity is not claimed text; data-induced authority remains in scope."
     },
     {
@@ -1048,7 +1048,7 @@
       "component": "C",
       "caller_must_enforce": "Protect state/output/policy/snapshots. Rerun after code/policy/source/candidate changes; writable hashes are not signatures. Never delete publication records to bypass retry refusal. Exact operand contract: O-RECORDS;dedup≠authority",
       "provenance": "documented",
-      "source": "THREAT_MODEL.md:204 — [Upstream stewardship][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md",
+      "source": "THREAT_MODEL.md:204 — [Upstream stewardship][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md",
       "condition": "Only the untrusted/data or authorized-control portion of the exact classification: M author-qualified. Platform identity is not claimed text; data-induced authority remains in scope."
     },
     {
@@ -1058,7 +1058,7 @@
       "component": "C",
       "caller_must_enforce": "Inspect confirmed branches/PRs/tags/versions and interrupted runs before retrying. Distinguish proposed, prepared, validated, published and merged outcomes. Exact operand contract: O-RETRY;confirmed mirrors persist",
       "provenance": "documented",
-      "source": "THREAT_MODEL.md:205 — [Upstream stewardship][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md"
+      "source": "THREAT_MODEL.md:205 — [Upstream stewardship][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md"
     },
     {
       "entry_point": "C07",
@@ -1251,7 +1251,7 @@
       "component": "D",
       "caller_must_enforce": "Inspect confirmed branches/PRs/tags/versions and interrupted runs before retrying. Distinguish proposed, prepared, validated, published and merged outcomes. Exact operand contract: O-RETRY;matching open PR",
       "provenance": "documented",
-      "source": "THREAT_MODEL.md:226 — [A branch was pushed but no PR appeared][operations]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/operations.md"
+      "source": "THREAT_MODEL.md:226 — [A branch was pushed but no PR appeared][operations]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/operations.md"
     },
     {
       "entry_point": "D04",
@@ -2237,7 +2237,7 @@
       "effect": "Both default on; empty required checks block ordinary merge. Author opt-in differs from protected/breaking `approved-override`; disabled-gate support unresolved. Only explicitly documented supported selections and the ordinary default. Unresolved disabled gates/custom collaborators/options are not classified here; see x-unresolved-build-variants and Q2. Nondefault is not unsupported.",
       "discouraged": false,
       "provenance": "documented",
-      "source": "THREAT_MODEL.md:97 — [merge]; [Maintainer controls][operations]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#merge-policy; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/operations.md"
+      "source": "THREAT_MODEL.md:97 — [merge]; [Maintainer controls][operations]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#merge-policy; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/operations.md"
     },
     {
       "name": "Limits",
@@ -2245,15 +2245,15 @@
       "effect": "Configured replacements; shared retries/fallback cap, no dependency fallback. Dry-run synthetic; `LIGHTS_ON_FORCE` cannot bypass reservation. Only explicitly documented supported selections and the ordinary default. Unresolved disabled gates/custom collaborators/options are not classified here; see x-unresolved-build-variants and Q2. Nondefault is not unsupported.",
       "discouraged": false,
       "provenance": "documented",
-      "source": "THREAT_MODEL.md:99 — [limits]; [Manual scheduled-maintenance tasks][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#usage-and-rate-limits; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md"
+      "source": "THREAT_MODEL.md:99 — [limits]; [Manual scheduled-maintenance tasks][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/configuration.md#usage-and-rate-limits; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md"
     },
     {
       "name": "Lanes",
       "default": "Routine npm/planning/approved migration distinct; toolchain opt-in",
-      "effect": "Routine npm/planning/approved migration distinct. Toolchain opt-in/held; `active-lts` narrows tests, not public engines. Only explicitly documented supported selections and the ordinary default. Unresolved disabled gates/custom collaborators/options are not classified here; see x-unresolved-build-variants and Q2. Nondefault is not unsupported.",
+      "effect": "Routine npm updates change an existing v2/v3 lock or only the manifest when no lock exists. Major upgrades/replacements have read-only plans; replacement/removal execution needs a committed approved plan. Toolchain opt-in/held; `active-lts` narrows tests, not public engines. Only explicitly documented supported selections and the ordinary default. Unresolved disabled gates/custom collaborators/options are not classified here; see x-unresolved-build-variants and Q2. Nondefault is not unsupported.",
       "discouraged": false,
       "provenance": "documented",
-      "source": "THREAT_MODEL.md:100 — [Migration execution; Node toolchain maintenance][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md"
+      "source": "THREAT_MODEL.md:100 — [Routine dependency updates; Migration planning; Migration execution; Node toolchain maintenance][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md"
     },
     {
       "name": "Release",
@@ -2367,7 +2367,7 @@
       "severity_tier": "correctness",
       "conditions": "promised results/evidence missing or malformed are errors, not successful absence; disabled runs emit skipped JSON; absent upstream uses optional outputs/skipped snapshots; bootstrap requires core skill; cache operations obey effective grants. Controls/limits: Executed promised producers/explicit evidence paths only, not unselected optional steps; no skill-trust/ratification/durability extension. `lights-on-events.yml:224`, `sync-upstream.mjs:698`, `ensure-threat-model.mjs:302`",
       "provenance": "documented",
-      "source": "THREAT_MODEL.md:472 — [Troubleshooting; Cache and recovery][operations]; [gates]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/operations.md; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#deterministic-pr-gates"
+      "source": "THREAT_MODEL.md:472 — [Troubleshooting; Cache and recovery][operations]; [gates]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/operations.md; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#deterministic-pr-gates"
     },
     {
       "property": "P-PATH",
@@ -2399,7 +2399,7 @@
       "severity_tier": "security",
       "conditions": "reviewers/planners cannot write or execute commands. Controls/limits: Different task/direct dispatcher; `run-agent.mjs:534-535`, `openrouter-agent.mjs:245-317`",
       "provenance": "documented",
-      "source": "THREAT_MODEL.md:476 — [Migration planning][maintenance]; [gates]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#deterministic-pr-gates"
+      "source": "THREAT_MODEL.md:476 — [Migration planning][maintenance]; [gates]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#deterministic-pr-gates"
     },
     {
       "property": "P-INFERENCE",
@@ -2429,9 +2429,9 @@
       "property": "P-DEPENDENCY",
       "violation_symptom": "bad-data-accepted",
       "severity_tier": "security",
-      "conditions": "independently check selected npm scope/resolution/advisories/original offline tests; exact approved migration plan. Controls/limits: Other lanes do not inherit; `dependency-work.mjs:168-186`",
+      "conditions": "independently check selected npm scope/resolution/advisories/original offline tests; exact approved migration plan. Controls/limits: Existing locks must be updated. Without a source lock, publish only the manifest after temporary offline native-lock verification; source/validation lock remain unchanged. Missing evidence blocks export; other lanes do not inherit. `dependency-work.mjs:186-327`",
       "provenance": "documented",
-      "source": "THREAT_MODEL.md:480 — [Independent validation; Migration execution][maintenance]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md"
+      "source": "THREAT_MODEL.md:480 — [Independent validation; Migration execution][maintenance]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md"
     },
     {
       "property": "P-REPO",
@@ -2619,10 +2619,10 @@
     },
     {
       "property": "D-ANALYSIS",
-      "reason": "No advisory≠complete SBOM/history/compatibility proof; C supported subsets; lane requirements retained",
+      "reason": "No advisory≠complete SBOM/history/compatibility proof; C supported subsets; one temporary resolved graph does not prove historical installations or all future allowed versions; lane requirements retained",
       "false_friend": true,
       "provenance": "documented",
-      "source": "THREAT_MODEL.md:523 — [Routine dependency updates; Upstream stewardship][maintenance]; [risks]; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/maintenance.md; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#remaining-risks"
+      "source": "THREAT_MODEL.md:523 — [Routine dependency updates; Upstream stewardship][maintenance]; [risks]; https://github.com/scovetta/lights-on/blob/5f8b3c062a90feef367cc0683e41cb4e8785c248/docs/maintenance.md; https://github.com/scovetta/lights-on/blob/abf1125826227badca1977b8389efc9b599814d9/docs/architecture.md#remaining-risks"
     },
     {
       "property": "D-REMOTE-CHECKS",
